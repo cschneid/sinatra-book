@@ -45,13 +45,14 @@ class Book < Thor
   def build_pdf(doc)
     build_latex(doc)
     
-    2.times { system("pdflatex #{File.join(OUTPUT_DIR, BOOK_FILE_NAME + '.tex')} -output-directory=#{OUTPUT_DIR}") }
-    
-    # Clean up
-    file_patterns = %w{*.aux *.out *.toc}
     Dir.chdir(OUTPUT_DIR) do |dir|
+      # Run twice to get cross-references right
+      2.times { system("pdflatex #{File.join(OUTPUT_DIR, BOOK_FILE_NAME + '.tex')} -output-directory=#{OUTPUT_DIR}") }
+    
+      # Clean up
+      file_patterns = %w{*.aux *.out *.toc *.log}
       file_patterns.each do |pattern|
-        FileUtils.rm( Dir.glob(pattern))
+        FileUtils.rm(Dir.glob(pattern))
       end
     end
   end
