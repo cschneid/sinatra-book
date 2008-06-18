@@ -5,7 +5,7 @@ require 'maruku'
 
 require 'fileutils'
 
-class SinatraBook < Thor
+class Book < Thor
   
   SUPPORTED_FORMATS = %w{html latex pdf}
   OUTPUT_DIR = "#{__FILE__}/output/"
