@@ -19,7 +19,7 @@ class Book < Thor
     
         
     if SUPPORTED_FORMATS.include?( format )
-      self.send("build_#{format}")
+      self.send("build_#{format}", doc)
     else
       STDERR << "Error: Don't know how to build for format '#{format}'"
       exit 1
