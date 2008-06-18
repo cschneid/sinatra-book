@@ -13,6 +13,9 @@ Cookbook
         - sessions
             - alternate session stores
         - cookies
+        - authentication
+    * Filters
+        - before do...
     * Views
         - Template Languages
             - Haml
@@ -25,6 +28,9 @@ Cookbook
         - Partials
     * Models
         - TODO: Does sinatra have any opinion at all on models?
+        - Datamapper
+        - Sequel
+        - AR
     * Helpers
         - TODO: How do we repeat the partials thing
     * Rack Middleware
@@ -36,6 +42,7 @@ Cookbook
     * Configuration
         - Use Sinatra's "set" option
         - @@config file in a config block
+        - Application module / config area
     * Deployment
         - FastCGI
         - Passenger/mod_rails
