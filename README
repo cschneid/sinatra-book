@@ -3,6 +3,11 @@ It'll probably be cookbook style recipes, along with a more linear tutorial to g
 
 Note that nothing has yet been written.  Join us on IRC (freenode.org #sinatra) if you need help with anything.
 
+File Layout:
+book/   - Text of the book.  In maruku's markdown format.
+images/ - Images, Diagrams, Funny Pictures
+source/ - Any source examples to be included into the book
+
 Sinatra URL:
 http://sinatrarb.com
 
