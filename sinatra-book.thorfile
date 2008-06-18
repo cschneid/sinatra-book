@@ -2,4 +2,9 @@
 
 class SinatraBook < Thor
 
+  desc "build [FORMAT]", "Build the book. FORMAT specifies what format the output should have. Valid options are: html, latex/pdf"
+  def build(format = 'pdf')
+    # Output goes into output/
+  end
+
 end
