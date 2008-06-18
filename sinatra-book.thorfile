@@ -1,0 +1,5 @@
+# module: sinatra-book
+
+class SinatraBook < Thor
+
+end
