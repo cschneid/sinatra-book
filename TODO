@@ -1,4 +1,4 @@
-Setup technical envionment
+Setup technical environment
     - Markdown files (using maruku - http://maruku.rubyforge.org/)
     - Determine directory structure
     - Thor (!!) file to automate build

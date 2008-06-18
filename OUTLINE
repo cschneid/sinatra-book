@@ -35,7 +35,7 @@ Cookbook
         - TODO: How do we repeat the partials thing
     * Rack Middleware
         - "use"
-        - TODO: What useful rack middleware is out there?  Is there any 3rd party stuff avaliable?
+        - TODO: What useful rack middleware is out there?  Is there any 3rd party stuff available?
     * Error Handling
         - not_found
         - error
