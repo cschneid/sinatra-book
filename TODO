@@ -1,5 +1,5 @@
 Setup technical envionment
-    - LaTeX files
+    - Markdown files (using maruku - http://maruku.rubyforge.org/)
     - Determine directory structure
     - Thor (!!) file to automate build
     - Build HTML, PDF... others?
