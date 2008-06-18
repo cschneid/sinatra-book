@@ -50,5 +50,9 @@ Cookbook
         - Nginx -> Thin
         - TODO: Was Blake serious with the erlang yaws based deployment? (fuzed)
         - TODO: What other deployment strategies are there?
+    * Contributing
+        - How to clone the Sinatra repo?
+        - How to create a patch?
+        - How to get that patch into the official Sinatra?
 
 
