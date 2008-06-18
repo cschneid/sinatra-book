@@ -6,6 +6,10 @@ require 'maruku'
 require 'fileutils'
 
 class SinatraBook < Thor
+  
+  SUPPORTED_FORMATS = %w{html latex pdf}
+  OUTPUT_DIR = "#{__FILE__}/output/"
+  BOOK_FILE_NAME = "sinatra-book"
 
   desc "build [FORMAT]", "Build the book. FORMAT specifies what format the output should have. Defaults to html. Valid options are: #{SUPPORTED_FORMATS.join(", ")}"
   def build(format = 'html')
@@ -25,7 +29,6 @@ class SinatraBook < Thor
   
   private
   
-  SUPPORTED_FORMATS = %w{html latex pdf}
   
   def build_html(doc)
     File.open(OUTPUT_DIR + BOOK_FILE_NAME + '.html', 'w+') do |file|
@@ -53,9 +56,6 @@ class SinatraBook < Thor
       end
     end
   end
-  
-  OUTPUT_DIR = "#{__FILE__}/output/"
-  BOOK_FILE_NAME = "sinatra-book"
   
   def complete_markdown
     # Collect all the markdown files in the correct order and squash them together into one big string
