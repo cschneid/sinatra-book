@@ -8,7 +8,8 @@ require 'fileutils'
 class Book < Thor
   
   SUPPORTED_FORMATS = %w{html latex pdf}
-  OUTPUT_DIR = File.join("#{File.dirname(__FILE__)}", "output")
+  OUTPUT_DIR = File.join(File.dirname(__FILE__), "output")
+  BOOK_DIR = File.join(File.dirname(__FILE__), "book")
   BOOK_FILE_NAME = "sinatra-book"
   OUTPUT_FILE_BASE_NAME = File.join(OUTPUT_DIR, BOOK_FILE_NAME)
 
@@ -60,7 +61,15 @@ class Book < Thor
   
   def complete_markdown
     # Collect all the markdown files in the correct order and squash them together into one big string
-    "A markdown string"
+    s = ""
+    Dir[File.join(BOOK_DIR, "*.markdown")].each do |filename|
+      File.open(filename) do |f|
+        # I have no idea if the double \n is needed, but seems safe
+        s << f.read << "\n\n" 
+      end
+    end
+
+    return s
   end
 
 end
