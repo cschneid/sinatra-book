@@ -31,7 +31,6 @@ class Book < Thor
 
   desc "clean", "Delete the output directory, along with all contents"
   def clean
-    require 'fileutils'
     FileUtils.rm_rf(OUTPUT_DIR, {:verbose => true})
   end
   
