@@ -1,6 +1,6 @@
 General guidelines for patches:
 
-* Keep lines to approximatly 80 characters or less.  This is to allow git to do patches at the line level.
+* Keep lines to approximately 80 characters or less.  This is to allow git to do patches at the line level.
 * No embedded HTML.  We need to render to LaTeX (and then PDF), which won't support it.
 
 
