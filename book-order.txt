@@ -1,0 +1,17 @@
+# This file is to define the order of the markdown files that make up the book.
+# Use this approach rather than than naming the files with 1_, 2_, and so on to force
+# a sort order.
+
+TOC.markdown
+Routes.markdown
+Handlers.markdown
+Filters.markdown
+Views.markdown
+Models.markdown
+Helpers.markdown
+RackMiddleware.markdown
+ErrorHandling.markdown
+Configuration.markdown
+Deployment.markdown
+Contributing.markdown
+
