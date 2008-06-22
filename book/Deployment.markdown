@@ -152,8 +152,11 @@ FastCGI                         {#deployment_fastcgi}
 // TODO: Copy and format blog post
 
 
-TODO: Was Blake serious with the erlang yaws based deployment? (fuzed)
+Fuzed and Amazon 
+----------------
+// TODO: Talk with Blake about this.
 
-TODO: What other deployment strategies are there?
+
+// TODO: What other deployment strategies are there?
 
 * * *
