@@ -10,4 +10,3 @@ Sequel
 ActiveRecord
 ------------
 
-* * *

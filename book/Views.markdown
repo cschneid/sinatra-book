@@ -23,4 +23,3 @@ In File Views
 Partials
 --------
 
-* * *

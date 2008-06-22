@@ -7,4 +7,3 @@ not\_found
 error
 -----
 
-* * *

@@ -4,4 +4,3 @@ Filters
 before do...
 ------------
 
-* * *

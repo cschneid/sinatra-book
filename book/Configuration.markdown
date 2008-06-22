@@ -11,4 +11,3 @@ Use Sinatra's "set" option
 Application module / config area
 --------------------------------
 
-* * *

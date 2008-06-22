@@ -66,7 +66,7 @@ class Book < Thor
   
   def complete_markdown
     # Collect all the markdown files in the correct order and squash them together into one big string
-    s = ""
+    s = [] 
     File.new("book-order.txt").each_line do |line|
       line.strip!
       next if line =~ /^#/   # Skip comments
@@ -74,11 +74,11 @@ class Book < Thor
 
       File.open(File.join(BOOK_DIR, line)) do |f|
         # I have no idea if the double \n is needed, but seems safe
-        s << f.read << "\n\n" 
+        s << f.read
       end
     end
 
-    return s
+    return s.join("\n\n* * *\n\n")
   end
 
 end
