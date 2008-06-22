@@ -67,10 +67,23 @@ a load balanced reverse proxy setup using Lighttpd and Thin.
 You're done! Go to mydomain.com/ and see the result! Everything should be setup 
 now, check it out at the domain you setup in your lighttpd.conf file.
 
-*Variation* - nginx - I haven't looked into the config file syntax, but there 
-isn't any reason that this exact same approach wouldn't work with nginx. Thin 
-and the rackup file stay the same, while the nginx layer has to be configured 
-to reverse proxy to the thin install.
+*Variation* - nginx via proxy - The same approach to proxying can be applied to the nginx web server
+
+	upstream www_mydomain_com {
+		server 127.0.0.1:5000;
+		server 127.0.0.1:5001;
+	}
+
+	server {
+		listen		www.mydomain.com:80
+		server_name	www.mydomain.com live;
+		access_log /path/to/logfile.log
+		
+		location / {
+			proxy_pass http://www_mydomain_com;
+		}
+		
+	}
 
 *Variation* - More Thin instances - To add more thin instances, change the 
 `-s 2` parameter on the thin start command to be how ever many servers you want. 
