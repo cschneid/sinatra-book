@@ -149,8 +149,80 @@ application after making changes, you need to run `touch tmp/restart.txt`.
 
 FastCGI                         {#deployment_fastcgi}
 -------
-// TODO: Copy and format blog post
 
+The standard method for deployment is to use Thin or Mongrel, and have a 
+reverse proxy (lighttpd, or nginx, or even Apache) point to your 
+bundle of servers.
+
+But that isn't always possible.  Cheaper shared hosting (like Dreamhost) 
+won't let you run Thin or Mongrel, or setup reverse proxies 
+(at least on the default shared plan).
+
+Luckily Rack supports various connectors, including CGI and FastCGI.  
+Unluckily for us, FastCGI doesn't quite work with the current Sinatra release
+
+To get a simple 'hello world' Sinatra application up and running on Dreamhost
+involves pulling down the current Sinatra code, and hacking at it a bit.  
+Don't worry though, it only requires commenting out a few lines, and tweaking another.
+
+Steps to deploy via FastCGI:
+
+* .htaccess
+* dispatch.fcgi
+* Tweaked sinatra.rb
+
+
+1. .htaccess
+        RewriteEngine on
+         
+        AddHandler fastcgi-script .fcgi
+        Options +FollowSymLinks +ExecCGI
+         
+        RewriteRule ^(.*)$ dispatch.fcgi [QSA,L]
+
+2. dispatch.fcgi
+        #!/usr/bin/ruby
+         
+        require 'sinatra/lib/sinatra.rb'
+        require 'rubygems'
+         
+        fastcgi_log = File.open("fastcgi.log", "a")
+        STDOUT.reopen fastcgi_log
+        STDERR.reopen fastcgi_log
+        STDOUT.sync = true
+         
+        set :logging, false
+        set :server, "FastCGI"
+         
+        module Rack
+          class Request
+            def path_info
+              @env["SCRIPT_URL"].to_s
+            end
+            def path_info=(s)
+              @env["SCRIPT_URL"] = s.to_s
+            end
+          end
+        end
+         
+        load 'test.rb'
+
+3. sinatra.rb - Replace this function with the new version here (commenting out the `puts` lines)
+
+        def run
+          begin
+            #puts "== Sinatra has taken the stage on port #{port} for #{env} with backup by #{server.name}"
+            require 'pp'
+            server.run(application) do |server|
+              trap(:INT) do
+                server.stop
+                #puts "\n== Sinatra has ended his set (crowd applauds)"
+              end
+            end
+          rescue Errno::EADDRINUSE => e
+            #puts "== Someone is already performing on port #{port}!"
+          end
+        end
 
 Fuzed and Amazon 
 ----------------
