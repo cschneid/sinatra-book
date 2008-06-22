@@ -73,14 +73,65 @@ and the rackup file stay the same, while the nginx layer has to be configured
 to reverse proxy to the thin install.
 
 *Variation* - More Thin instances - To add more thin instances, change the 
--s 2 parameter on the thin start command to be how ever many servers you want. 
+`-s 2` parameter on the thin start command to be how ever many servers you want. 
 Then be sure lighttpd proxies to all of them by adding more lines to the proxy 
 statements. Then restart lighttpd and everything should come up as expected.
 
 
 Passenger (mod rails)           {#deployment_passenger}
 ------------------------
-// TODO: Copy and format blog post
+I don't like deployment via FastCGI that much. It's just too unstable, and random 
+for my tastes. So when I saw that Passenger was going to support Rack, 
+I knew I had to get that working on Dreamhost.
+
+Once I started going at it, it only took me a few minutes to make everything 
+work. You can find documentation at the Passenger Github repository.
+
+
+1. Setting up the account in the Dreamhost interface
+
+        Domains -> Manage Domains -> Edit (web hosting column)
+        Enable 'Ruby on Rails Passenger (mod_rails)'
+        Add the public directory to the web directory box. So if you were using 'rails.com', it would change to 'rails.com/public'
+        Save your changes
+
+2. Creating the directory structure
+
+        domain.com/
+        domain.com/tmp
+        domain.com/public
+        # a vendored version of sinatra - not necessary if you use the gem
+        domain.com/sinatra
+
+3. Creating a rackup file
+
+        # This file goes in domain.com/config.ru
+        require 'sinatra/lib/sinatra.rb'
+        require 'rubygems'
+         
+        Sinatra::Application.default_options.merge!(
+          :run => false,
+          :env => :production
+        )
+         
+        require 'test.rb'
+        run Sinatra.application
+
+
+4. A very simple Sinatra application
+
+        # this is test.rb referred to above
+        get '/' do
+                "Worked on dreamhost"
+        end
+         
+        get '/foo/:bar' do
+                "You asked for foo/#{params[:bar]}"
+        end
+And that's all there is to it! Once it's all setup, point your browser at your 
+domain, and you should see a 'Worked on Dreamhost' page. To restart the 
+application after making changes, you need to run `touch tmp/restart.txt`.
+
 
 
 FastCGI                         {#deployment_fastcgi}
