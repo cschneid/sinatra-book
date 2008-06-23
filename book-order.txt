@@ -3,6 +3,7 @@
 # a sort order.
 
 TOC.markdown
+Introduction.markdown
 Routes.markdown
 Handlers.markdown
 Filters.markdown
