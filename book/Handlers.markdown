@@ -62,6 +62,44 @@ the scaling problems that memory or database backed sessions run into.
 cookies
 -------
 
+Cookies are a fairly simple thing to use in Sinatra, but they have a few quirks.
+
+Lets first look at the simple use case:
+
+    require 'sinatra'
+ 
+    get '/' do
+        # Get the string representation
+        cookie = request.cookies["thing"]
+     
+        # Set a default
+        cookie ||= 0
+     
+        # Convert to an integer 
+        cookie = cookie.to_i
+     
+        # Do something with the value
+        cookie += 1
+     
+        # Reset the cookie
+        set_cookie("thing", cookie)
+     
+        # Render something
+        "Thing is now: #{cookie}"
+    end
+
+Setting a path, expiration date, or domain gets a little more complicated - see the source code for set\_cookie if you want to dig deeper.
+
+    set_cookie("thing", { :domain => myDomain,
+                          :path => myPath,
+                          :expires => Date.new } )
+
+That's the easy stuff with cookies - It can also serialize Array objects,
+separating them with ampersands (&), but when they come back, it doesn't
+deserialize or split them in any way, it hands you the raw, encoded string
+for your parsing pleasure.
+
+
 authentication
 --------------
 
