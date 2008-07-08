@@ -4,9 +4,9 @@ Deployment
 Lighttpd Proxied to Thin        {#deployment_lighttpd}
 ------------------------
 
-I've previously written about deploying Sinatra to Dreamhost, both with FastCGI, 
-and also Passenger (mod\_rails). This howto will cover how to deploy Sinatra to 
-a load balanced reverse proxy setup using Lighttpd and Thin.
+I've previously written about deploying Sinatra to Dreamhost, both with
+FastCGI, and also Passenger (mod\_rails). This howto will cover how to deploy
+Sinatra to a load balanced reverse proxy setup using Lighttpd and Thin.
 
 1. Install Lighttpd and Thin
 
@@ -64,10 +64,11 @@ a load balanced reverse proxy setup using Lighttpd and Thin.
 
          thin -s 2 -C config.yml -R config.ru start
 
-You're done! Go to mydomain.com/ and see the result! Everything should be setup 
+You're done! Go to mydomain.com/ and see the result! Everything should be setup
 now, check it out at the domain you setup in your lighttpd.conf file.
 
-*Variation* - nginx via proxy - The same approach to proxying can be applied to the nginx web server
+*Variation* - nginx via proxy - The same approach to proxying can be applied to
+the nginx web server
 
 	upstream www_mydomain_com {
 		server 127.0.0.1:5000;
@@ -154,16 +155,17 @@ The standard method for deployment is to use Thin or Mongrel, and have a
 reverse proxy (lighttpd, or nginx, or even Apache) point to your 
 bundle of servers.
 
-But that isn't always possible.  Cheaper shared hosting (like Dreamhost) 
-won't let you run Thin or Mongrel, or setup reverse proxies 
-(at least on the default shared plan).
+But that isn't always possible.  Cheaper shared hosting (like Dreamhost) won't
+let you run Thin or Mongrel, or setup reverse proxies (at least on the default
+        shared plan).
 
-Luckily Rack supports various connectors, including CGI and FastCGI.  
-Unluckily for us, FastCGI doesn't quite work with the current Sinatra release
+Luckily Rack supports various connectors, including CGI and FastCGI.  Unluckily
+for us, FastCGI doesn't quite work with the current Sinatra release
 
 To get a simple 'hello world' Sinatra application up and running on Dreamhost
-involves pulling down the current Sinatra code, and hacking at it a bit.  
-Don't worry though, it only requires commenting out a few lines, and tweaking another.
+involves pulling down the current Sinatra code, and hacking at it a bit.  Don't
+worry though, it only requires commenting out a few lines, and tweaking
+another.
 
 Steps to deploy via FastCGI:
 
