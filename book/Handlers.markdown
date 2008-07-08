@@ -38,7 +38,26 @@ To force Sinatra to send a different response code, it's very simple:
 sessions
 --------
 
-### alternate session stores
+### Default Cookie Based Sessions
+
+Sinatra ships with basic support for cookie based sessions.  To enable it, in a configure block, or at the top of your application, you just need to enable to option.
+
+    enable :sessions
+
+The downside to this session approach is that all the data is stored in the
+cookie.  Since cookies have a fairly hard limit of 4 kilobytes, you can't store
+much data.  The other issue is that the cookie is not tamper proof.  The user
+can change any data in their session.  But... it is easy, and it doesn't have
+the scaling problems that memory or database backed sessions run into.
+
+### Memory Based Sessions
+
+### Memcached Based Sessions
+
+### File Based Sessions
+
+### Database Based Sessions
+
 
 cookies
 -------
