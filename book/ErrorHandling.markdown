@@ -7,9 +7,9 @@ Remember: These are run inside the Sinatra::EventContext which means you get all
 
 Whenever NotFound is raised this will be called
 
-  not_found do
-    'This is nowhere to be found'
-  end
+    not_found do
+      'This is nowhere to be found'
+    end
 
 error
 -----
@@ -39,7 +39,7 @@ you gets this:
 
 Additional Information
 ----------------------
-Because Sinatra give you a default not_found and error do :production that are secure. If you want to customize only for :production but want to keep the friendly helper screens for :development then do this:
+Because Sinatra give you a default not\_found and error do :production that are secure. If you want to customize only for :production but want to keep the friendly helper screens for :development then do this:
 
 	configure :production do
 

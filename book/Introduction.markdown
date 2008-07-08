@@ -34,12 +34,12 @@ Looking to live life (or Sinatra I should say) on the edge, huh?  Well, it's rat
 The latest greatest Sinatra is on Github; so using the power of git and the power of
 our minds--we can do the following
 
-   1. cd where/you/keep/your/projects
-   2. git clone git://github.com/bmizerany/sinatra.git
-   3. cd sinatra
-   4. git submodule init && git submodule update
-   5. cd your_project
-   6. ln -s ../sinatra
+1. cd where/you/keep/your/projects
+2. git clone git://github.com/bmizerany/sinatra.git
+3. cd sinatra
+4. git submodule init && git submodule update
+5. cd your\_project
+6. ln -s ../sinatra
 
 To use this unholy power, simply add this line to your sinatra.rb file
 
