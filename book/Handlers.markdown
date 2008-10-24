@@ -1,5 +1,15 @@
-Handlers (controllers?)
-=======================
+Handlers
+========
+
+Structure
+---------
+Handler is the generic term that Sinatra uses for the "controllers".  A
+handler is the initial point of entry for new http requests into your
+application.
+
+To find more about the routes, head to the Routes section (right above
+this one)
+
 
 redirect
 --------
@@ -18,7 +28,7 @@ browser makes a followup request to the location indicated.  Since the browser
 makes that followup request, you can redirect to any page, in your application,
 or another site entirely.
 
-The flow of requests is:
+The flow of requests during a redirect is:
 Browser --> Server (redirect to '/') --> Browser (request '/') --> Server (result for '/')
 
 Sinatra sends a 302 response code as a redirect by default. According to the
