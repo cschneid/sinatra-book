@@ -1,6 +1,16 @@
 Routes
 ======
-**NOTE: Routes are looked up in order of declaration**
+
+http methods
+------------
+Sinatra's routes are designed to respond to the HTTP request methods.  
+
+* GET
+* POST
+* PUT
+* DELETE
+
+
 
 basic
 -----
@@ -42,5 +52,14 @@ user agent
 	  # matches non-songbird browsers
 	end
 
-### iPhone
+how routes are looked up
+------------------------
+
+Each time you add a new route to your application, it gets compiled down into a
+regular expression that will match it.  That is stored in an array along with
+the handler block attached to that route.
+
+When a new request comes in, each regex is run in turn, until one matches.  Then
+the the handler (the code block) attached to that route gets executed.
+
 
