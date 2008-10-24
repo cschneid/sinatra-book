@@ -5,10 +5,10 @@ http methods
 ------------
 Sinatra's routes are designed to respond to the HTTP request methods.  
 
-* GET
-* POST
-* PUT
-* DELETE
+* get
+* post
+* put
+* delete
 
 
 
@@ -52,9 +52,33 @@ user agent
 	  # matches non-songbird browsers
 	end
 
+other methods
+-------------
+Other methods are requested exactly the same as "get" routes.  You simply use
+the "post", "put", or "delete" functions to define the route, rather then the
+"get" one.  To access POSTed parameters, use params[:xxx] where xxx is the name
+of the form element that was posted.
+
+    post '/foo' do
+      "You just asked for foo, with post param bar equal to #{params[:bar]}"
+    end
+
+
+the PUT and DELETE methods
+--------------------------
+Since browsers don't natively support the PUT and DELETE methods, a hacky
+workaround has been adopted by the web community.  Simply add a hidden element
+with the name "\_method" and the value equal to the HTTP method you want to use.
+The form itself is sent as a POST, but Sinatra will interpret it as the desired
+method.  
+
+When you want to use PUT or DELETE form a client that does support them (like
+Curl, or ActiveResource), just go ahead and use them as you normally would, and
+ignore the \_method advice above.  That is only for hacking in support for
+browsers.
+
 how routes are looked up
 ------------------------
-
 Each time you add a new route to your application, it gets compiled down into a
 regular expression that will match it.  That is stored in an array along with
 the handler block attached to that route.
