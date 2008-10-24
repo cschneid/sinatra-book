@@ -15,9 +15,36 @@ Template Languages
 
 This will render ./views/index.haml
 
+### Sass
+	get '/' do
+	  sass :styles
+	end
+
+This will render ./views/styles.sass
+
 ### Erb
+	get '/' do
+	  erb :index
+	end
+
+This will render ./views/index.erb
 
 ### Builder
+	get '/' do
+	  builder :index
+	end
+
+This will render ./views/index.builder
+
+	get '/' do
+	  builder do |xml|
+        xml.node do
+          xml.subnode "Inner text"
+        end
+      end
+	end
+
+This will render the xml inline, directly from the handler.
 
 #### Atom Feed
 
@@ -25,6 +52,30 @@ This will render ./views/index.haml
 
 Layouts
 -------
+Layouts are simple in Sinatra.  Put a file in your views directory named
+"layout.erb", "layout.haml", or "layout.builder".  When you render a page, the
+appropriate layout will be grabbed (of the same filetype), and used.
+
+The layout itself should call yield at the point you want the content to be
+included.
+    
+An example haml layout file could look something like this:
+
+    %html
+      %head
+        %title SINATRA BOOK
+      %body
+        #container
+          = yield
+
+avoiding a layout
+-----------------
+Sometimes you don't want the layout rendered.  In your render method just pass
+:layout => false, and you're good.
+
+    get '/' do
+      haml :index, :layout => false
+    end
 
 In File Views
 -------------
