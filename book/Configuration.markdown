@@ -4,8 +4,9 @@ Configuration
 Use Sinatra's "set" option
 --------------------------
 
-`@@`config file in a config block
----------------------------------
+
+external config file via the configure block
+--------------------------------------------
 
 
 Application module / config area
