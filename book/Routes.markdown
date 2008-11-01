@@ -56,7 +56,7 @@ other methods
 -------------
 Other methods are requested exactly the same as "get" routes.  You simply use
 the "post", "put", or "delete" functions to define the route, rather then the
-"get" one.  To access POSTed parameters, use params[:xxx] where xxx is the name
+"get" one.  To access POSTed parameters, use params\[:xxx\] where xxx is the name
 of the form element that was posted.
 
     post '/foo' do
