@@ -227,6 +227,9 @@ Fuzed and Amazon
 ----------------
 // TODO: Talk with Blake about this.
 
+Poolparty and Amazon EC2
+------------------------
+
 
 // TODO: What other deployment strategies are there?
 
