@@ -18,6 +18,7 @@ class Book < Thor
     doc = Maruku.new(complete_markdown)
     
     FileUtils.mkdir_p(OUTPUT_DIR)
+    FileUtils.cp( File.join(File.dirname(__FILE__), 'assets', 'book.css'), File.join(File.dirname(__FILE__), 'output'))
     
         
     if SUPPORTED_FORMATS.include?( format )
