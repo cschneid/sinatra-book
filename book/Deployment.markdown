@@ -144,6 +144,11 @@ domain, and you should see a 'Worked on Dreamhost' page. To restart the
 application after making changes, you need to run `touch tmp/restart.txt`.
 
 
+Please note that currently passenger 2.0.3 has a bug where it can cause Sinatra to not find
+the view directory. In that case, add `:views => '/path/to/views/'` to the Sinatra options
+in your Rackup file.
+
+
 
 FastCGI                         {#deployment_fastcgi}
 -------
