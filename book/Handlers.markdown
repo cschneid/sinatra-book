@@ -110,6 +110,22 @@ deserialize or split them in any way, it hands you the raw, encoded string
 for your parsing pleasure.
 
 
+status
+------
+
+If you want to set your own status response instead of the normal 200 (Success), you can use the `status`-helper to set the
+code, and then still render normally:
+
+    get '/' do
+      status 404
+      "Not found"
+    end
+
+Alternatively you can use `throw :halt, [404, "Not found"]` to immediately stop any further actions and return the
+specified status code and string to the client. `throw` supports more options in this regard, see the appropriate section
+for more info.
+
+
 authentication
 --------------
 
