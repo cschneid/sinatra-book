@@ -18,14 +18,12 @@ proxy setup using Lighttpd and Thin.
 2. Create your rackup file - the "require 'app'" line should require the actual 
    Sinatra app you have written.
 
-        require 'sinatra'
-         
-        Sinatra::Application.default\_options.merge!(
-          :run => false,
-          :env => :production
-        )
-        
         require 'app'
+
+        set :env,       :production
+        set :port,      4567
+        disable :run, :reload
+
         run Sinatra.application
 
 3. Setup a config.yml - change the /path/to/my/app path to reflect reality.
@@ -120,12 +118,11 @@ You can find additional documentation at the Passenger Github repository.
         require 'sinatra/lib/sinatra.rb'
         require 'rubygems'
          
-        Sinatra::Application.default_options.merge!(
-          :run => false,
-          :env => :production
-        )
-         
         require 'test.rb'
+
+        set :env,  :production
+        disable :run
+
         run Sinatra.application
 
 
