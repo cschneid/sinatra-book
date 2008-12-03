@@ -112,13 +112,13 @@ You can find additional documentation at the Passenger Github repository.
         # a vendored version of sinatra - not necessary if you use the gem
         domain.com/sinatra
 
-3. Creating a rackup file
+3. Creating the "Rackup file" (rack configuration file) `config.ru`
 
         # This file goes in domain.com/config.ru
-        require 'sinatra/lib/sinatra.rb'
+        require 'sinatra/lib/sinatra.rb'   # "require 'sinatra'" if installed as a gem
         require 'rubygems'
          
-        require 'test.rb'
+        require 'test.rb' # assumes your Sinatra application file is 'test.rb'
 
         set :env,  :production
         disable :run
@@ -145,6 +145,14 @@ Please note that currently passenger 2.0.3 has a bug where it can cause Sinatra 
 the view directory. In that case, add `:views => '/path/to/views/'` to the Sinatra options
 in your Rackup file.
 
+Additional note: some documentation sources will have a different format for passing options to Sinatra in the Rackup file, e.g.:
+		
+		Sinatra::Application.default_options.merge!(
+		  :run => false,
+		  :env => :production,
+		  :raise_errors => true
+		)
+		
 
 
 FastCGI                         {#deployment_fastcgi}
