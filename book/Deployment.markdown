@@ -206,10 +206,10 @@ Steps to deploy via FastCGI:
         module Rack
           class Request
             def path_info
-              @env["SCRIPT_URL"].to_s
+              @env["REDIRECT_URL"].to_s
             end
             def path_info=(s)
-              @env["SCRIPT_URL"] = s.to_s
+              @env["REDIRECT_URL"] = s.to_s
             end
           end
         end
