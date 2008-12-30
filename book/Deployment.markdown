@@ -233,6 +233,36 @@ Steps to deploy via FastCGI:
           end
         end
 
+Heroku
+------
+
+[Heroku] has added basic support for Sinatra applications. This is possibly the easiest deployment option as once correctly configured,  
+deploying to heroku becomes simply a matter of pushing to git  
+
+Steps to deploy to Heroku:
+
+* make a config/rackup.ru
+* push to git
+
+1. an example rackup file
+        
+        require File.dirname(__FILE__) + "/../my_sinatra_app"
+        
+        set     :app_file, File.expand_path(File.dirname(__FILE__) + '/../my_sinatra_app.rb')
+        set     :public,   File.expand_path(File.dirname(__FILE__) + '/../public')
+        set     :views,    File.expand_path(File.dirname(__FILE__) + '/../views')
+        set     :env,      :production
+        disable :run,      :reload
+        
+        run Sinatra.application
+
+2. push to git
+        
+        $ git remote add heroku git@heroku.com:my-sinatra-app.git
+        $ git push heroku master
+
+[Heroku]: http://www.heroku.com
+
 Fuzed and Amazon 
 ----------------
 // TODO: Talk with Blake about this.
