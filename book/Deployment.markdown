@@ -118,12 +118,15 @@ You can find additional documentation at the Passenger Github repository.
         require 'sinatra/lib/sinatra.rb'   # "require 'sinatra'" if installed as a gem
         require 'rubygems'
          
-        require 'test.rb' # assumes your Sinatra application file is 'test.rb'
-
         set :env,  :production
         disable :run
 
+        require 'test.rb' # assumes your Sinatra application file is 'test.rb'
+
         run Sinatra.application
+
+Make sure you require your application after you set environment, otherwise it
+might end up running in development mode.
 
 
 4. A very simple Sinatra application
