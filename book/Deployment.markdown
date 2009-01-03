@@ -18,11 +18,11 @@ proxy setup using Lighttpd and Thin.
 2. Create your rackup file - the "require 'app'" line should require the actual 
    Sinatra app you have written.
 
-        require 'app'
-
         set :env,       :production
         set :port,      4567
         disable :run, :reload
+
+        require 'app'
 
         run Sinatra.application
 
@@ -124,9 +124,6 @@ You can find additional documentation at the Passenger Github repository.
         require 'test.rb' # assumes your Sinatra application file is 'test.rb'
 
         run Sinatra.application
-
-Make sure you require your application after you set environment, otherwise it
-might end up running in development mode.
 
 
 4. A very simple Sinatra application
@@ -249,13 +246,13 @@ Steps to deploy to Heroku:
 
 1. an example rackup file
         
-        require File.dirname(__FILE__) + "/../my_sinatra_app"
-        
         set     :app_file, File.expand_path(File.dirname(__FILE__) + '/../my_sinatra_app.rb')
         set     :public,   File.expand_path(File.dirname(__FILE__) + '/../public')
         set     :views,    File.expand_path(File.dirname(__FILE__) + '/../views')
         set     :env,      :production
         disable :run,      :reload
+        
+        require File.dirname(__FILE__) + "/../my_sinatra_app"
         
         run Sinatra.application
 
