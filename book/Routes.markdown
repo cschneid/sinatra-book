@@ -86,4 +86,27 @@ the handler block attached to that route.
 When a new request comes in, each regex is run in turn, until one matches.  Then
 the the handler (the code block) attached to that route gets executed.
 
+splitting into multiple files
+-----------------------------
+Because Sinatra clears out your routes and reloads your application on every 
+request in development mode, you can't use require to load files containing 
+your routes because these will only be loaded when the application starts 
+(and reloaded even on the first request!)  Instead, use [load](http://www.ruby-doc.org/core/classes/Kernel.html#M005966 "Ruby RDoc: load"):
 
+    # application.rb
+    require 'rubygems'
+    require 'sinatra'
+    
+    get '/' do
+        "Hello world!"
+    end
+    
+    load 'more_routes.rb'
+
+and
+
+    # more_routes.rb
+    
+    get '/foo' do
+        "Bar?  How unimaginitive."
+    end
