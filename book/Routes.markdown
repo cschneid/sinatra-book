@@ -108,5 +108,5 @@ and
     # more_routes.rb
     
     get '/foo' do
-        "Bar?  How unimaginitive."
+        "Bar?  How unimaginative."
     end
