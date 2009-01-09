@@ -1,62 +1,64 @@
 Routes
 ======
 
-http methods
+HTTP methods
 ------------
 Sinatra's routes are designed to respond to the HTTP request methods.  
 
-* get
-* post
-* put
-* delete
+* GET
+* POST
+* PUT
+* DELETE
 
-
-
-basic
+Basic
 -----
+
 Simple
 
-	get '/hi' do
-	  ...
-	end
-
+    get '/hi' do
+      ...
+    end
+    
 With params
 
-	get '/:name' do
-	  # matches /sinatra and the like and sets params[:name]
-	end
+    get '/:name' do
+      # matches /sinatra and the like and sets params[:name]
+    end
 
-options
+Options
 -------
 
-splats
+Splats
 ------
-	get '/say/*/to/*' do
-	  # matches /say/hello/to/world
-	  params["splat"] # => ["hello", "world"]
-	end
 
-	get '/download/*.*' do
-	  # matches /download/path/to/file.xml
-	  params["splat"] # => ["path/to/file", "xml"]
-	end
+    get '/say/*/to/*' do
+      # matches /say/hello/to/world
+      params["splat"] # => ["hello", "world"]
+    end
+    
+    get '/download/*.*' do
+      # matches /download/path/to/file.xml
+      params["splat"] # => ["path/to/file", "xml"]
+    end
 
 
-user agent
+User agent
 ----------
-	get '/foo', :agent => /Songbird (\d\.\d)[\d\/]*?/ do
-	  "You're using Songbird version #{params[:agent][0]}"
-	end
 
-	get '/foo' do
-	  # matches non-songbird browsers
-	end
+    get '/foo', :agent => /Songbird (\d\.\d)[\d\/]*?/ do
+      "You're using Songbird version #{params[:agent][0]}"
+    end
+    
+    get '/foo' do
+      # matches non-songbird browsers
+    end
 
-other methods
+Other methods
 -------------
+
 Other methods are requested exactly the same as "get" routes.  You simply use
-the "post", "put", or "delete" functions to define the route, rather then the
-"get" one.  To access POSTed parameters, use params\[:xxx\] where xxx is the name
+the `post`, `put`, or `delete` functions to define the route, rather then the
+`get` one.  To access POSTed parameters, use `params[:xxx]` where xxx is the name
 of the form element that was posted.
 
     post '/foo' do
@@ -64,20 +66,25 @@ of the form element that was posted.
     end
 
 
-the PUT and DELETE methods
+The PUT and DELETE methods
 --------------------------
 Since browsers don't natively support the PUT and DELETE methods, a hacky
 workaround has been adopted by the web community.  Simply add a hidden element
 with the name "\_method" and the value equal to the HTTP method you want to use.
 The form itself is sent as a POST, but Sinatra will interpret it as the desired
-method.  
+method. For example:
 
-When you want to use PUT or DELETE form a client that does support them (like
+    <form method="post" action="/destroy_it">
+      <input name="_method" value="delete" />
+      <div><button type="submit">Destroy it</button></div>
+    </form>
+
+When you want to use PUT or DELETE from a client that does support them (like
 Curl, or ActiveResource), just go ahead and use them as you normally would, and
-ignore the \_method advice above.  That is only for hacking in support for
+ignore the `_method` advice above.  That is only for hacking in support for
 browsers.
 
-how routes are looked up
+How routes are looked up
 ------------------------
 Each time you add a new route to your application, it gets compiled down into a
 regular expression that will match it.  That is stored in an array along with
@@ -86,7 +93,7 @@ the handler block attached to that route.
 When a new request comes in, each regex is run in turn, until one matches.  Then
 the the handler (the code block) attached to that route gets executed.
 
-splitting into multiple files
+Splitting into multiple files
 -----------------------------
 Because Sinatra clears out your routes and reloads your application on every 
 request in development mode, you can't use require to load files containing 
@@ -98,7 +105,7 @@ your routes because these will only be loaded when the application starts
     require 'sinatra'
     
     get '/' do
-        "Hello world!"
+      "Hello world!"
     end
     
     load 'more_routes.rb'
@@ -108,5 +115,5 @@ and
     # more_routes.rb
     
     get '/foo' do
-        "Bar?  How unimaginative."
+      "Bar?  How unimaginative."
     end

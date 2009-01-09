@@ -30,7 +30,7 @@ body pre
 
 body a
   { color: #1177DD;
-	  text-decoration: none; }
+    text-decoration: none; }
 body a:hover 
   { text-decoration: underline; }
 

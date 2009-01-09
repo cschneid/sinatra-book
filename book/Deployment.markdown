@@ -9,57 +9,61 @@ proxy setup using Lighttpd and Thin.
 
 1. Install Lighttpd and Thin
 
-        # Figure out lighttpd yourself, it should be handled by your 
-        # linux distro's package manager
-         
-        # For thin:
-        gem install thin
+       # Figure out lighttpd yourself, it should be handled by your 
+       # linux distro's package manager
+        
+       # For thin:
+       gem install thin
 
-2. Create your rackup file - the "require 'app'" line should require the actual 
+2. Create your rackup file -- the `require 'app'` line should require the actual 
    Sinatra app you have written.
 
-        set :env,       :production
-        set :port,      4567
-        disable :run, :reload
 
-        require 'app'
-
-        run Sinatra.application
+       require 'rubygems'
+       require 'sinatra'
+       
+       set :env,       :production
+       set :port,      4567
+       disable :run, :reload
+       
+       require 'app'
+       
+       run Sinatra.application
 
 3. Setup a config.yml - change the /path/to/my/app path to reflect reality.
 
-        ---
-            environment: production
-            chdir: /path/to/my/app
-            address: 127.0.0.1
-            user: root
-            group: root
-            port: 4567
-            pid: /path/to/my/app/thin.pid
-            rackup: /path/to/my/app/config.ru
-            log: /path/to/my/app/thin.log
-            max_conns: 1024
-            timeout: 30
-            max_persistent_conns: 512
-            daemonize: true
+       ---
+         environment: production
+         chdir: /path/to/my/app
+         address: 127.0.0.1
+         user: root
+         group: root
+         port: 4567
+         pid: /path/to/my/app/thin.pid
+         rackup: /path/to/my/app/config.ru
+         log: /path/to/my/app/thin.log
+         max_conns: 1024
+         timeout: 30
+         max_persistent_conns: 512
+         daemonize: true
 
 4. Setup lighttpd.conf - change mydomain to reflect reality. Also make 
    sure the first port here matches up with the port setting in config.yml.
 
-         $HTTP["host"] =~ "(www\.)?mydomain\.com"  {
-                 proxy.balance = "fair"
-                 proxy.server =  ("/" =>
-                                         (
-                                                 ( "host" => "127.0.0.1", "port" => 4567 ),
-                                                 ( "host" => "127.0.0.1", "port" => 4568 )
-                                         )
-                                 )
-         }
+       $HTTP["host"] =~ "(www\.)?mydomain\.com"  {
+               proxy.balance = "fair"
+               proxy.server =  ("/" =>
+                                       (
+                                               ( "host" => "127.0.0.1", "port" => 4567 ),
+                                               ( "host" => "127.0.0.1", "port" => 4568 )
+                                       )
+                               )
+       }
 
 5. Start thin and your application. I have a rake script so I can just 
    call "rake start" rather than typing this in. 
 
-         thin -s 2 -C config.yml -R config.ru start
+       thin -s 2 -C config.yml -R config.ru start
 
 You're done! Go to mydomain.com/ and see the result! Everything should be setup
 now, check it out at the domain you setup in your lighttpd.conf file.
@@ -67,21 +71,21 @@ now, check it out at the domain you setup in your lighttpd.conf file.
 *Variation* - nginx via proxy - The same approach to proxying can be applied to
 the nginx web server
 
-	upstream www_mydomain_com {
-		server 127.0.0.1:5000;
-		server 127.0.0.1:5001;
-	}
-
-	server {
-		listen		www.mydomain.com:80
-		server_name	www.mydomain.com live;
-		access_log /path/to/logfile.log
-		
-		location / {
-			proxy_pass http://www_mydomain_com;
-		}
-		
-	}
+    upstream www_mydomain_com {
+      server 127.0.0.1:5000;
+      server 127.0.0.1:5001;
+    }
+    
+    server {
+      listen    www.mydomain.com:80
+      server_name  www.mydomain.com live;
+      access_log /path/to/logfile.log
+      
+      location / {
+        proxy_pass http://www_mydomain_com;
+      }
+      
+    }
 
 *Variation* - More Thin instances - To add more thin instances, change the 
 `-s 2` parameter on the thin start command to be how ever many servers you want. 
@@ -99,68 +103,68 @@ You can find additional documentation at the Passenger Github repository.
 
 1. Setting up the account in the Dreamhost interface
 
-        Domains -> Manage Domains -> Edit (web hosting column)
-        Enable 'Ruby on Rails Passenger (mod_rails)'
-        Add the public directory to the web directory box. So if you were using 'rails.com', it would change to 'rails.com/public'
-        Save your changes
+       Domains -> Manage Domains -> Edit (web hosting column)
+       Enable 'Ruby on Rails Passenger (mod_rails)'
+       Add the public directory to the web directory box. So if you were using 'rails.com', it would change to 'rails.com/public'
+       Save your changes
 
 2. Creating the directory structure
 
-        domain.com/
-        domain.com/tmp
-        domain.com/public
-        # a vendored version of sinatra - not necessary if you use the gem
-        domain.com/sinatra
+       domain.com/
+       domain.com/tmp
+       domain.com/public
+       # a vendored version of sinatra - not necessary if you use the gem
+       domain.com/sinatra
 
-3. Creating the "Rackup file" (rack configuration file) `config.ru`
+3. Creating the "Rackup file" (rack configuration file) `config.ru` -- the `require 'app'`
+   line should require the actual Sinatra app you have written.
 
-        # This file goes in domain.com/config.ru
-        require 'sinatra/lib/sinatra.rb'   # "require 'sinatra'" if installed as a gem
-        require 'rubygems'
-         
-        set :env,  :production
-        disable :run
-
-        require 'test.rb' # assumes your Sinatra application file is 'test.rb'
-
-        run Sinatra.application
+       # This file goes in domain.com/config.ru
+       require 'rubygems'
+       require 'sinatra'
+        
+       set :env,  :production
+       disable :run
+       
+       require 'app'
+       
+       run Sinatra.application
 
 
 4. A very simple Sinatra application
 
-        # this is test.rb referred to above
-        get '/' do
-                "Worked on dreamhost"
-        end
-         
-        get '/foo/:bar' do
-                "You asked for foo/#{params[:bar]}"
-        end
+       # this is test.rb referred to above
+       get '/' do
+         "Worked on dreamhost"
+       end
+        
+       get '/foo/:bar' do
+         "You asked for foo/#{params[:bar]}"
+       end
+
 And that's all there is to it! Once it's all setup, point your browser at your 
 domain, and you should see a 'Worked on Dreamhost' page. To restart the 
 application after making changes, you need to run `touch tmp/restart.txt`.
-
 
 Please note that currently passenger 2.0.3 has a bug where it can cause Sinatra to not find
 the view directory. In that case, add `:views => '/path/to/views/'` to the Sinatra options
 in your Rackup file.
 
 Additional note: some documentation sources will have a different format for passing options to Sinatra in the Rackup file, e.g.:
-		
-		Sinatra::Application.default_options.merge!(
-		  :run => false,
-		  :env => :production,
-		  :raise_errors => true
-		)
-		
-
+    
+    Sinatra::Application.default_options.merge!(
+      :run => false,
+      :env => :production,
+      :raise_errors => true
+    )
+    
+This is perfectly valid, however calling `set`, `disable` and `enable` is preferred.
 
 FastCGI                         {#deployment_fastcgi}
 -------
 
 The standard method for deployment is to use Thin or Mongrel, and have a 
-reverse proxy (lighttpd, nginx, or even Apache) point to your
-bundle of servers.
+reverse proxy (lighttpd, nginx, or even Apache) point to your bundle of servers.
 
 But that isn't always possible.  Cheaper shared hosting (like Dreamhost) won't
 let you run Thin or Mongrel, or setup reverse proxies (at least on the default
@@ -182,84 +186,85 @@ Steps to deploy via FastCGI:
 
 
 1. .htaccess
-        RewriteEngine on
-         
-        AddHandler fastcgi-script .fcgi
-        Options +FollowSymLinks +ExecCGI
-         
-        RewriteRule ^(.*)$ dispatch.fcgi [QSA,L]
+       RewriteEngine on
+        
+       AddHandler fastcgi-script .fcgi
+       Options +FollowSymLinks +ExecCGI
+        
+       RewriteRule ^(.*)$ dispatch.fcgi [QSA,L]
 
 2. dispatch.fcgi
-        #!/usr/bin/ruby
-         
-        require 'sinatra/lib/sinatra.rb'
-        require 'rubygems'
-         
-        fastcgi_log = File.open("fastcgi.log", "a")
-        STDOUT.reopen fastcgi_log
-        STDERR.reopen fastcgi_log
-        STDOUT.sync = true
-         
-        set :logging, false
-        set :server, "FastCGI"
-         
-        module Rack
-          class Request
-            def path_info
-              @env["REDIRECT_URL"].to_s
-            end
-            def path_info=(s)
-              @env["REDIRECT_URL"] = s.to_s
-            end
-          end
-        end
-         
-        load 'test.rb'
+   
+       #!/usr/bin/ruby
+        
+       require 'rubygems'
+       require 'sinatra/lib/sinatra'
+        
+       fastcgi_log = File.open("fastcgi.log", "a")
+       STDOUT.reopen fastcgi_log
+       STDERR.reopen fastcgi_log
+       STDOUT.sync = true
+        
+       set :logging, false
+       set :server, "FastCGI"
+        
+       module Rack
+         class Request
+           def path_info
+             @env["REDIRECT_URL"].to_s
+           end
+           def path_info=(s)
+             @env["REDIRECT_URL"] = s.to_s
+           end
+         end
+       end
+        
+       load 'app.rb'
 
 3. sinatra.rb - Replace this function with the new version here (commenting out the `puts` lines)
 
-        def run
-          begin
-            #puts "== Sinatra has taken the stage on port #{port} for #{env} with backup by #{server.name}"
-            require 'pp'
-            server.run(application) do |server|
-              trap(:INT) do
-                server.stop
-                #puts "\n== Sinatra has ended his set (crowd applauds)"
-              end
-            end
-          rescue Errno::EADDRINUSE => e
-            #puts "== Someone is already performing on port #{port}!"
-          end
-        end
+       def run
+         begin
+           #puts "== Sinatra has taken the stage on port #{port} for #{env} with backup by #{server.name}"
+           require 'pp'
+           server.run(application) do |server|
+             trap(:INT) do
+               server.stop
+               #puts "\n== Sinatra has ended his set (crowd applauds)"
+             end
+           end
+         rescue Errno::EADDRINUSE => e
+           #puts "== Someone is already performing on port #{port}!"
+         end
+       end
 
 Heroku
 ------
 
 [Heroku] has added basic support for Sinatra applications. This is possibly the easiest deployment option as once correctly configured,  
-deploying to heroku becomes simply a matter of pushing to git  
+deploying to Heroku becomes simply a matter of pushing to git  
 
 Steps to deploy to Heroku:
 
 * make a config/rackup.ru
 * push to git
 
-1. an example rackup file
+1. An example rackup file
         
-        set     :app_file, File.expand_path(File.dirname(__FILE__) + '/../my_sinatra_app.rb')
-        set     :public,   File.expand_path(File.dirname(__FILE__) + '/../public')
-        set     :views,    File.expand_path(File.dirname(__FILE__) + '/../views')
-        set     :env,      :production
-        disable :run,      :reload
-        
-        require File.dirname(__FILE__) + "/../my_sinatra_app"
-        
-        run Sinatra.application
+       set :app_file, File.expand_path(File.dirname(__FILE__) + '/../my_sinatra_app.rb')
+       set :public,   File.expand_path(File.dirname(__FILE__) + '/../public')
+       set :views,    File.expand_path(File.dirname(__FILE__) + '/../views')
+       set :env,      :production
+       disable :run, :reload
+       
+       require File.dirname(__FILE__) + "/../my_sinatra_app"
+       
+       run Sinatra.application
 
 2. push to git
         
-        $ git remote add heroku git@heroku.com:my-sinatra-app.git
-        $ git push heroku master
+       $ git remote add heroku git@heroku.com:my-sinatra-app.git
+       $ git push heroku master
 
 [Heroku]: http://www.heroku.com
 
@@ -272,4 +277,3 @@ Poolparty and Amazon EC2
 
 
 // TODO: What other deployment strategies are there?
-

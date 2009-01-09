@@ -5,9 +5,9 @@ before do...
 ------------
 These are run in Sinatra::EventContext
 
-  before do
-    .. this code will run before each event ..
-  end
+    before do
+      # .. this code will run before each event ..
+    end
 
 Handling of Rails like nested params
 ------------------------------------

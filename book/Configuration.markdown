@@ -5,7 +5,7 @@ Use Sinatra's "set" option
 --------------------------
 
 
-external config file via the configure block
+External config file via the configure block
 --------------------------------------------
 
 

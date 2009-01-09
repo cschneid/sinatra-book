@@ -2,47 +2,47 @@ Views
 =====
 All file-based views are looked up in:
 
-	root
-	  | - views/
+    root
+      | - views/
 
 Template Languages
 ------------------
 
 ### Haml
-	get '/' do
-	  haml :index
-	end
+    get '/' do
+      haml :index
+    end
 
 This will render ./views/index.haml
 
 ### Sass
-	get '/' do
-	  sass :styles
-	end
+    get '/' do
+      sass :styles
+    end
 
 This will render ./views/styles.sass
 
 ### Erb
-	get '/' do
-	  erb :index
-	end
+    get '/' do
+      erb :index
+    end
 
 This will render ./views/index.erb
 
 ### Builder
-	get '/' do
-	  builder :index
-	end
+    get '/' do
+      builder :index
+    end
 
 This will render ./views/index.builder
 
-	get '/' do
-	  builder do |xml|
+    get '/' do
+      builder do |xml|
         xml.node do
           xml.subnode "Inner text"
         end
       end
-	end
+    end
 
 This will render the xml inline, directly from the handler.
 
@@ -78,11 +78,12 @@ This will render the rss inline, directly from the handler.
 
 Layouts
 -------
+
 Layouts are simple in Sinatra.  Put a file in your views directory named
 "layout.erb", "layout.haml", or "layout.builder".  When you render a page, the
 appropriate layout will be grabbed (of the same filetype), and used.
 
-The layout itself should call yield at the point you want the content to be
+The layout itself should call `yield` at the point you want the content to be
 included.
     
 An example haml layout file could look something like this:
@@ -94,7 +95,7 @@ An example haml layout file could look something like this:
         #container
           = yield
 
-avoiding a layout
+Avoiding a layout
 -----------------
 Sometimes you don't want the layout rendered.  In your render method just pass
 :layout => false, and you're good.
@@ -105,23 +106,24 @@ Sometimes you don't want the layout rendered.  In your render method just pass
 
 In File Views
 -------------
+
 This one is cool:
 
-	get '/' do
-	  haml :index
-	end
-
-	use_in_file_templates!
-
-	__END__
-
-	@@ layout
-	X
-	= yield
-	X
-
-	@@ index
-	%div.title Hello world!!!!!
+    get '/' do
+      haml :index
+    end
+    
+    use_in_file_templates!
+    
+    __END__
+    
+    @@ layout
+    X
+    = yield
+    X
+    
+    @@ index
+    %div.title Hello world!!!!!
 
 Try it!
 

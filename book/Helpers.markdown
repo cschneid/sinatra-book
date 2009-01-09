@@ -1,28 +1,27 @@
 Helpers
 =======
 
-the basics
+The basics
 ----------
 
 It is ill-advised to create helpers on the root level of your application.  They muddy the global namespace, and don't
 have easy access to the request, response, session or cookie variables.
 
-Instead, use the handy helpers method to install methods on Sinatra::EventContext for use inside events and templates.
+Instead, use the handy helpers method to install methods on `Sinatra::EventContext` for use inside events and templates.
 
 Example:
 
-	helpers do
-	  def bar(name)
-	    "#{name}bar"
-	  end
-	end
+    helpers do
+      def bar(name)
+        "#{name}bar"
+      end
+    end
+    
+    get '/:name' do
+      bar(params[:name])
+    end
 
-
-	get '/:name' do
-	  bar(params[:name])
-	end
-
-implemention of rails style partials
+Implemention of rails style partials
 ------------------------------------
 
 Using partials in your views is a great way to keep them clean.  Since Sinatra takes the hands off approach to framework
@@ -33,10 +32,9 @@ Here is a really basic version:
     # Usage: partial :foo
     helpers do
       def partial(page, options={})
-          haml page, options.merge!(:layout => false)
+        haml page, options.merge!(:layout => false)
       end
     end
-
 
 A more advanced version that would handle passing local options, and looping over a hash would look like:
 
@@ -63,5 +61,3 @@ A more advanced version that would handle passing local options, and looping ove
         end
       end
     end
-
-

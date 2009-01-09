@@ -3,16 +3,18 @@ Handlers
 
 Structure
 ---------
+
 Handler is the generic term that Sinatra uses for the "controllers".  A
-handler is the initial point of entry for new http requests into your
+handler is the initial point of entry for new HTTP requests into your
 application.
 
 To find more about the routes, head to the Routes section (right above
 this one)
 
 
-redirect
+Redirect
 --------
+
 The redirect helper is a shortcut to a common http response code (302).
 
 Basic usage is easy:
@@ -56,7 +58,7 @@ Sinatra ships with basic support for cookie based sessions.  To enable it, in a 
 
 The downside to this session approach is that all the data is stored in the
 cookie.  Since cookies have a fairly hard limit of 4 kilobytes, you can't store
-much data.  The other issue is that the cookie is not tamper proof.  The user
+much data.  The other issue is that cookies are not tamper proof.  The user
 can change any data in their session.  But... it is easy, and it doesn't have
 the scaling problems that memory or database backed sessions run into.
 
@@ -69,13 +71,14 @@ the scaling problems that memory or database backed sessions run into.
 ### Database Based Sessions
 
 
-cookies
+Cookies
 -------
 
 Cookies are a fairly simple thing to use in Sinatra, but they have a few quirks.
 
 Lets first look at the simple use case:
 
+    require 'rubygems'
     require 'sinatra'
  
     get '/' do
@@ -110,7 +113,7 @@ deserialize or split them in any way, it hands you the raw, encoded string
 for your parsing pleasure.
 
 
-status
+Status
 ------
 
 If you want to set your own status response instead of the normal 200 (Success), you can use the `status`-helper to set the
@@ -126,6 +129,6 @@ specified status code and string to the client. `throw` supports more options in
 for more info.
 
 
-authentication
+Authentication
 --------------
 
