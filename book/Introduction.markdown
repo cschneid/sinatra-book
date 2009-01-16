@@ -21,6 +21,7 @@ You can use the power of various Rubygems and other libraries for Ruby available
 
 Sinatra really shines when used for experiments and application mock-ups or for creating an interface for your code.
 
+It isn't a Model-View-Controller framework, but ties specific URL directly to relevant Ruby code and returns it's output in response. It does enable you, however, to write clean, properly organized applications: separating _views_ from application code, for instance. (See next section.)
 
 Installation
 ------------
@@ -86,10 +87,43 @@ a request to some URL (_root_ URL in this case) evaluates some Ruby code
 and returns some text in response.
 
 
+Real World Applications in Sinatra
+----------------------------------
+
+### Github Services
+
+Git hosting provider Github uses Sinatra for post-receive hooks, calling user specified services/URLs, whenever someone pushes to her repository:
+
+* http://github.com/blog/53-github-services-ipo
+* http://github.com/guides/post-receive-hooks
+* http://github.com/pjhyett/github-services
+
+### Git Wiki
+
+Git Wiki is minimal Wiki engine powered by Sinatra and Git. See also various forks with additional functionality.
+
+* http://github.com/sr/git-wiki
+* http://github.com/sr/git-wiki/network
+
+### Integrity
+
+Integrity is small and clean _continuous integration_ service using Sinatra, watching for failing builds of your codebase and notifying you by various channels.
+
+* http://www.integrityapp.com/
+* http://github.com/foca/integrity
+
+### Seinfeld Calendar
+
+Seinfeld Calendar is a fun application tracking your contributions to open-source projects, displaying your "streaks", ie. continuous commits to Github repositories.
+
+* http://www.calendaraboutnothing.com
+* http://github.com/entp/seinfeld
+
+
 About this book
 ---------------
 This book will assume you have a basic knowledge of the Ruby scripting language
-and a working ruby interpreter.
+and a working Ruby interpreter.
 
 For more information about the Ruby language visit the following links:
 
