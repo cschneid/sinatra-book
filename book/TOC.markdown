@@ -1,4 +1,5 @@
 CSS: ./book.css
+Title: Sinatra Book
 
 Table of Contents
 =================
