@@ -119,6 +119,7 @@ Seinfeld Calendar is a fun application tracking your contributions to open-sourc
 * http://www.calendaraboutnothing.com
 * http://github.com/entp/seinfeld
 
+See more examples on the "Who's using Sinatra" page.
 
 About this book
 ---------------
