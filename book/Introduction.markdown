@@ -63,7 +63,7 @@ You can check the version you are running by adding this route
       "I'm running on Version " + Sinatra::VERSION
     end
 
-and loading `http://localhost:4567` in your browser.
+and loading `http://localhost:4567/about` in your browser.
 
 
 Hello World Application
