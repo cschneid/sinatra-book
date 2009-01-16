@@ -81,7 +81,9 @@ first application?
 
 Run this application by `$ ruby hello_world.rb` and load `http://localhost:4567` in your browser.
 
-As you can see, Sinatra doesn't force you to setup much infrastructure: a request to some URL (_root_ URL in this case) evaluates some Ruby code and returns some text in response.
+As you can see, Sinatra doesn't force you to setup much infrastructure: 
+a request to some URL (_root_ URL in this case) evaluates some Ruby code 
+and returns some text in response.
 
 
 About this book
