@@ -21,7 +21,7 @@ You can use the power of various Rubygems and other libraries for Ruby available
 
 Sinatra really shines when used for experiments and application mock-ups or for creating a quick interface for your code.
 
-It isn't a Model-View-Controller framework, but ties specific URL directly to relevant Ruby code and returns it's output in response. It does enable you, however, to write clean, properly organized applications: separating _views_ from application code, for instance. (See next section.)
+It isn't a Model-View-Controller framework, but ties specific URL directly to relevant Ruby code and returns it's output in response. It does enable you, however, to write clean, properly organized applications: separating _views_ from application code, for instance.
 
 Installation
 ------------
@@ -119,7 +119,6 @@ Seinfeld Calendar is a fun application tracking your contributions to open-sourc
 * http://www.calendaraboutnothing.com
 * http://github.com/entp/seinfeld
 
-See more examples on the "Who's using Sinatra" page.
 
 About this book
 ---------------
