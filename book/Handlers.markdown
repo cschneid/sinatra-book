@@ -31,7 +31,7 @@ makes that followup request, you can redirect to any page, in your application,
 or another site entirely.
 
 The flow of requests during a redirect is:
-Browser --> Server (redirect to '/') --> Browser (request '/') --> Server (result for '/')
+Browser → Server (redirect to '/') → Browser (request '/') → Server (result for '/')
 
 To force Sinatra to send a different response code, it's very simple:
 
