@@ -20,7 +20,7 @@ The redirect helper is a shortcut to a common http response code (302).
 Basic usage is easy:
 
     redirect '/'
-    
+
     redirect '/posts/1'
 
     redirect 'http://www.google.com'
@@ -36,7 +36,7 @@ Browser --> Server (redirect to '/') --> Browser (request '/') --> Server (resul
 To force Sinatra to send a different response code, it's very simple:
 
     redirect '/', 303 # forces the 303 return code
-     
+
     redirect '/', 307 # forces the 307 return code
 
 Sessions
@@ -44,7 +44,9 @@ Sessions
 
 ### Default Cookie Based Sessions
 
-Sinatra ships with basic support for cookie based sessions.  To enable it, in a configure block, or at the top of your application, you just need to enable to option.
+Sinatra ships with basic support for cookie based sessions. To enable it, in a
+configure block, or at the top of your application, you just need to enable
+to option.
 
     enable :sessions
 
@@ -72,23 +74,23 @@ Lets first look at the simple use case:
 
     require 'rubygems'
     require 'sinatra'
- 
+
     get '/' do
         # Get the string representation
         cookie = request.cookies["thing"]
-     
+
         # Set a default
         cookie ||= 0
-     
-        # Convert to an integer 
+
+        # Convert to an integer
         cookie = cookie.to_i
-     
+
         # Do something with the value
         cookie += 1
-     
+
         # Reset the cookie
         set_cookie("thing", cookie)
-     
+
         # Render something
         "Thing is now: #{cookie}"
     end
