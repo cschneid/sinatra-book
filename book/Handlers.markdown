@@ -46,9 +46,16 @@ Sessions
 
 Sinatra ships with basic support for cookie based sessions. To enable it, in a
 configure block, or at the top of your application, you just need to enable
-to option.
+the option.
 
     enable :sessions
+
+    get '/' do
+      session["counter"] ||= 0
+      session["counter"] += 1
+
+      "You've it this page #{session["counter"]} time(s)"
+    end
 
 The downside to this session approach is that all the data is stored in the
 cookie.  Since cookies have a fairly hard limit of 4 kilobytes, you can't store
