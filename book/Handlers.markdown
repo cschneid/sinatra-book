@@ -54,7 +54,7 @@ the option.
       session["counter"] ||= 0
       session["counter"] += 1
 
-      "You've it this page #{session["counter"]} time(s)"
+      "You've hit this page #{session["counter"]} time(s)"
     end
 
 The downside to this session approach is that all the data is stored in the
