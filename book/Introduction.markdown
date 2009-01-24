@@ -31,20 +31,20 @@ The simplest way to obtain Sinatra is through Rubygems
 
 ### Dependencies
 
-Sinatra depends on the _Rack_ gem (http://rack.rubyforge.org).
+Sinatra depends on the _Rack_ gem (<http://rack.rubyforge.org>).
 
-For optimal experience, you should also install the _Haml_ (http://haml.hamptoncatlin.com) and 
-_Builder_ gem (http://builder.rubyforge.org), which simplifies working with views.
+For optimal experience, you should also install the _Haml_ (<http://haml.hamptoncatlin.com>) and 
+_Builder_ gem (<http://builder.rubyforge.org>), which simplifies working with views.
 
     $ sudo gem install builder haml
 
 ### Living on the Edge
 
 The _edge_ version of Sinatra lives in it's Git repository, available at 
-**http://github.com/sinatra/sinatra/tree/master**.
+**<http://github.com/sinatra/sinatra/tree/master>**.
 
 You can use the _edge_ version to try new functionality or to contribute to the framework. 
-You need to have Git version control software installed (http://www.git-scm.com). 
+You need to have Git version control software installed (<http://www.git-scm.com>). 
 Then follow these steps:
 
 1. cd where/you/keep/your/projects
@@ -92,32 +92,32 @@ Real World Applications in Sinatra
 
 ### Github Services
 
-Git hosting provider Github uses Sinatra for post-receive hooks, calling user specified services/URLs, whenever someone pushes to her repository:
+Git hosting provider Github uses Sinatra for post-receive hooks, calling user specified services/URLs, whenever someone pushes to their repository:
 
-* http://github.com/blog/53-github-services-ipo
-* http://github.com/guides/post-receive-hooks
-* http://github.com/pjhyett/github-services
+* <http://github.com/blog/53-github-services-ipo>
+* <http://github.com/guides/post-receive-hooks>
+* <http://github.com/pjhyett/github-services>
 
 ### Git Wiki
 
 Git Wiki is minimal Wiki engine powered by Sinatra and Git. See also various forks with additional functionality.
 
-* http://github.com/sr/git-wiki
-* http://github.com/sr/git-wiki/network
+* <http://github.com/sr/git-wiki>
+* <http://github.com/sr/git-wiki/network>
 
 ### Integrity
 
 Integrity is small and clean _continuous integration_ service using Sinatra, watching for failing builds of your codebase and notifying you by various channels.
 
-* http://www.integrityapp.com/
-* http://github.com/foca/integrity
+* <http://www.integrityapp.com/>
+* <http://github.com/foca/integrity>
 
 ### Seinfeld Calendar
 
 Seinfeld Calendar is a fun application tracking your contributions to open-source projects, displaying your "streaks", ie. continuous commits to Github repositories.
 
-* http://www.calendaraboutnothing.com
-* http://github.com/entp/seinfeld
+* <http://www.calendaraboutnothing.com>
+* <http://github.com/entp/seinfeld>
 
 
 About this book
@@ -127,8 +127,8 @@ and a working Ruby interpreter.
 
 For more information about the Ruby language visit the following links:
 
-* http://www.ruby-lang.org
-* http://www.ruby-lang.org/en/documentation/ruby-from-other-languages/
-* http://www.ruby-doc.org
-* http://www.ruby-doc.org/core-1.8.7/index.html
-* http://www.ruby-doc.org/docs/ProgrammingRuby/
+* <http://www.ruby-lang.org>
+* <http://www.ruby-lang.org/en/documentation/ruby-from-other-languages/>
+* <http://www.ruby-doc.org>
+* <http://www.ruby-doc.org/core-1.8.7/index.html>
+* <http://www.ruby-doc.org/docs/ProgrammingRuby/>
