@@ -14,7 +14,7 @@ available for all major platforms:
 After that, cloning the Sinatra repository is as easy as typing the following
 into your command line:
 
-    git clone git://github.com/bmizerany/sinatra.git
+    git clone git://github.com/sinatra/sinatra.git
 
 [git]: http://git.or.cz
 [git_win]: http://code.google.com/p/msysgit/
