@@ -16,7 +16,8 @@ File Layout:
 * _images_ - Images, Diagrams, Funny Pictures
 * _source_ - Any source examples to be included into the book
 
-Learn more about Sinatra at [http://github.com/bmizerany/sinatra](http://github.com/bmizerany/sinatra).
+Learn more about Sinatra at 
+[http://github.com/sinatra/sinatra](http://github.com/sinatra/sinatra).
 
 
 How to build the Book
