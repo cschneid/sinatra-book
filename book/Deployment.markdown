@@ -4,7 +4,7 @@ Deployment
 Heroku
 ------
 
-[Heroku] has full support for Sinatra applications. This is the easiest configuration + deployment option.  Deploying to Heroku is simply a matter of pushing to a remote git repository.
+This is the easiest configuration + deployment option.  [Heroku] has full support for Sinatra applications.   Deploying to Heroku is simply a matter of pushing to a remote git repository.
 
 Steps to deploy to Heroku:
 
