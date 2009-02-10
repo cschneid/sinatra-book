@@ -1,6 +1,36 @@
 Deployment
 ==========
 
+Heroku
+------
+
+[Heroku] has full support for Sinatra applications. This is the easiest configuration + deployment option.  Deploying to Heroku is simply a matter of pushing to a remote git repository.
+
+Steps to deploy to Heroku:
+
+* Create an [account](http://heroku.com/signup) if you don't have one
+* `sudo gem install heroku`
+* Make a config.ru in the root-directory
+* Create the app on heroku
+* Push to it
+
+1. An example config.ru file (Heroku sets `RACK_ENV` to production for you)
+
+       require "myapp"
+
+       run Sinatra.application
+
+2. Create the app and push to it
+
+       From the root-directory of the application
+
+       $ heroku create <app-name>  # This will add heroku as a remote
+       $ git push heroku master
+
+For more details see [this](http://github.com/sinatra/heroku-sinatra-app)
+
+[Heroku]: http://www.heroku.com
+
 Lighttpd Proxied to Thin        {#deployment_lighttpd}
 ------------------------
 
@@ -237,34 +267,6 @@ Steps to deploy via FastCGI:
            #puts "== Someone is already performing on port #{port}!"
          end
        end
-
-Heroku
-------
-
-[Heroku] has full support for Sinatra applications. This is the easiest configuration + deployment option.  Deploying to Heroku is simply a matter of pushing to a remote git repository.
-
-Steps to deploy to Heroku:
-
-* Create an [account](http://heroku.com/signup) if you don't have one
-* `sudo gem install heroku`
-* Make a config/rackup.ru
-* Create the app on heroku
-* Push to it
-
-1. An example rackup file (Heroku set RACK_ENV to production for you)
-        
-       require File.dirname(__FILE__) + "/../my_sinatra_app"
-       
-       run Sinatra.application
-
-2. Create the app and push to it
-       From the root-directory of the application
-       $ heroku create [app-name]  # This will add heroku as a remote
-       $ git push heroku master
-
-For more details see [this](http://github.com/sinatra/heroku-sinatra-app)
-
-[Heroku]: http://www.heroku.com
 
 Fuzed and Amazon 
 ----------------
