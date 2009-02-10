@@ -18,7 +18,7 @@ Steps to deploy to Heroku:
 
        require "myapp"
 
-       run Sinatra.application
+       run Sinatra::Application
 
 2. Create the app and push to it
 
@@ -52,13 +52,13 @@ proxy setup using Lighttpd and Thin.
        require 'rubygems'
        require 'sinatra'
        
-       set :env,       :production
-       set :port,      4567
+       set :environment, :production
+       set :port, 4567
        disable :run, :reload
        
        require 'app'
        
-       run Sinatra.application
+       run Sinatra::Application
 
 3. Setup a config.yml - change the /path/to/my/app path to reflect reality.
 
@@ -153,12 +153,12 @@ You can find additional documentation at the Passenger Github repository.
        require 'rubygems'
        require 'sinatra'
         
-       set :env,  :production
+       set :environment, :production
        disable :run
        
        require 'app'
        
-       run Sinatra.application
+       run Sinatra::Application
 
 
 4. A very simple Sinatra application
@@ -182,13 +182,10 @@ in your Rackup file.
 
 Additional note: some documentation sources will have a different format for passing options to Sinatra in the Rackup file, e.g.:
     
-    Sinatra::Application.default_options.merge!(
-      :run => false,
-      :env => :production,
-      :raise_errors => true
-    )
-    
-This is perfectly valid, however calling `set`, `disable` and `enable` is preferred.
+    set :environment, :production
+    disable :run
+
+    run Sinatra::Application
 
 FastCGI                         {#deployment_fastcgi}
 -------
