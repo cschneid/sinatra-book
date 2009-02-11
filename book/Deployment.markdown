@@ -48,14 +48,9 @@ proxy setup using Lighttpd and Thin.
 2. Create your rackup file -- the `require 'app'` line should require the actual 
    Sinatra app you have written.
 
+       ## This is not needed for Thin > 1.0.0
+       ENV['RACK_ENV'] = "production"
 
-       require 'rubygems'
-       require 'sinatra'
-       
-       set :environment, :production
-       set :port, 4567
-       disable :run, :reload
-       
        require 'app'
        
        run Sinatra::Application
@@ -149,17 +144,11 @@ You can find additional documentation at the Passenger Github repository.
 3. Creating the "Rackup file" (rack configuration file) `config.ru` -- the `require 'app'`
    line should require the actual Sinatra app you have written.
 
-       # This file goes in domain.com/config.ru
-       require 'rubygems'
-       require 'sinatra'
-        
-       set :environment, :production
-       disable :run
-       
+       ## Passenger should set RACK_ENV for Sinatra
+
        require 'app'
        
        run Sinatra::Application
-
 
 4. A very simple Sinatra application
 
@@ -180,14 +169,7 @@ Please note that currently passenger 2.0.3 has a bug where it can cause Sinatra 
 the view directory. In that case, add `:views => '/path/to/views/'` to the Sinatra options
 in your Rackup file.
 
-Additional note: some documentation sources will have a different format for passing options to Sinatra in the Rackup file, e.g.:
-    
-    set :environment, :production
-    disable :run
-
-    run Sinatra::Application
-
-FastCGI                         {#deployment_fastcgi}
+FastCGI (Sinatra <= 0.3)                        {#deployment_fastcgi}
 -------
 
 The standard method for deployment is to use Thin or Mongrel, and have a 
@@ -264,13 +246,3 @@ Steps to deploy via FastCGI:
            #puts "== Someone is already performing on port #{port}!"
          end
        end
-
-Fuzed and Amazon 
-----------------
-// TODO: Talk with Blake about this.
-
-Poolparty and Amazon EC2
-------------------------
-
-
-// TODO: What other deployment strategies are there?
