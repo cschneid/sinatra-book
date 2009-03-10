@@ -169,6 +169,17 @@ Please note that currently passenger 2.0.3 has a bug where it can cause Sinatra 
 the view directory. In that case, add `:views => '/path/to/views/'` to the Sinatra options
 in your Rackup file.
 
+You may encounter the dreaded "Ruby (Rack) application could not be started" 
+error with this message "can't activate rack (>= 0.9.1, < 1.0, runtime), 
+already activated rack-0.4.0". This happens because DreamHost has version 0.4.0
+installed, when recent versions of Sinatra require more recent versions of Rack.
+The solution is to explicitly require the rack and sinatra gems in your 
+config.ru. Add the following two lines to the start of your config.ru file:
+  
+       require '/home/USERNAME/.gem/ruby/1.8/gems/rack-VERSION-OF-RACK-GEM-YOU-HAVE-INSTALLELD/lib/rack.rb'
+       require '/home/USERNAME/.gem/ruby/1.8/gems/sinatra-VERSION-OF-SINATRA-GEM-YOU-HAVE-INSTALLELD/lib/sinatra.rb'
+  
+
 FastCGI (Sinatra <= 0.3)                        {#deployment_fastcgi}
 -------
 
