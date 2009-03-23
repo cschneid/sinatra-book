@@ -21,13 +21,9 @@ show started, and this example will include a 'Post' model.
         property :body, Text
         property :created_at, DateTime
     end
-
-To automatically create the table for the 'Post' model if you haven't already,
-add a task to your rakefile to migrate your database:
-
-    task :migrate do
-        DataMapper.auto_migrate!
-    end
+    
+    # automatically create the post table
+    Post.auto_migrate! unless Post.table_exists?
 
 Once that is all well and good, you can actually start developing your
 application!
