@@ -11,6 +11,32 @@ application.
 To find more about the routes, head to the Routes section (right above
 this one)
 
+Form parameters
+---------------
+In handlers you can reach submitted form parameters directly via the params hash:
+
+    get '/' do
+      params['post']
+    end
+    
+### Nested form parameters
+
+The support of Rails like nested parameters is built-in since Sinatra version 9.0. Before this version you have to [implement this functionality as a before filter](#nested_params_as_filter)!
+
+    <form>
+      <input ... name="post[title]" />
+      <input ... name="post[body]" />
+      <input ... name="post[author]" />
+    </form>
+    
+
+The parameters in this case became as a hash:
+    
+    {"post"=>{ "title"=>"", "body"=>"", "author"=>"" }}
+
+Therefore in handlers you can use nested parameters like a regular hash:
+
+    params['post']['title']
 
 Redirect
 --------
