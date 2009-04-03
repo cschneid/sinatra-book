@@ -8,8 +8,7 @@ Handler is the generic term that Sinatra uses for the "controllers".  A
 handler is the initial point of entry for new HTTP requests into your
 application.
 
-To find more about the routes, head to the Routes section (right above
-this one)
+To find more about the routes, head to the [Routes section](#routes)
 
 Form parameters
 ---------------
