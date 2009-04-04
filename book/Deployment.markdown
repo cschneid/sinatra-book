@@ -178,27 +178,85 @@ config.ru. Add the following two lines to the start of your config.ru file:
   
        require '/home/USERNAME/.gem/ruby/1.8/gems/rack-VERSION-OF-RACK-GEM-YOU-HAVE-INSTALLELD/lib/rack.rb'
        require '/home/USERNAME/.gem/ruby/1.8/gems/sinatra-VERSION-OF-SINATRA-GEM-YOU-HAVE-INSTALLELD/lib/sinatra.rb'
-  
 
-FastCGI (Sinatra <= 0.3)                        {#deployment_fastcgi}
+
+FastCGI                                        {#deployment_fastcgi}
 -------
-
 The standard method for deployment is to use Thin or Mongrel, and have a 
 reverse proxy (lighttpd, nginx, or even Apache) point to your bundle of servers.
 
-But that isn't always possible.  Cheaper shared hosting (like Dreamhost) won't
+But that isn't always possible. Cheaper shared hosting (like Dreamhost) won't
 let you run Thin or Mongrel, or setup reverse proxies (at least on the default
 shared plan).
 
-Luckily, Rack supports various connectors, including CGI and FastCGI.  Unluckily
-for us, FastCGI doesn't quite work with the current Sinatra release.
+Luckily, Rack supports various connectors, including CGI and FastCGI. Unluckily
+for us, FastCGI doesn't quite work with the current Sinatra release without some tweaking.
 
-To get a simple 'hello world' Sinatra application up and running on Dreamhost
-involves pulling down the current Sinatra code, and hacking at it a bit.  Don't
+### Deployment with Sinatra version 0.9
+From version 9.0 Sinatra requires Rack 0.9.1, however FastCGI wrapper from this version seems not working well with Sinatra unless you define your application as a subclass of Sinatra::Application class and run this application directly as a Rack application.
+
+Steps to deploy via FastCGI:
+* htaccess
+* subclass your application as Sinatra::Application
+* dispatch.fcgi
+
+1. .htaccess
+
+        RewriteEngine on
+        
+        AddHandler fastcgi-script .fcgi
+        Options +FollowSymLinks +ExecCGI
+        
+        RewriteRule ^(.*)$ dispatch.fcgi [QSA,L]
+
+2. Subclass your application as Sinatra::Application
+
+        # my_sinatra_app.rb
+        class MySinatraApp < Sinatra::Application
+          # your sinatra application definitions
+        end
+
+
+3. dispatch.fcgi - Run this application directly as a Rack application
+
+        #!/usr/local/bin/ruby
+    
+        require 'rubygems'
+        require 'rack'
+        
+        fastcgi_log = File.open("fastcgi.log", "a")
+        STDOUT.reopen fastcgi_log
+        STDERR.reopen fastcgi_log
+        STDOUT.sync = true
+
+        module Rack
+          class Request
+            def path_info
+              @env["REDIRECT_URL"].to_s
+            end
+            def path_info=(s)
+              @env["REDIRECT_URL"] = s.to_s
+            end
+          end
+        end
+
+        load 'my\_sinatra\_app.rb'
+
+        builder = Rack::Builder.new do
+          map '/' do
+            run MySinatraApp.new
+          end
+        end
+
+        Rack::Handler::FastCGI.run(builder)
+
+
+### Deployment with Sinatra version <= 0.3
+In version 0.3 to get a simple 'hello world' Sinatra application up and running via FastCGI, you have to pulling down the current Sinatra code, and hacking at it a bit. Don't
 worry though, it only requires commenting out a few lines, and tweaking
 another.
 
-Steps to deploy via FastCGI:
+Steps to deploy:
 
 * .htaccess
 * dispatch.fcgi
@@ -207,27 +265,27 @@ Steps to deploy via FastCGI:
 
 1. .htaccess
        RewriteEngine on
-        
+      
        AddHandler fastcgi-script .fcgi
        Options +FollowSymLinks +ExecCGI
-        
+      
        RewriteRule ^(.*)$ dispatch.fcgi [QSA,L]
 
 2. dispatch.fcgi
-   
+ 
        #!/usr/bin/ruby
-        
+      
        require 'rubygems'
        require 'sinatra/lib/sinatra'
-        
+      
        fastcgi_log = File.open("fastcgi.log", "a")
        STDOUT.reopen fastcgi_log
        STDERR.reopen fastcgi_log
        STDOUT.sync = true
-        
+      
        set :logging, false
        set :server, "FastCGI"
-        
+      
        module Rack
          class Request
            def path_info
@@ -238,7 +296,7 @@ Steps to deploy via FastCGI:
            end
          end
        end
-        
+      
        load 'app.rb'
 
 3. sinatra.rb - Replace this function with the new version here (commenting out the `puts` lines)
