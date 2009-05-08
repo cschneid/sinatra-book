@@ -40,7 +40,7 @@ _Builder_ gem (<http://builder.rubyforge.org>), which simplifies working with vi
 
 ### Living on the Edge
 
-The _edge_ version of Sinatra lives in it's Git repository, available at 
+The _edge_ version of Sinatra lives in its Git repository, available at 
 **<http://github.com/sinatra/sinatra/tree/master>**.
 
 You can use the _edge_ version to try new functionality or to contribute to the framework. 
