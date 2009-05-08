@@ -21,7 +21,7 @@ You can use the power of various Rubygems and other libraries for Ruby available
 
 Sinatra really shines when used for experiments and application mock-ups or for creating a quick interface for your code.
 
-It isn't a _typical_ Model-View-Controller framework, but ties specific URL directly to relevant Ruby code and returns it's output in response. It does enable you, however, to write clean, properly organized applications: separating _views_ from application code, for instance.
+It isn't a _typical_ Model-View-Controller framework, but ties specific URL directly to relevant Ruby code and returns its output in response. It does enable you, however, to write clean, properly organized applications: separating _views_ from application code, for instance.
 
 Installation
 ------------
