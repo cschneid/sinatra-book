@@ -99,8 +99,8 @@ assumes you already have a 'posts' table in your database):
       erb :index 
     end
     
-This will render ./views/index.html:
+This will render ./views/index.erb:
 
     <% for post in @posts %>
-      <h1><% post.title %></h1>
+      <h1><%= post.title %></h1>
     <% end %>
