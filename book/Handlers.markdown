@@ -4,7 +4,7 @@ Handlers
 Structure
 ---------
 
-Handler is the generic term that Sinatra uses for the "controllers".  A
+Handler is the generic term that Sinatra uses for the "controllers". A
 handler is the initial point of entry for new HTTP requests into your
 application.
 
@@ -12,7 +12,7 @@ To find more about the routes, head to the [Routes section](#routes)
 
 Form parameters
 ---------------
-In handlers you can reach submitted form parameters directly via the params hash:
+In handlers you can access submitted form parameters directly via the params hash:
 
     get '/' do
       params['post']
@@ -20,7 +20,7 @@ In handlers you can reach submitted form parameters directly via the params hash
     
 ### Nested form parameters
 
-The support of Rails like nested parameters is built-in since Sinatra version 9.0. Before this version you have to [implement this functionality as a before filter](#nested_params_as_filter)!
+The support for Rails-like nested parameters has been built-in since Sinatra version 0.9.0. Before this version you had to [implement this functionality as a before filter](#nested_params_as_filter)!
 
     <form>
       <input ... name="post[title]" />
@@ -51,7 +51,7 @@ Basic usage is easy:
     redirect 'http://www.google.com'
 
 The redirect actually sends back a Location header to the browser, and the
-browser makes a followup request to the location indicated.  Since the browser
+browser makes a followup request to the location indicated. Since the browser
 makes that followup request, you can redirect to any page, in your application,
 or another site entirely.
 
@@ -69,7 +69,7 @@ Sessions
 
 ### Default Cookie Based Sessions
 
-Sinatra ships with basic support for cookie based sessions. To enable it, in a
+Sinatra ships with basic support for cookie-based sessions. To enable it in a
 configure block, or at the top of your application, you just need to enable
 the option.
 
@@ -83,9 +83,9 @@ the option.
     end
 
 The downside to this session approach is that all the data is stored in the
-cookie.  Since cookies have a fairly hard limit of 4 kilobytes, you can't store
-much data.  The other issue is that cookies are not tamper proof.  The user
-can change any data in their session.  But... it is easy, and it doesn't have
+cookie. Since cookies have a fairly hard limit of 4 kilobytes, you can't store
+much data. The other issue is that cookies are not tamper proof - the user
+can change any data in their session. But... it is easy, and it doesn't have
 the scaling problems that memory or database backed sessions run into.
 
 ### Memory Based Sessions
