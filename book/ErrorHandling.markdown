@@ -39,7 +39,7 @@ you gets this:
 
 Additional Information
 ----------------------
-Because Sinatra give you a default not\_found and error do :production that are secure. If you want to customize only for :production but want to keep the friendly helper screens for :development then do this:
+Because Sinatra gives you a default not\_found and error do :production that are secure. If you want to customize only for :production but want to keep the friendly helper screens for :development then do this:
 
     configure :production do
       not_found do

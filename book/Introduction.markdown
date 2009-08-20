@@ -17,7 +17,7 @@ It doesn't assume much about your application, apart from that:
 In Sinatra, you can write short _ad hoc_ applications or mature, larger application with the same easiness. 
 (See section "Real World Applications" later in this book.)
 
-You can use the power of various Rubygems and other libraries for Ruby available.
+You can use the power of various Rubygems and other libraries available for Ruby.
 
 Sinatra really shines when used for experiments and application mock-ups or for creating a quick interface for your code.
 
