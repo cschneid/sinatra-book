@@ -75,7 +75,7 @@ The form itself is sent as a POST, but Sinatra will interpret it as the desired
 method. For example:
 
     <form method="post" action="/destroy_it">
-      <input name="_method" value="delete" />
+      <input type="hidden" name="_method" value="delete" />
       <div><button type="submit">Destroy it</button></div>
     </form>
 
