@@ -68,21 +68,46 @@ of the form element that was posted.
 
 The PUT and DELETE methods
 --------------------------
+
 Since browsers don't natively support the PUT and DELETE methods, a hacky
-workaround has been adopted by the web community.  Simply add a hidden element
-with the name "\_method" and the value equal to the HTTP method you want to use.
-The form itself is sent as a POST, but Sinatra will interpret it as the desired
-method. For example:
+workaround has been adopted by the web community. There are two steps to
+using this workaround with Sinatra:
+
+First, add a hidden element in your form with the name "\_method" and the
+value equal to the HTTP method you want to use. The form itself is sent as
+a POST, but Sinatra will interpret it as the desired method. For example:
 
     <form method="post" action="/destroy_it">
       <input type="hidden" name="_method" value="delete" />
       <div><button type="submit">Destroy it</button></div>
     </form>
 
-When you want to use PUT or DELETE from a client that does support them (like
-Curl, or ActiveResource), just go ahead and use them as you normally would, and
-ignore the `_method` advice above.  That is only for hacking in support for
-browsers.
+Then, add `use Rack::MethodOverride` to your app, like so:
+
+    require 'sinatra'
+    
+    use Rack::MethodOverride
+    
+    delete '/destroy_it' do
+      # destroy it
+    end
+
+Or, if you are subclassing Sinatra::Base, do it like this:
+
+    require 'sinatra/base'
+    
+    class MyApp < Sinatra::Base
+      use Rack::MethodOverride
+      
+      delete '/destroy_it' do
+        # destroy it
+      end
+    end
+
+When you want to use PUT or DELETE from a client that does support them
+(like Curl, or ActiveResource), just go ahead and use them as you normally
+would, and ignore the `_method` advice above. That is only for hacking in
+support for browsers.
 
 How routes are looked up
 ------------------------
