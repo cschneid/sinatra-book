@@ -12,7 +12,7 @@ show started, and this example will include a 'Post' model.
     require 'sinatra'
     require 'datamapper'
     
-    DataMapper::setup(:default, "sqlite://#{Dir.pwd}/blog.db")
+    DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/blog.db")
     
     class Post
         include DataMapper::Resource
@@ -85,7 +85,7 @@ connection settings:
 
     ActiveRecord::Base.establish_connection(
       :adapter => 'sqlite3',
-      :dbfile =>  'sinatra_application.sqlite3.db'
+      :database =>  'sinatra_application.sqlite3.db'
     )
 
 Now you can create and use ActiveRecord models just like in Rails (the example
