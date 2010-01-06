@@ -97,8 +97,8 @@ An example haml layout file could look something like this:
 
 Avoiding a layout
 -----------------
-Sometimes you don't want the layout rendered.  In your render method just pass
-:layout => false, and you're good.
+Sometimes you don't want the layout rendered.  In your render method just
+pass :layout => false, and you're good.
 
     get '/' do
       haml :index, :layout => false
