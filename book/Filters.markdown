@@ -36,6 +36,6 @@ You have to convert parameters to a hash. You can easily do this with a before f
       request.params.replace new_params
     end
 
-Then parameters became:
+Then parameters become:
 
     {"post"=>{ "title"=>"", "body"=>"", "author"=>"" }}
