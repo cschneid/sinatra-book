@@ -59,7 +59,7 @@ Assume that your site url is http://liftoff.msfc.nasa.gov/.
             xml.title "Liftoff News"
             xml.description "Liftoff to Space Exploration."
             xml.link "http://liftoff.msfc.nasa.gov/"
-            
+
             @posts.each do |post|
               xml.item do
                 xml.title post.title
@@ -85,7 +85,7 @@ appropriate layout will be grabbed (of the same filetype), and used.
 
 The layout itself should call `yield` at the point you want the content to be
 included.
-    
+
 An example haml layout file could look something like this:
 
     %html
@@ -112,16 +112,16 @@ This one is cool:
     get '/' do
       haml :index
     end
-    
-    use_in_file_templates!
-    
+
+    enable :inline_templates
+
     __END__
-    
+
     @@ layout
     X
     = yield
     X
-    
+
     @@ index
     %div.title Hello world!!!!!
 
