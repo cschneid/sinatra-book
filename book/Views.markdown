@@ -145,3 +145,24 @@ embed templates directly into its file.
 Partials
 --------
 
+Partials are not built into the default installation of Sinatra.
+
+The minimalist implementation of partials takes zero helper code.  Just call
+your view method from your view code.
+
+    <%= erb :_my_partial_file, :layout => nil %>
+
+You can even pass local variables via this approach.
+
+    <%= erb :_my_partial_file, :layout => nil, :locals => {:a => 1} %>
+
+If you find that you need a more advanced partials implementation that handles
+collections and other features, you will need to implement a helper that does
+that work.
+
+    helpers do
+      def partial(template, options={})
+        erb template, options.merge(:layout => false)
+        #TODO: Implementation
+      end
+    end
