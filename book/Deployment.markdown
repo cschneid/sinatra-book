@@ -193,7 +193,10 @@ Luckily, Rack supports various connectors, including CGI and FastCGI. Unluckily
 for us, FastCGI doesn't quite work with the current Sinatra release without some tweaking.
 
 ### Deployment with Sinatra version 0.9
-From version 9.0 Sinatra requires Rack 0.9.1, however FastCGI wrapper from this version seems not working well with Sinatra unless you define your application as a subclass of Sinatra::Application class and run this application directly as a Rack application.
+From version 0.9.0 Sinatra requires Rack 0.9.1, however FastCGI wrapper from
+this version seems not working well with Sinatra unless you define your
+application as a subclass of Sinatra::Application class and run this
+application directly as a Rack application.
 
 Steps to deploy via FastCGI:
 * htaccess
@@ -251,67 +254,3 @@ Steps to deploy via FastCGI:
         Rack::Handler::FastCGI.run(builder)
 
 
-### Deployment with Sinatra version <= 0.3
-In version 0.3 to get a simple 'hello world' Sinatra application up and running via FastCGI, you have to pulling down the current Sinatra code, and hacking at it a bit. Don't
-worry though, it only requires commenting out a few lines, and tweaking
-another.
-
-Steps to deploy:
-
-* .htaccess
-* dispatch.fcgi
-* Tweaked sinatra.rb
-
-
-1. .htaccess
-       RewriteEngine on
-      
-       AddHandler fastcgi-script .fcgi
-       Options +FollowSymLinks +ExecCGI
-      
-       RewriteRule ^(.*)$ dispatch.fcgi [QSA,L]
-
-2. dispatch.fcgi
- 
-       #!/usr/bin/ruby
-      
-       require 'rubygems'
-       require 'sinatra/lib/sinatra'
-      
-       fastcgi_log = File.open("fastcgi.log", "a")
-       STDOUT.reopen fastcgi_log
-       STDERR.reopen fastcgi_log
-       STDOUT.sync = true
-      
-       set :logging, false
-       set :server, "FastCGI"
-      
-       module Rack
-         class Request
-           def path_info
-             @env["REDIRECT_URL"].to_s
-           end
-           def path_info=(s)
-             @env["REDIRECT_URL"] = s.to_s
-           end
-         end
-       end
-      
-       load 'app.rb'
-
-3. sinatra.rb - Replace this function with the new version here (commenting out the `puts` lines)
-
-       def run
-         begin
-           #puts "== Sinatra has taken the stage on port #{port} for #{env} with backup by #{server.name}"
-           require 'pp'
-           server.run(application) do |server|
-             trap(:INT) do
-               server.stop
-               #puts "\n== Sinatra has ended his set (crowd applauds)"
-             end
-           end
-         rescue Errno::EADDRINUSE => e
-           #puts "== Someone is already performing on port #{port}!"
-         end
-       end
