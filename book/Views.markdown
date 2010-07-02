@@ -15,6 +15,13 @@ handler block.
 Template Languages
 ------------------
 
+### Erb
+    get '/' do
+      erb :index
+    end
+
+This will render ./views/index.erb
+
 ### Haml
     get '/' do
       haml :index
@@ -28,13 +35,6 @@ This will render ./views/index.haml
     end
 
 This will render ./views/styles.sass
-
-### Erb
-    get '/' do
-      erb :index
-    end
-
-This will render ./views/index.erb
 
 ### Builder
     get '/' do
