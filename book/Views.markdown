@@ -1,9 +1,16 @@
 Views
 =====
-All file-based views are looked up in:
+All file-based view files should be located in the directory views/:
 
     root
       | - views/
+
+You access these views by calling various view helpers.  These are methods that
+lookup the template, render it, and return a string containing the rendered
+output.  These view methods do not return anything to the browser by
+themselves.  The only output to the browser will be the return value of the
+handler block.
+
 
 Template Languages
 ------------------
