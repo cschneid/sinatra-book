@@ -122,7 +122,9 @@ that's used by passing :layout => :custom_layout
 In File Views
 -------------
 
-This one is cool:
+For your micro-apps, sometimes you don't even want a separate views file.  Ruby
+has a way of embedding data at the end of a file, which Sinatra makes use of to
+embed templates directly into its file.
 
     get '/' do
       haml :index
