@@ -102,8 +102,7 @@ An example haml layout file could look something like this:
         #container
           = yield
 
-Avoiding a layout
------------------
+### Avoiding a layout
 Sometimes you don't want the layout rendered.  In your render method just
 pass :layout => false, and you're good.
 
