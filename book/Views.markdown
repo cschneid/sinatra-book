@@ -110,6 +110,15 @@ pass :layout => false, and you're good.
       haml :index, :layout => false
     end
 
+### Specifiying a custom layout
+
+If you want to use a layout not named "layout", you can override the name
+that's used by passing :layout => :custom_layout
+
+    get '/' do
+      haml :index, :layout => :custom_layout
+    end
+
 In File Views
 -------------
 
