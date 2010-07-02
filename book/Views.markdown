@@ -83,6 +83,28 @@ Assume that your site url is http://liftoff.msfc.nasa.gov/.
 
 This will render the rss inline, directly from the handler.
 
+Subdirectories in views
+-----------------------
+
+In order to create subdirectories in views/, first you need to just create the
+directory structure.  As an example, it should look like:
+
+    root
+      | - views/
+        | - users/
+          | - index.haml
+          | - edit.haml
+
+Then you can call the haml view helper with a symbol pointing to the path of the view.
+There's a syntax trick for this in ruby, to convert a string to a symbol.  
+
+    :"users/index"
+    
+You can also use the more verbose version of the same thing:
+
+    "users/index".to_sym
+
+
 Layouts
 -------
 
