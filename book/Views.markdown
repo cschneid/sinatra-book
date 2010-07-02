@@ -125,8 +125,6 @@ This one is cool:
     @@ index
     %div.title Hello world!!!!!
 
-Try it!
-
 Partials
 --------
 
