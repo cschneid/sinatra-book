@@ -14,11 +14,14 @@ Steps to deploy to Heroku:
 * Create the app on heroku
 * Push to it
 
-1. An example config.ru file (Heroku sets `RACK_ENV` to production for you)
+1. Here is an example config.ru file that does two things.  First, it requires
+   your main app file, whatever it's called. In the example, it will look for
+   `myapp.rb`.  Second, run your application.  If you're subclassing, use the
+   subclass's name, otherwise use Sinatra::Application.
 
-       require "myapp"
+        require "myapp"
 
-       run Sinatra::Application
+        run Sinatra::Application
 
 2. Create the app and push to it
 
@@ -141,25 +144,26 @@ You can find additional documentation at the Passenger Github repository.
        # a vendored version of sinatra - not necessary if you use the gem
        domain.com/sinatra
 
-3. Creating the "Rackup file" (rack configuration file) `config.ru` -- the `require 'app'`
-   line should require the actual Sinatra app you have written.
+3. Here is an example config.ru file that does two things.  First, it requires
+   your main app file, whatever it's called. In the example, it will look for
+   `myapp.rb`.  Second, run your application.  If you're subclassing, use the
+   subclass's name, otherwise use Sinatra::Application.
 
-       ## Passenger should set RACK_ENV for Sinatra
+        require "myapp"
 
-       require 'app'
-       
-       run Sinatra::Application
+        run Sinatra::Application
 
 4. A very simple Sinatra application
 
-       # this is test.rb referred to above
-       get '/' do
-         "Worked on dreamhost"
-       end
-        
-       get '/foo/:bar' do
-         "You asked for foo/#{params[:bar]}"
-       end
+       # this is myapp.rb referred to above
+        require 'sinatra'
+        get '/' do
+          "Worked on dreamhost"
+        end
+         
+        get '/foo/:bar' do
+          "You asked for foo/#{params[:bar]}"
+        end
 
 And that's all there is to it! Once it's all setup, point your browser at your 
 domain, and you should see a 'Worked on Dreamhost' page. To restart the 
