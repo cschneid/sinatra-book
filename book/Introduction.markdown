@@ -14,18 +14,24 @@ It doesn't assume much about your application, apart from that:
 * it will be written in Ruby programming language
 * it will have URLs
 
-In Sinatra, you can write short _ad hoc_ applications or mature, larger application with the same easiness. 
-(See section "Real World Applications" later in this book.)
+In Sinatra, you can write short _ad hoc_ applications or mature, larger
+application with the same easiness.  (See section "Real World Applications"
+later in this book.)
 
-You can use the power of various Rubygems and other libraries available for Ruby.
+You can use the power of various Rubygems and other libraries available for
+Ruby.
 
-Sinatra really shines when used for experiments and application mock-ups or for creating a quick interface for your code.
+Sinatra really shines when used for experiments and application mock-ups or for
+creating a quick interface for your code.
 
-It isn't a _typical_ Model-View-Controller framework, but ties specific URL directly to relevant Ruby code and returns its output in response. It does enable you, however, to write clean, properly organized applications: separating _views_ from application code, for instance.
+It isn't a _typical_ Model-View-Controller framework, but ties specific URL
+directly to relevant Ruby code and returns its output in response. It does
+enable you, however, to write clean, properly organized applications:
+separating _views_ from application code, for instance.
 
 Installation
 ------------
-The simplest way to obtain Sinatra is through Rubygems
+The simplest way to install Sinatra is through Rubygems:
 
     $ sudo gem install sinatra
 
@@ -33,19 +39,22 @@ The simplest way to obtain Sinatra is through Rubygems
 
 Sinatra depends on the _Rack_ gem (<http://rack.rubyforge.org>).
 
-For optimal experience, you should also install the _Haml_ (<http://haml.hamptoncatlin.com>) and 
-_Builder_ gem (<http://builder.rubyforge.org>), which simplifies working with views.
+Sinatra supports many different template engines (it uses the Tilt library
+internally to support practically every template engine in Ruby)
+For optimal experience, you should install the template engines you want to
+work with.  The Sinatra dev team suggests using either ERB, which is included
+with Ruby, or installing HAML as your first template language.
 
-    $ sudo gem install builder haml
+    $ sudo gem install haml
 
 ### Living on the Edge
 
 The _edge_ version of Sinatra lives in its Git repository, available at 
 **<http://github.com/sinatra/sinatra/tree/master>**.
 
-You can use the _edge_ version to try new functionality or to contribute to the framework. 
-You need to have Git version control software installed (<http://www.git-scm.com>). 
-Then follow these steps:
+You can use the _edge_ version to try new functionality or to contribute to the
+framework.  You need to have Git version control software installed
+(<http://www.git-scm.com>).  Then follow these steps:
 
 1. cd where/you/keep/your/projects
 2. git clone git://github.com/sinatra/sinatra.git
@@ -58,21 +67,19 @@ Then add this to your application:
     $:.unshift File.dirname(__FILE__) + '/sinatra/lib'
     require 'sinatra'
 
-You can check the version you are running by adding this route
+You can check the version you are running by adding this route and loading
+`http://localhost:4567/about` in your browser.
 
     get '/about' do
       "I'm running on Version " + Sinatra::VERSION
     end
 
-and loading `http://localhost:4567/about` in your browser.
 
 
 Hello World Application
 -----------------------
-Sinatra is installed and you're done eating cake, how about making your
-first application?
+Sinatra is installed, how about making your first application?
 
-    # hello_world.rb
     require 'rubygems'
     require 'sinatra'
     
@@ -82,9 +89,9 @@ first application?
 
 Run this application by `$ ruby hello_world.rb` and load `http://localhost:4567` in your browser.
 
-As you can see, Sinatra doesn't force you to setup much infrastructure: 
-a request to some URL (_root_ URL in this case) evaluates some Ruby code 
-and returns some text in response.
+As you can see, Sinatra doesn't force you to setup much infrastructure: a
+request to a URL evaluates some Ruby code and returns some text in response.
+Whatever the block returns is sent back to the browser.
 
 
 Real World Applications in Sinatra
@@ -132,3 +139,11 @@ For more information about the Ruby language visit the following links:
 * <http://www.ruby-doc.org>
 * <http://www.ruby-doc.org/core-1.8.7/index.html>
 * <http://www.ruby-doc.org/docs/ProgrammingRuby/>
+
+Need Help? 
+----------
+
+The Sinatra club is small, but super-friendly.  Join us on IRC at
+irc.freenode.org in #sinatra if you have any questions.  It's a bit
+slow at times, so give us a bit to get back to your questions.
+
