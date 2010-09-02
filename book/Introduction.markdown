@@ -117,7 +117,7 @@ Git Wiki is minimal Wiki engine powered by Sinatra and Git. See also various for
 Integrity is small and clean _continuous integration_ service using Sinatra, watching for failing builds of your codebase and notifying you by various channels.
 
 * <http://www.integrityapp.com/>
-* <http://github.com/foca/integrity>
+* <http://github.com/integrity/integrity>
 
 ### Seinfeld Calendar
 
