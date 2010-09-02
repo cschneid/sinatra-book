@@ -20,7 +20,8 @@ In handlers you can access submitted form parameters directly via the params has
     
 ### Nested form parameters
 
-The support for Rails-like nested parameters has been built-in since Sinatra version 0.9.0. Before this version you had to [implement this functionality as a before filter](#nested_params_as_filter)!
+The support for Rails-like nested parameters has been built-in since Sinatra
+version 0.9.0. 
 
     <form>
       <input ... name="post[title]" />
@@ -127,7 +128,8 @@ Lets first look at the simple use case:
         "Thing is now: #{cookie}"
     end
 
-Setting a path, expiration date, or domain gets a little more complicated - see the source code for set\_cookie if you want to dig deeper.
+Setting a path, expiration date, or domain gets a little more complicated - see
+the source code for set\_cookie if you want to dig deeper.
 
     set_cookie("thing", :domain => myDomain,
                         :path => myPath,
@@ -142,19 +144,49 @@ for your parsing pleasure.
 Status
 ------
 
-If you want to set your own status response instead of the normal 200 (Success), you can use the `status`-helper to set the
-code, and then still render normally:
+If you want to set your own status response instead of the normal 200
+(Success), you can use the `status` helper to set the code, and then still
+render normally:
 
     get '/' do
       status 404
       "Not found"
     end
 
-Alternatively you can use `throw :halt, [404, "Not found"]` to immediately stop any further actions and return the
-specified status code and string to the client. `throw` supports more options in this regard, see the appropriate section
-for more info.
+Because this is common, there's a `not_found` helper to do this.  In this
+example, no response body will be sent, and the browser will display it's
+default content.
 
+    get '/' do
+      not_found
+    end
 
-Authentication
---------------
+The `not_found` helper takes an optional argument of the body to send.  Use a
+template to have a complicated 404 page.
+
+    get '/' do
+      not_found(haml :404) # renders views/404.haml
+    end
+
+And another way, a bit more flexible because you can easily setup other
+statuses than 404 is to raise a special exception subclass.
+
+    get '/' do
+      raise NotFound
+    end
+
+Sinatra defines the `NotFound` exception.  To define your own, subclass 
+exception and define a code method returning the HTTP status code you
+want.  For example, to return a 401 simply in your app you can use this code:
+
+    class Unauthorized < Exception
+      def code
+        401
+      end
+    end
+
+    get '/' do
+      raise Unauthorized
+    end
+
 
