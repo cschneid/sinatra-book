@@ -59,12 +59,10 @@ framework.  You need to have Git version control software installed
 1. cd where/you/keep/your/projects
 2. git clone git://github.com/sinatra/sinatra.git
 3. cd sinatra
-4. cd your\_project
-5. ln -s ../sinatra
+4. rake install
 
 Then add this to your application:
 
-    $:.unshift File.dirname(__FILE__) + '/sinatra/lib'
     require 'sinatra'
 
 You can check the version you are running by adding this route and loading
