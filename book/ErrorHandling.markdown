@@ -6,7 +6,7 @@ Overview
 
 These are run inside the Sinatra::EventContext which means you get all the
 helpers is has to offer, including template rendering via `haml`, `erb`,
-calling halt, and using send_file.
+calling halt, and using send\_file.
 
 not\_found
 ---------
