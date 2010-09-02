@@ -1,11 +1,18 @@
 Error Handling
 ==============
 
+Overview
+--------
+
+These are run inside the Sinatra::EventContext which means you get all the
+helpers is has to offer, including template rendering via `haml`, `erb`,
+calling halt, and using send_file.
+
 not\_found
 ---------
-Remember: These are run inside the Sinatra::EventContext which means you get all the goodies is has to offer (i.e. haml, erb, :halt, etc.)
 
-Whenever NotFound is raised this will be called
+Whenever NotFound is raised this will be called.  Using the `not_found` helper
+in a route *does not* trigger this block.
 
     not_found do
       'This is nowhere to be found'
@@ -13,40 +20,51 @@ Whenever NotFound is raised this will be called
 
 error
 -----
-By default error will catch Sinatra::ServerError
+By default error will catch Sinatra::ServerError, but you can customize your
+error conditions to match your specific application.  For example, this can be
+useful to implement rate limiting in an API.
 
-Sinatra will pass you the error via the ‘sinatra.error’ in request.env
+Sinatra will pass you the specific exception that was raised via the
+‘sinatra.error’ in request.env
 
     error do
       'Sorry there was a nasty error - ' + request.env['sinatra.error'].name
     end
   
-Custom error mapping:
+A quick example of a custom error class:
 
-    error MyCustomError do
-      'So what happened was...' + request.env['sinatra.error'].message
+    # Define an error class
+    class RateLimitError < Exception
     end
 
-then if this happens:
+    # Define a handler for the error class
+    error RateLimitError do
+      'You are over your limit: ' + request.env['sinatra.error'].message
+    end
 
     get '/' do
-      raise MyCustomError, 'something bad'
+      raise RateLimitError, '100 API calls allowed per hour'
     end
 
-you gets this:
+You will see this as the output:
 
-    So what happened was... something bad
+    You are over your limit: 100 API calls allowed per hour
 
 Additional Information
 ----------------------
-Because Sinatra gives you a default not\_found and error do :production that are secure. If you want to customize only for :production but want to keep the friendly helper screens for :development then do this:
+Sinatra gives you default not\_found and error handlers in the production
+environment that are secure (hides application specific error information). If
+you want to customize the error handlers for the production environment, but
+leave the friendly Sinatra error pages in Development, then put your error
+handlers in a configure block.
 
     configure :production do
       not_found do
-        "We're so sorry, but we don't what this is"
+        haml :'404'
       end
   
       error do
-        "Something really nasty happened.  We're on it!"
+        haml :'500'
       end
     end
+
