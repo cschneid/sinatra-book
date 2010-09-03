@@ -23,9 +23,9 @@ Learn more about Sinatra at
 How to build the Book
 ---------------------
 
-You need following gems to build the book:
+Make sure you have all the required dependencies to build the book:
 
-    gem install thor maruku
+    bundle check
 
 In the root directory, launch the following Thor task:
 
