@@ -9,7 +9,7 @@ This is the easiest configuration + deployment option.  [Heroku] has full suppor
 Steps to deploy to Heroku:
 
 * Create an [account](http://heroku.com/signup) if you don't have one
-* `sudo gem install heroku`
+* `gem install heroku`
 * Make a config.ru in the root-directory
 * Create the app on heroku
 * Push to it

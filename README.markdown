@@ -25,7 +25,7 @@ How to build the Book
 
 You need following gems to build the book:
 
-    sudo gem install thor maruku
+    gem install thor maruku
 
 In the root directory, launch the following Thor task:
 

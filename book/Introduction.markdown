@@ -33,7 +33,7 @@ Installation
 ------------
 The simplest way to install Sinatra is through Rubygems:
 
-    $ sudo gem install sinatra
+    $ gem install sinatra
 
 ### Dependencies
 
@@ -45,7 +45,7 @@ For optimal experience, you should install the template engines you want to
 work with.  The Sinatra dev team suggests using either ERB, which is included
 with Ruby, or installing HAML as your first template language.
 
-    $ sudo gem install haml
+    $ gem install haml
 
 ### Living on the Edge
 
