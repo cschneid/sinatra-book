@@ -13,13 +13,16 @@ Sinatra's routes are designed to respond to the HTTP request methods.
 Basic
 -----
 
-Simple
+The bare minimum route is a few lines.  You must define a route with the HTTP
+method, then the path that you want to match.  When that route gets matched, an
+attached code block will be run.  Whatever that block returns will be sent back
+to the browser of the client.
 
-    get '/hi' do
-      ...
+    get '/' do
+      "Hello Sinatra!"
     end
     
-With params
+Sinatra will also automatically parse parameters from the URL:
 
     # /name/Chris will return "You said your name was Chris" to the browser
     # /name/Blake will return "You said your name was Blake" to the browser
@@ -27,11 +30,14 @@ With params
       "You said your name was #{params[:name]}"
     end
 
-Parameters can be accessed via a string, or symbol
-    
-    # These are the same
-    params[:name]
-    params["name"]
+An alternate method of automatically parsing parameters is to use them as
+values that are passed into the block.  This code is identical to the name
+example directly above:
+
+    get '/name/:name' do |name|
+      "You said your name was #{name}"
+    end
+
 
 Options
 -------
