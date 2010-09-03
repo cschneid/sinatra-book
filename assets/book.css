@@ -56,6 +56,11 @@ body p
 
 body hr
   { display: none; }
+
+body img[src="logo.png"]
+  { position: relative;
+    left: -1em;
+    margin-bottom: -2em; }
   
 /* TOC */
 .maruku_toc ul { font-weight: bold; padding: 0em; }
