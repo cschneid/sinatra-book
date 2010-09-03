@@ -34,4 +34,4 @@ In the root directory, launch the following Thor task:
 How to contribute
 -----------------
 
-Fork this repository, be sure to read the [styleguide](http://github.com/cschneid/sinatra-book/wikis/how-to-contribute) and post pull requests.
+Fork this repository, be sure to read the [styleguide](http://github.com/sinatra/sinatra-book/wiki/How-to-contribute) and post pull requests.
