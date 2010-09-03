@@ -1,10 +1,15 @@
+html
+  { padding: 0 2em; }
+
 body
   { color: #222;
     background: #fafafa;
     font-size: 80%;
+    min-width: 300px;
     font-family: 'Lucida Grande', Verdana, sans-serif;
-    padding: 1em 2em; 
-    margin: auto 2em;
+    padding: 1em 2em;
+    margin: auto;
+    max-width: 800px;
     border: 1px solid #d5d8db; 
     border-top: none; border-bottom: none; }
 
@@ -19,8 +24,8 @@ body h1
   { color: #fff;
     background: #404142;
     font-size: 160%;
-    padding: 0.4em 0.4em 0.3em 0.4em;
-    margin: 2em 0 0 0; }
+    padding: 0.4em 1.4em 0.3em 1.4em;
+    margin: 2em -1em 0 -1em; }
 
 body h2
   { margin: 1.2em 0 0.2em 0; }
