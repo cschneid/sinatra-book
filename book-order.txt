@@ -13,6 +13,7 @@ Helpers.markdown
 RackMiddleware.markdown
 ErrorHandling.markdown
 Configuration.markdown
+Development.markdown
 Deployment.markdown
 Contributing.markdown
 
