@@ -185,7 +185,7 @@ Since Ruby 1.9, [Minitest][mt] is shipped with the standard library. If you want
 After installing Minitest, setting it up works similar to `Test::Unit`:
 
     ENV['RACK_ENV'] = 'test'
-    require 'bacon'
+    require 'minitest/unit'
     require 'rack/test'
     require 'my-app'
 
@@ -212,7 +212,7 @@ After installing [MSpec][ms], you set it up like this:
 After installing [Protest][pt], setting it up works similar to `Test::Unit`:
 
     ENV['RACK_ENV'] = 'test'
-    require 'bacon'
+    require 'protest'
     require 'rack/test'
     require 'my-app'
 
