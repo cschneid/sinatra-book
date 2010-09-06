@@ -80,7 +80,7 @@ Use `set_cookie` for setting and removing cookies:
     set_cookie 'foo=bar'
     get '/'
 
-### Usage with Test::Unit
+### Usage with Test::Unit, Test::Spec or Contest
 
 Set up rack-test by including `Rack::Test::Methods` into your test class and
 defining `app`:
@@ -128,6 +128,10 @@ In your test files you only have to require that helper:
       end
     end
 
+Since Contest and Test::Spec are both extensions for Test::Unit, all you have
+to do is install them and add a `require 'contest'` or `require 'test/spec'`
+to your test helper.
+
 ### Usage with RSpec
 
 In your spec file or your spec helper, you can setup `Rack::Test` like this:
@@ -171,15 +175,11 @@ This works similar to `Test::Unit`:
       def app() Sinatra::Application end
     end
 
-### Usage with Contest
-
 ### Usage with Minitest
 
 ### Usage with MSpec
 
 ### Usage with Protest
-
-### Usage with Test::Spec
 
 Using Capybara
 --------------
