@@ -137,6 +137,11 @@ all you have to do is install them and add a `require 'contest'` or `require
 
 ### Usage with RSpec
 
+[RSpec][rs] is the main competitor to Test::Unit. It is feature rich and
+pleasant to read, but to heavy for some. Therefore most other frameworks
+mentioned here (except Minitest, Test::Unit and Cucumber) try to adopt its API
+without its inner complexity.
+
 In your spec file or your spec helper, you can setup `Rack::Test` like this:
 
     # spec/spec_helper.rb
