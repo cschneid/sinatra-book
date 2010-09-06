@@ -180,7 +180,9 @@ After installing [Bacon][bc], setting it up works similar to `Test::Unit`:
 
 ### Usage with Minitest
 
-After installing [Minitest][mt], setting it up works similar to `Test::Unit`:
+Since Ruby 1.9, [Minitest][mt] is shipped with the standard library. If you want to use it on 1.8, it is still installable via Rubygems.
+
+After installing Minitest, setting it up works similar to `Test::Unit`:
 
     ENV['RACK_ENV'] = 'test'
     require 'bacon'
