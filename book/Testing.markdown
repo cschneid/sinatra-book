@@ -87,7 +87,7 @@ defining `app`:
 
     ENV['RACK_ENV'] = 'test'
     require 'test/unit'
-    require 'rack-test'
+    require 'rack/test'
     require 'myapp'
     
     class HomepageTest < Test::Unit::TestCase
@@ -106,7 +106,7 @@ all the setup in there:
     # test/test_helper.rb
     ENV['RACK_ENV'] = 'test'
     require 'test/unit'
-    require 'rack-test'
+    require 'rack/test'
     require 'my-app'
     
     module TestMixin
@@ -139,7 +139,7 @@ In your spec file or your spec helper, you can setup `Rack::Test` like this:
     # spec/spec_helper.rb
     ENV['RACK_ENV'] = 'test'
     require 'test/unit'
-    require 'rack-test'
+    require 'rack/test'
     require 'my-app'
     
     module TestMixin
@@ -166,7 +166,7 @@ After installing Bacon, setting it up works similar to `Test::Unit`:
 
     ENV['RACK_ENV'] = 'test'
     require 'bacon'
-    require 'rack-test'
+    require 'rack/test'
     require 'my-app'
 
     module TestMixin
@@ -181,7 +181,7 @@ After installing Minitest, setting it up works similar to `Test::Unit`:
 
     ENV['RACK_ENV'] = 'test'
     require 'bacon'
-    require 'rack-test'
+    require 'rack/test'
     require 'my-app'
 
     module TestMixin
