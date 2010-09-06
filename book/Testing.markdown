@@ -204,6 +204,19 @@ After installing MSpec, you set it up like this:
 
 ### Usage with Protest
 
+After installing Protest, setting it up works similar to `Test::Unit`:
+
+    ENV['RACK_ENV'] = 'test'
+    require 'bacon'
+    require 'rack/test'
+    require 'my-app'
+
+    module TestMixin
+      include Rack::Test::Methods
+      Protest::TestCase.send(:include, self)
+      def app() Sinatra::Application end
+    end
+
 Using Capybara
 --------------
 
