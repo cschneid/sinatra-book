@@ -158,6 +158,19 @@ And use it in your specs:
 
 ### Usage with Bacon
 
+This works similar to `Test::Unit`:
+
+    ENV['RACK_ENV'] = 'test'
+    require 'bacon'
+    require 'rack-test'
+    require 'my-app'
+
+    module TestMixin
+      include Rack::Test::Methods
+      Bacon::Context.send(:include, self)
+      def app() Sinatra::Application end
+    end
+
 ### Usage with Contest
 
 ### Usage with Minitest
