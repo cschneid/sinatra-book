@@ -14,7 +14,7 @@ Bryan Helmkamp's [Rack::Test][rt] offers tools for mocking Rack request,
 sending those to your application and inspecting the response all wrapped in a
 small DSL.
 
-### The DSL
+### Firing Requests
 
 You import the DSL by including `Rack::Test::Methods` into your test
 framework. It is even usable without a framework and for other tasks besides
@@ -56,11 +56,36 @@ You have to define an `app` method pointing to your application class (which is 
     post '/', :name => 'Simon'
     last_response.body.include? 'Hello Simon' # => true
 
-### Test::Unit
+### Modifying `env`
+
+While parameters can be send via the second argument of a get/post/put/delete
+call (see the post example above), the env hash (and thereby the HTTP headers)
+can be modified with a third argument:
+
+    get '/foo', {}, 'HTTP_USER_AGENT' => 'Songbird 1.0'
+
+This also allows passing internal `env` settings:
+
+    get '/foo', {}, 'rack.session' => { 'user_id' => 20 }
+
+### Cookies
+
+You can access cookies via a response:
+
+    get '/'
+    last_response.cookies['foo']
+
+Use `set_cookie` for setting and removing cookies:
+
+    set_cookie 'foo=bar'
+    get '/'
+
+### Usage with Test::Unit
 
 Set up rack-test by including `Rack::Test::Methods` into your test class and
 defining `app`:
 
+    ENV['RACK_ENV'] = 'test'
     require 'test/unit'
     require 'rack-test'
     require 'myapp'
@@ -102,21 +127,19 @@ In your test files you only have to require that helper:
       end
     end
 
-### Cucumber
+### Usage with RSpec
 
-### RSpec
+### Usage with Bacon
 
-### Bacon
+### Usage with Contest
 
-### Contest
+### Usage with Minitest
 
-### Minitest
+### Usage with MSpec
 
-### MSpec
+### Usage with Protest
 
-### Protest
-
-### Test::Spec
+### Usage with Test::Spec
 
 Using Capybara
 --------------
