@@ -104,6 +104,7 @@ If you have multiple test files, you could create a test helper file and do
 all the setup in there:
 
     # test/test_helper.rb
+    ENV['RACK_ENV'] = 'test'
     require 'test/unit'
     require 'rack-test'
     require 'my-app'
@@ -128,6 +129,32 @@ In your test files you only have to require that helper:
     end
 
 ### Usage with RSpec
+
+In your spec file or your spec helper, you can setup `Rack::Test` like this:
+
+    # spec/spec_helper.rb
+    ENV['RACK_ENV'] = 'test'
+    require 'test/unit'
+    require 'rack-test'
+    require 'my-app'
+    
+    module TestMixin
+      include Rack::Test::Methods
+      def app() Sinatra::Application end
+    end
+    
+    Spec::Runner.configure { |c| c.include TestMixin }
+
+And use it in your specs:
+
+    require File.expand_path('../spec_helper', __FILE__)
+    
+    describe "My Sinatra Application" do
+      it "should allow accessing the home page" do
+        get '/'
+        last_response.should be_ok
+      end
+    end
 
 ### Usage with Bacon
 
