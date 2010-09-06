@@ -192,6 +192,16 @@ After installing Minitest, setting it up works similar to `Test::Unit`:
 
 ### Usage with MSpec
 
+After installing MSpec, you set it up like this:
+
+    ENV['RACK_ENV'] = 'test'
+    require 'mspec'
+    require 'rack/test'
+    require 'my-app'
+    
+    include Rack::Test::Methods
+    def app() Sinatra::Application end
+
 ### Usage with Protest
 
 Using Capybara
