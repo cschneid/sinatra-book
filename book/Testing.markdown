@@ -135,12 +135,13 @@ Since [Contest][ct] and [Test::Spec][ts] are both extensions for Test::Unit,
 all you have to do is install them and add a `require 'contest'` or `require
 'test/spec'` to your test helper.
 
-### Usage with RSpec
+### Usage with RSpec 1.x
 
 [RSpec][rs] is the main competitor to Test::Unit. It is feature rich and
 pleasant to read, but to heavy for some. Therefore most other frameworks
 mentioned here (except Minitest, Test::Unit and Cucumber) try to adopt its API
-without its inner complexity.
+without its inner complexity. The 1.x version of RSpec is still widely spread
+and 2.x still lacks major adoption.
 
 In your spec file or your spec helper, you can setup `Rack::Test` like this:
 
@@ -167,6 +168,10 @@ And use it in your specs:
         last_response.should be_ok
       end
     end
+
+### Usage with RSpec 2.x
+
+...
 
 ### Usage with Bacon
 
