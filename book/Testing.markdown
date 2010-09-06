@@ -82,6 +82,9 @@ Use `set_cookie` for setting and removing cookies:
 
 ### Usage with Test::Unit, Test::Spec or Contest
 
+The main advantage of using [Test::Unit][tu] is that it already ships with
+Ruby and you therefore skip the installation part.
+
 Set up rack-test by including `Rack::Test::Methods` into your test class and
 defining `app`:
 
@@ -128,9 +131,9 @@ In your test files you only have to require that helper:
       end
     end
 
-Since Contest and Test::Spec are both extensions for Test::Unit, all you have
-to do is install them and add a `require 'contest'` or `require 'test/spec'`
-to your test helper.
+Since [Contest][ct] and [Test::Spec][ts] are both extensions for Test::Unit,
+all you have to do is install them and add a `require 'contest'` or `require
+'test/spec'` to your test helper.
 
 ### Usage with RSpec
 
@@ -162,7 +165,7 @@ And use it in your specs:
 
 ### Usage with Bacon
 
-After installing Bacon, setting it up works similar to `Test::Unit`:
+After installing [Bacon][bc], setting it up works similar to `Test::Unit`:
 
     ENV['RACK_ENV'] = 'test'
     require 'bacon'
@@ -177,7 +180,7 @@ After installing Bacon, setting it up works similar to `Test::Unit`:
 
 ### Usage with Minitest
 
-After installing Minitest, setting it up works similar to `Test::Unit`:
+After installing [Minitest][mt], setting it up works similar to `Test::Unit`:
 
     ENV['RACK_ENV'] = 'test'
     require 'bacon'
@@ -192,7 +195,7 @@ After installing Minitest, setting it up works similar to `Test::Unit`:
 
 ### Usage with MSpec
 
-After installing MSpec, you set it up like this:
+After installing [MSpec][ms], you set it up like this:
 
     ENV['RACK_ENV'] = 'test'
     require 'mspec'
@@ -204,7 +207,7 @@ After installing MSpec, you set it up like this:
 
 ### Usage with Protest
 
-After installing Protest, setting it up works similar to `Test::Unit`:
+After installing [Protest][pt], setting it up works similar to `Test::Unit`:
 
     ENV['RACK_ENV'] = 'test'
     require 'bacon'
@@ -231,3 +234,10 @@ Using Sinatra::TestHelper
 
 [ct]: http://github.com/citrusbyte/contest#readme "Contest"
 [rt]: http://github.com/brynary/rack-test/#readme "Rack::Test"
+[tu]: http://ruby-doc.org/stdlib/libdoc/test/unit/rdoc/ "Test::Unit"
+[ts]: http://test-spec.rubyforge.org/test-spec/ "Test::Spec"
+[rs]: http://rspec.info/ "RSpec"
+[bc]: http://github.com/chneukirchen/bacon#readme "Bacon"
+[mt]: http://github.com/seattlerb/minitest#readme "Minitest"
+[ms]: http://rubyspec.org/projects/show/mspec "MSpec"
+[pt]: http://matflores.github.com/protest/ "Protest"
