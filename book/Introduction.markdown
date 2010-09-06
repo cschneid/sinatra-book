@@ -54,7 +54,10 @@ The _edge_ version of Sinatra lives in its Git repository, available at
 
 You can use the _edge_ version to try new functionality or to contribute to the
 framework.  You need to have Git version control software installed
-(<http://www.git-scm.com>).  Then follow these steps:
+(<http://www.git-scm.com>).  You could use either [rake](http://rake.rubyforge.org/) or [bundler](http://gembundler.com/). Follow these steps:
+
+**Rake**
+    gem install rake
 
 1. cd where/you/keep/your/projects
 2. git clone git://github.com/sinatra/sinatra.git
@@ -63,15 +66,52 @@ framework.  You need to have Git version control software installed
 
 Then add this to your application:
 
+   require 'sinatra'
+
+**Bundler**
+Alternatively you can use bundler (http://gembundler.com/).
+
+   gem install bundler
+
+Let's setup a quick modularized Sinatra application to show us which version we're running.
+
+If you're using bundler, you'll have to create a gemfile listening sinatra's dependencies; and other gem dependencies. In your application's root create your 'Gemfile'.
+
+    #~/Gemfile
+    gem "sinatra", :git => "git://github.com/sinatra/sinatra.git"
+    source "http://rubygems.org/"
+    gem "rack"
+
+In this example we will use [rack](http://http://github.com/rack/rack). You could setup bundler to use the git version, but that is up to you.
+
+Go ahead and create a new file 'config.ru' in your application's root.
+
+    #~/config.ru
+    require 'rubygems'
+    require 'bundler'
+    Bundler.setup
+
     require 'sinatra'
 
-You can check the version you are running by adding this route and loading
-`http://localhost:4567/about` in your browser.
+    # possible environment setup options
+    set :env, :development
+    set :port, 4567
+    disable :run, :reload
+
+    require 'my_app.rb'
+
+    run MyApp
+
+To start your sinatra rack application just `rackup` from your application's root:
+
+    rackup config.ru
+
+You can check the version you are running by adding this route to your application (my_app.rb) and loading
+`http://localhost:9292/about` in your browser.
 
     get '/about' do
       "I'm running on Version " + Sinatra::VERSION
     end
-
 
 
 Hello World Application
