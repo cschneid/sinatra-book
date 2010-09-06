@@ -3,8 +3,8 @@ Introduction
 
 What is Sinatra?
 ----------------
-Sinatra is a Domain Specific Language (DSL) for quickly creating web-applications
-in Ruby.
+Sinatra is a Domain Specific Language (DSL) for quickly creating
+web-applications in Ruby.
 
 It keeps a minimal feature set, leaving the developer to use the
 tools that best suit them and their application.
@@ -54,7 +54,12 @@ The _edge_ version of Sinatra lives in its Git repository, available at
 
 You can use the _edge_ version to try new functionality or to contribute to the
 framework.  You need to have Git version control software installed
-(<http://www.git-scm.com>).  Then follow these steps:
+(<http://www.git-scm.com>).  You could use either
+[rake](http://rake.rubyforge.org/) or [bundler](http://gembundler.com/). Follow
+these steps:
+
+**Rake**
+    gem install rake
 
 1. cd where/you/keep/your/projects
 2. git clone git://github.com/sinatra/sinatra.git
@@ -63,15 +68,58 @@ framework.  You need to have Git version control software installed
 
 Then add this to your application:
 
+   require 'sinatra'
+
+**Bundler**
+Alternatively you can use bundler (http://gembundler.com/).
+
+   gem install bundler
+
+Let's setup a quick modularized Sinatra application to show us which version
+we're running.
+
+If you're using bundler, you'll have to create a gemfile listening sinatra's
+dependencies; and other gem dependencies. In your application's root create
+your 'Gemfile'.
+
+    #~/Gemfile
+    gem "sinatra", :git => "git://github.com/sinatra/sinatra.git"
+    source "http://rubygems.org/"
+    gem "rack"
+
+In this example we will use [rack](http://http://github.com/rack/rack). You
+could setup bundler to use the git version, but that is up to you.
+
+Go ahead and create a new file 'config.ru' in your application's root.
+
+    #~/config.ru
+    require 'rubygems'
+    require 'bundler'
+    Bundler.setup
+
     require 'sinatra'
 
-You can check the version you are running by adding this route and loading
-`http://localhost:4567/about` in your browser.
+    # possible environment setup options
+    set :env, :development
+    set :port, 4567
+    disable :run, :reload
+
+    require 'my_app.rb'
+
+    run MyApp
+
+To start your sinatra rack application just `rackup` from your application's
+root:
+
+    rackup config.ru
+
+You can check the version you are running by adding this route to your
+application (my_app.rb) and loading `http://localhost:9292/about` in your
+browser.
 
     get '/about' do
       "I'm running on Version " + Sinatra::VERSION
     end
-
 
 
 Hello World Application
@@ -85,7 +133,8 @@ Sinatra is installed, how about making your first application?
       "Hello world, it's #{Time.now} at the server!"
     end
 
-Run this application by `$ ruby hello_world.rb` and load `http://localhost:4567` in your browser.
+Run this application by `$ ruby hello_world.rb` and load
+`http://localhost:4567` in your browser.
 
 As you can see, Sinatra doesn't force you to setup much infrastructure: a
 request to a URL evaluates some Ruby code and returns some text in response.
@@ -97,7 +146,8 @@ Real World Applications in Sinatra
 
 ### Github Services
 
-Git hosting provider Github uses Sinatra for post-receive hooks, calling user specified services/URLs, whenever someone pushes to their repository:
+Git hosting provider Github uses Sinatra for post-receive hooks, calling user
+specified services/URLs, whenever someone pushes to their repository:
 
 * <http://github.com/blog/53-github-services-ipo>
 * <http://github.com/guides/post-receive-hooks>
@@ -105,21 +155,26 @@ Git hosting provider Github uses Sinatra for post-receive hooks, calling user sp
 
 ### Git Wiki
 
-Git Wiki is minimal Wiki engine powered by Sinatra and Git. See also various forks with additional functionality.
+Git Wiki is minimal Wiki engine powered by Sinatra and Git. See also various
+forks with additional functionality.
 
 * <http://github.com/sr/git-wiki>
 * <http://github.com/sr/git-wiki/network>
 
 ### Integrity
 
-Integrity is small and clean _continuous integration_ service using Sinatra, watching for failing builds of your codebase and notifying you by various channels.
+Integrity is small and clean _continuous integration_ service using Sinatra,
+watching for failing builds of your codebase and notifying you by various
+channels.
 
 * <http://www.integrityapp.com/>
 * <http://github.com/integrity/integrity>
 
 ### Seinfeld Calendar
 
-Seinfeld Calendar is a fun application tracking your contributions to open-source projects, displaying your "streaks", ie. continuous commits to Github repositories.
+Seinfeld Calendar is a fun application tracking your contributions to
+open-source projects, displaying your "streaks", ie. continuous commits to
+Github repositories.
 
 * <http://www.calendaraboutnothing.com>
 * <http://github.com/entp/seinfeld>
