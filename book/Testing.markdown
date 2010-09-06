@@ -162,7 +162,7 @@ And use it in your specs:
 
 ### Usage with Bacon
 
-This works similar to `Test::Unit`:
+After installing Bacon, setting it up works similar to `Test::Unit`:
 
     ENV['RACK_ENV'] = 'test'
     require 'bacon'
@@ -176,6 +176,19 @@ This works similar to `Test::Unit`:
     end
 
 ### Usage with Minitest
+
+After installing Minitest, setting it up works similar to `Test::Unit`:
+
+    ENV['RACK_ENV'] = 'test'
+    require 'bacon'
+    require 'rack-test'
+    require 'my-app'
+
+    module TestMixin
+      include Rack::Test::Methods
+      Minitest::Unit.send(:include, self)
+      def app() Sinatra::Application end
+    end
 
 ### Usage with MSpec
 
