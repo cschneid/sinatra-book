@@ -7,5 +7,4 @@ General guidelines for patches:
 Submitting Patches
 
 * Fork this repo on GitHub and send pull requests
-* Find me (cschneid) on #sinatra (Freenode) and get a git-format-patch to me.
-
+* Find cschneid or cypher23 on #sinatra (Freenode) and get a git format-patch to them.

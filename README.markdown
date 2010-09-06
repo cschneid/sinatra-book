@@ -23,9 +23,9 @@ Learn more about Sinatra at
 How to build the Book
 ---------------------
 
-You need following gems to build the book:
+Make sure you have all the required dependencies to build the book:
 
-    sudo gem install thor maruku
+    bundle check
 
 In the root directory, launch the following Thor task:
 
@@ -34,4 +34,4 @@ In the root directory, launch the following Thor task:
 How to contribute
 -----------------
 
-Fork this repository, be sure to read the [styleguide](http://github.com/cschneid/sinatra-book/wikis/how-to-contribute) and post pull requests.
+Fork this repository, be sure to read the [styleguide](http://github.com/sinatra/sinatra-book/wiki/How-to-contribute) and post pull requests.

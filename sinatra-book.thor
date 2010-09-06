@@ -6,6 +6,7 @@ require 'maruku'
 require 'fileutils'
 
 class Book < Thor
+  include FileUtils
   
   SUPPORTED_FORMATS = %w{html latex pdf}
   OUTPUT_DIR = File.join(File.dirname(__FILE__), "output")
@@ -17,8 +18,10 @@ class Book < Thor
   def build(format = 'html')
     doc = Maruku.new(complete_markdown)
     
-    FileUtils.mkdir_p(OUTPUT_DIR)
-    FileUtils.cp( File.join(File.dirname(__FILE__), 'assets', 'book.css'), File.join(File.dirname(__FILE__), 'output'))
+    mkdir_p OUTPUT_DIR
+    Dir.glob File.expand_path('../{assets,images}/*', __FILE__) do |file|
+      cp file, OUTPUT_DIR
+    end
     
         
     if SUPPORTED_FORMATS.include?( format )
@@ -32,7 +35,7 @@ class Book < Thor
 
   desc "clean", "Delete the output directory, along with all contents"
   def clean
-    FileUtils.rm_rf(OUTPUT_DIR, {:verbose => true})
+    rm_rf OUTPUT_DIR, :verbose => true
   end
   
   private

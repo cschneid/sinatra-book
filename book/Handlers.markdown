@@ -17,6 +17,11 @@ In handlers you can access submitted form parameters directly via the params has
     get '/' do
       params['post']
     end
+
+Parameters can be accessed by either a string, or symbol key:
+    
+    params[:name]
+    params["name"]
     
 ### Nested form parameters
 
