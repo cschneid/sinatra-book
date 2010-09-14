@@ -59,6 +59,7 @@ framework.  You need to have Git version control software installed
 these steps:
 
 **Rake**
+
     gem install rake
 
 1. cd where/you/keep/your/projects
@@ -66,60 +67,23 @@ these steps:
 3. cd sinatra
 4. rake install
 
-Then add this to your application:
-
-   require 'sinatra'
-
 **Bundler**
 Alternatively you can use bundler (http://gembundler.com/).
 
-   gem install bundler
+    gem install bundler
 
-Let's setup a quick modularized Sinatra application to show us which version
-we're running.
+To use edge sinatra with bundler, you'll have to create a gemfile listing
+sinatra's dependencies; and other dependencies for your application. In your
+application's root create your 'Gemfile':
 
-If you're using bundler, you'll have to create a gemfile listening sinatra's
-dependencies; and other gem dependencies. In your application's root create
-your 'Gemfile'.
+    gem 'sinatra', :git => 'git://github.com/sinatra/sinatra.git'
+    source 'http://rubygems.org/'
 
-    #~/Gemfile
-    gem "sinatra", :git => "git://github.com/sinatra/sinatra.git"
-    source "http://rubygems.org/"
-    gem "rack"
+Here we use the gemcutter source to specify where to get Sinatra's
+dependencies; alternatively you can use the git version, but that is up to you.
+So now we can install our bundle:
 
-In this example we will use [rack](http://http://github.com/rack/rack). You
-could setup bundler to use the git version, but that is up to you.
-
-Go ahead and create a new file 'config.ru' in your application's root.
-
-    #~/config.ru
-    require 'rubygems'
-    require 'bundler'
-    Bundler.setup
-
-    require 'sinatra'
-
-    # possible environment setup options
-    set :env, :development
-    set :port, 4567
-    disable :run, :reload
-
-    require 'my_app.rb'
-
-    run MyApp
-
-To start your sinatra rack application just `rackup` from your application's
-root:
-
-    rackup config.ru
-
-You can check the version you are running by adding this route to your
-application (my_app.rb) and loading `http://localhost:9292/about` in your
-browser.
-
-    get '/about' do
-      "I'm running on Version " + Sinatra::VERSION
-    end
+    bundle install
 
 
 Hello World Application
@@ -127,6 +91,11 @@ Hello World Application
 Sinatra is installed, how about making your first application?
 
     require 'rubygems'
+
+    # If you're using bundler, you will need to add these 2 lines
+    require 'bundler'
+    Bundler.setup
+    
     require 'sinatra'
     
     get '/' do
