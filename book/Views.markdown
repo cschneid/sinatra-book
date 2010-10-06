@@ -172,11 +172,11 @@ Partials are not built into the default installation of Sinatra.
 The minimalist implementation of partials takes zero helper code.  Just call
 your view method from your view code.
 
-    <%= erb :_my_partial_file, :layout => nil %>
+    <%= erb :_my_partial_file, :layout => false %>
 
 You can even pass local variables via this approach.
 
-    <%= erb :_my_partial_file, :layout => nil, :locals => {:a => 1} %>
+    <%= erb :_my_partial_file, :layout => false, :locals => {:a => 1} %>
 
 If you find that you need a more advanced partials implementation that handles
 collections and other features, you will need to implement a helper that does
