@@ -1,6 +1,25 @@
 Development Techniques
 ======================
 
+Bundler
+-------
+
+Whether you need a specific gem and version, or a set of gems for a certain
+environment; Bundler is a fantastic tool for managing your applications
+dependencies.
+
+### Gemfiles
+
+**Gemcutter**
+
+**Git**
+
+### Resources
+
+*    [Gemfile Manual](http://gembundler.com/man/gemfile.5.html)
+*    [CLI Manual](http://gembundler.com/man/bundle.1.html)
+
+
 Automatic Code Reloading
 ------------------------
 
