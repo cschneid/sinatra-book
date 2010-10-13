@@ -8,7 +8,7 @@ Whether you need a specific gem and version, or a set of gems for a certain
 environment; Bundler is a fantastic tool for managing your applications
 dependencies.
 
-##    Gemfiles
+### Gemfiles
 
 Gemfiles are the source of your bundle, used by bundler to determine what gems
 to install and require in different situations. It's important to understand
@@ -56,7 +56,7 @@ repository contains a valid gemspec for the gem you're trying to install.
     # as well as i18n from git
     gem "i18n", :git => "http://github.com/svenfuchs/i18n.git"
 
-##    Commands (CLI)
+### Commands (CLI)
 
 Bundle is the command line utility provided with Bundler to install, update and
 manage your bundle. Here's a quick overview of some of the most common
@@ -120,13 +120,15 @@ Now if say you skip the last step, and just auto require gems from your groups
     # and gems specified in your test group
     Bundler.require(:default, :test)
 
-##    Resources
+###  Resources
 
 *    [Gemfile Manual](http://gembundler.com/man/gemfile.5.html)
 *    [CLI Manual](http://gembundler.com/man/bundle.1.html) - Basic command 
 line utilities provided with Bundler
 *    [Gems from Git repositories](http://gembundler.com/git.html) - Using git 
 repositories with your Gemfile
+*    [Using Groups](http://gembundler.com/groups.html) - Using groups with 
+bundler
 *    [bundle install manual](http://gembundler.com/man/bundle-install.1.html)
 *    [bundle update manual](http://gembundler.com/man/bundle-update.1.html)
 *    [bundle package manual](http://gembundler.com/man/bundle-package.1.html)
