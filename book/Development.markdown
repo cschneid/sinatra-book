@@ -122,6 +122,8 @@ Now if say you skip the last step, and just auto require gems from your groups
 
 ###  Resources
 
+*    [Bundler's Purpose and Rationale](http://gembundler.com/rationale.html) -
+For a longer explanation of what Bundler does and how it works
 *    [Gemfile Manual](http://gembundler.com/man/gemfile.5.html)
 *    [CLI Manual](http://gembundler.com/man/bundle.1.html) - Basic command 
 line utilities provided with Bundler
