@@ -72,8 +72,6 @@ However, it is possible to change the response using `halt`:
 Pattern matching filters
 ------------------------
 
-__This feature will be part of Sinatra 1.1__
-
 Filters optionally taking a pattern, causing them to be evaluated only if the request path matches that pattern:
 
     before '/protected/*' do
