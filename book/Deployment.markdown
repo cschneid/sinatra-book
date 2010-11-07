@@ -135,6 +135,12 @@ Rack applications!
 Nginx is a little more difficult to configure than unicorn, but still a fairly
 straightforward process.
 
+In this example we'll be putting all of our configuration in the
+`nginx.conf` file of our nginx installation. You could alternatively separate
+some of the configuration out into `sites-enabled` and other nginx conventions.
+However, for most common and simple implementations this guide should do the
+trick.
+
     # this sets the user nginx will run as, 
     #and the number of worker processes
     user nobody nogroup;
@@ -218,7 +224,7 @@ configuration. `-E` is the Rack environment for your application to run under.
 `-D` will daemonize the process, and `-l` is the address which unicorn will
 listen to.
 
-Lastly, let's start up nginx. On most debian systems you can use the following
+Lastly, let's start up nginx. On most debian-based systems you can use the following
 command:
 
     /etc/init.d/nginx start
