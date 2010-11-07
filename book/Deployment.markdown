@@ -261,13 +261,13 @@ proxy setup using Lighttpd and Thin.
    sure the first port here matches up with the port setting in config.yml.
 
        $HTTP["host"] =~ "(www\.)?mydomain\.com"  {
-               proxy.balance = "fair"
-               proxy.server =  ("/" =>
-                                       (
-                                               ( "host" => "127.0.0.1", "port" => 4567 ),
-                                               ( "host" => "127.0.0.1", "port" => 4568 )
-                                       )
-                               )
+         proxy.balance = "fair"
+         proxy.server =  ("/" =>
+                           (
+                             ( "host" => "127.0.0.1", "port" => 4567 ),
+                             ( "host" => "127.0.0.1", "port" => 4568 )
+                           )
+                         )
        }
 
 5. Start thin and your application. I have a rake script so I can just 
