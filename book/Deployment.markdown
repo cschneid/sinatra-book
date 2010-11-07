@@ -48,6 +48,8 @@ combination for deployment.
 First thing you will need to do is get nginx installed on your system. This
 should be handled by your operating systems package manager.
 
+For more information on installing nginx, check [the official docs](http://wiki.nginx.org/Install).
+
 Once you have nginx installed, you can install unicorn with rubygems:
 
     gem install unicorn
@@ -145,6 +147,7 @@ straightforward process.
 
     events {
       worker_connections  1024;
+      # set to on if you have more than 1 worker_processes 
       accept_mutex off;
     }
 
@@ -153,8 +156,10 @@ straightforward process.
 
       default_type application/octet-stream;
       access_log /tmp/nginx.access.log combined;
-      
+     
+      # use the kernel sendfile
       sendfile        on;
+      # prepend http headers before sendfile() 
       tcp_nopush     on;
 
       keepalive_timeout  65;
@@ -167,16 +172,23 @@ straightforward process.
          text/javascript application/x-javascript
          application/atom+xml;
 
+      # use the socket we configured in our unicorn.rb
       upstream unicorn_server {
         server unix:/path/to/app/tmp/sockets/unicorn.sock
         fail_timeout=0;
       }
 
+      # configure the virtual host
       server {
+        # replace with your domain name
         server_name my-sinatra-app.com;
+        # replace this with your static Sinatra app files, root + public 
         root /path/to/app/public;
+        # port to listen for requests on
         listen 80;
+        # maximum accepted body size of client request 
         client_max_body_size 4G;
+        # the server will close connections after this time 
         keepalive_timeout 5;
 
         location / {
@@ -184,8 +196,9 @@ straightforward process.
           proxy_set_header Host $http_host;
           proxy_redirect off;
           if (!-f $request_filename) {
-              proxy_pass http://unicorn_server;
-              break;
+            # pass to the upstream unicorn server mentioned above 
+            proxy_pass http://unicorn_server;
+            break;
           }
         }
       }
