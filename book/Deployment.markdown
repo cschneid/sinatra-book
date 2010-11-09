@@ -235,6 +235,32 @@ resides.
 Now you should have successfully deployed your Sinatra application on nginx and
 unicorn.
 
+### Stopping the server
+
+So now that you're using nginx and unicorn, at some point you might end up
+asking yourself: How do I stop this thing?
+
+Here's how:
+
+    $ ps -ax | grep unicorn
+
+This will output the processes running unicorn, in the first column should be
+the process id (pid). In order to stop unicorn in it's tracks:
+
+    kill -9 <PID>
+
+There should be a `master` process which once that is killed, the
+workers should follow. Feel free to search the processes again to make sure
+they've all stopped before restarting.
+
+To stop nginx you can use a similar technique as above, or if you've got the
+nginx init scripts installed on any debian-based system use:
+
+    sudo /etc/init.d/nginx stop
+
+That should wrap things up for deploying nginx and unicorn, for more
+information on stopping the server look into `man ps` and `man kill`.
+
 Lighttpd Proxied to Thin        {#deployment_lighttpd}
 ------------------------
 
