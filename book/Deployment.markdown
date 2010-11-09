@@ -261,6 +261,15 @@ nginx init scripts installed on any debian-based system use:
 That should wrap things up for deploying nginx and unicorn, for more
 information on stopping the server look into `man ps` and `man kill`.
 
+### Resources
+
+*   [unicorn source on github](http://github.com/defunkt/unicorn)
+*   [original unicorn announcement](http://github.com/blog/517-unicorn)
+*   [official unicorn homepage](http://unicorn.bogomips.org/)
+*   [unicorn rdoc](http://rdoc.info/gems/unicorn/2.0.0/frames)
+*   [nginx official homepage](http://nginx.org/)
+*   [nginx wiki](http://wiki.nginx.org/Main)
+
 Lighttpd Proxied to Thin        {#deployment_lighttpd}
 ------------------------
 
