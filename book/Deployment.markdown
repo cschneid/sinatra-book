@@ -365,6 +365,12 @@ and this book tells you how to get it all going.
 You can find additional documentation at the Passenger Github repository.
 
 
+Dreamhost Deployment via Passenger      {#deployment_dreamhost}
+----------------------------------
+
+You can deploy your Sinatra apps to Dreamhost, a shared web hosting service,
+via Passenger with relative ease. Here's how.
+
 1. Setting up the account in the Dreamhost interface
 
        Domains -> Manage Domains -> Edit (web hosting column)
