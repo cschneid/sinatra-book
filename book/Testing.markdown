@@ -33,7 +33,8 @@ Imagine you have an application like this:
       "Hello #{params[:name]}!"
     end
 
-You have to define an `app` method pointing to your application class (which is `Sinatra::Application` per default):
+You have to define an `app` method pointing to your application class (which is
+`Sinatra::Application` per default):
 
     require 'rack/test'
     require 'myapp'
@@ -190,7 +191,8 @@ After installing [Bacon][bc], setting it up works similar to `Test::Unit`:
 
 ### Usage with Minitest
 
-Since Ruby 1.9, [Minitest][mt] is shipped with the standard library. If you want to use it on 1.8, it is still installable via Rubygems.
+Since Ruby 1.9, [Minitest][mt] is shipped with the standard library. If you
+want to use it on 1.8, it is still installable via Rubygems.
 
 After installing Minitest, setting it up works similar to `Test::Unit`:
 
