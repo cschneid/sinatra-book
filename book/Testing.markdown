@@ -36,26 +36,28 @@ Imagine you have an application like this:
 You have to define an `app` method pointing to your application class (which is
 `Sinatra::Application` per default):
 
+    require 'myapp.rb'
+    require 'test/unit'
     require 'rack/test'
-    require 'myapp'
-    include Rack::Test
-    
-    def app
-      Sinatra::Application
+
+    class MyAppTest < Test::Unit::TestCase
+      include Rack::Test::Methods
+
+      def app
+        Sinatra::Application
+      end
+      
+      def test_my_default
+        get '/'
+        assert last_response.ok?
+        assert_equal 'Welcome to my page!', last_response.body
+      end
+
+      def test_with_params
+        post '/', :name => 'Frank'
+        assert_equal 'Hello Frank!', last_response.body
+      end
     end
-    
-    get '/'
-    last_response.ok?     # => true
-    last_response.status  # => 200
-    last_response.body    # => "Welcome to my page!"
-    last_response.headers # Hash with headers
-    
-    get '/foo'
-    last_response.ok?     # => false
-    last_response.status  # => 404
-    
-    post '/', :name => 'Simon'
-    last_response.body.include? 'Hello Simon' # => true
 
 ### Modifying `env`
 
