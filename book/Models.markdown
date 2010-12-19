@@ -11,9 +11,10 @@ show started, and this example will include a 'Post' model.
     require 'rubygems'
     require 'sinatra'
     require 'datamapper'
-    
+
+    # need install dm-sqlite-adapter
     DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/blog.db")
-    
+
     class Post
         include DataMapper::Resource
         property :id, Serial
@@ -21,9 +22,9 @@ show started, and this example will include a 'Post' model.
         property :body, Text
         property :created_at, DateTime
     end
-    
+
     # automatically create the post table
-    Post.auto_migrate! unless Post.table_exists?
+    Post.auto_migrate! unless Post.storage_exists?
 
 Once that is all well and good, you can actually start developing your
 application!
