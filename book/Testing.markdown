@@ -143,10 +143,35 @@ module in the `Test::Unit::TestCase` class:
 Now all `TestCase` subclasses will automatically have `Rack::Test`
 available to them.
 
+### Usage with Minitest
+
+Since Ruby 1.9, [Minitest][mt] is shipped with the standard library. If you
+want to use it on 1.8, it is still installable via Rubygems.
+
+After installing Minitest, setting it up works similar to `Test::Unit`:
+
+    ENV['RACK_ENV'] = 'test'
+    require 'minitest/unit'
+    require 'rack/test'
+    require 'my-app'
+
+    module TestMixin
+      include Rack::Test::Methods
+      Minitest::Unit.send(:include, self)
+      def app() Sinatra::Application end
+    end
+
+### Mocks and Benchmarks with Minitest
+
+TODO
+...
+TODO
+
 ### Usage with Test::Unit, Test::Spec or Contest
 
-The main advantage of using [Test::Unit][tu] is that it already ships with
-Ruby and you therefore skip the installation part.
+One of the advantages of using
+[Test::Unit](http://rdoc.info/gems/test-unit/2.1.2/frames) is that it already
+ships with Ruby **1.8.7** and you can skip the installation part in some cases.
 
 Set up rack-test by including `Rack::Test::Methods` into your test class and
 defining `app`:
@@ -198,6 +223,26 @@ Since [Contest][ct] and [Test::Spec][ts] are both extensions for Test::Unit,
 all you have to do is install them and add a `require 'contest'` or `require
 'test/spec'` to your test helper.
 
+### Test::Unit with Shoulda and Factory Girl
+
+**Shoulda**
+
+**Factory Girl**
+
+### Mocking for Test::Unit
+
+**Mocha**
+
+**Flexmock**
+
+**Double Ruby**
+
+### Usage with RSpec 2.x
+
+TODO
+...
+TODO
+
 ### Usage with RSpec 1.x
 
 [RSpec][rs] is the main competitor to Test::Unit. It is feature rich and
@@ -232,10 +277,6 @@ And use it in your specs:
       end
     end
 
-### Usage with RSpec 2.x
-
-...
-
 ### Usage with Bacon
 
 After installing [Bacon][bc], setting it up works similar to `Test::Unit`:
@@ -248,24 +289,6 @@ After installing [Bacon][bc], setting it up works similar to `Test::Unit`:
     module TestMixin
       include Rack::Test::Methods
       Bacon::Context.send(:include, self)
-      def app() Sinatra::Application end
-    end
-
-### Usage with Minitest
-
-Since Ruby 1.9, [Minitest][mt] is shipped with the standard library. If you
-want to use it on 1.8, it is still installable via Rubygems.
-
-After installing Minitest, setting it up works similar to `Test::Unit`:
-
-    ENV['RACK_ENV'] = 'test'
-    require 'minitest/unit'
-    require 'rack/test'
-    require 'my-app'
-
-    module TestMixin
-      include Rack::Test::Methods
-      Minitest::Unit.send(:include, self)
       def app() Sinatra::Application end
     end
 
@@ -295,6 +318,13 @@ After installing [Protest][pt], setting it up works similar to `Test::Unit`:
       Protest::TestCase.send(:include, self)
       def app() Sinatra::Application end
     end
+
+Using Steak
+-----------
+
+TODO
+...
+TODO
 
 Using Capybara
 --------------
