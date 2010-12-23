@@ -151,11 +151,21 @@ installable via Rubygems.
 
 After installing Minitest, setting it up works similar to `Test::Unit`:
 
+If you have multiple test files, you could create a test helper file and do
+all the setup in there:
+
+    # test_helper.rb
     ENV['RACK_ENV'] = 'test'
     require 'minitest/autorun'
     require 'rack/test'
-    require 'my-app'
+    require_relative 'my-app'
 
+In your test files you only have to require that helper:
+
+    # test.rb
+    # if you only target Ruby <= 1.9, you could use require File.expand_path('test_helper', __FILE__)
+    require_relative 'test_helper'
+    
     class MyTest < MiniTest::Unit::TestCase
       
       include Rack::Test::Methods
@@ -169,11 +179,25 @@ After installing Minitest, setting it up works similar to `Test::Unit`:
       end
     end
 
-### Mocks and Benchmarks with Minitest
+### Specs and Benchmarks with Minitest
 
-TODO
-...
-TODO
+**Specs**
+
+    # spec.rb
+    require_relative 'test_helper'
+
+    include Rack::Test::Methods
+
+    def app() Sinatra::Application end
+
+    describe "my example app" do
+      it "should successfully return a greeting" do
+        get '/' 
+        assert_equal 'Welcome to my page!', last_response.body 
+      end
+    end
+
+**Benchmarks**
 
 ### Usage with Test::Unit, Test::Spec or Contest
 
@@ -199,34 +223,6 @@ defining `app`:
       end
     end
 
-If you have multiple test files, you could create a test helper file and do
-all the setup in there:
-
-    # test/test_helper.rb
-    ENV['RACK_ENV'] = 'test'
-    require 'test/unit'
-    require 'rack/test'
-    require 'my-app'
-    
-    module TestMixin
-      include Rack::Test::Methods
-      Test::Unit::TestCase.send(:include, self)
-      def app() Sinatra::Application end
-    end
-
-In your test files you only have to require that helper:
-
-    # test/homepage_test.rb
-    # if you only target Ruby >= 1.9, you could use require_relative
-    require File.expand_path('../test_helper', __FILE__)
-    
-    class HomepageTest < Test::Unit::TestCase
-      def test_homepage
-        get '/'
-        assert last_response.ok?
-      end
-    end
-
 Since [Contest][ct] and [Test::Spec][ts] are both extensions for Test::Unit,
 all you have to do is install them and add a `require 'contest'` or `require
 'test/spec'` to your test helper.
@@ -236,14 +232,6 @@ all you have to do is install them and add a `require 'contest'` or `require
 **Shoulda**
 
 **Factory Girl**
-
-### Mocking for Test::Unit
-
-**Mocha**
-
-**Flexmock**
-
-**Double Ruby**
 
 ### Usage with RSpec 2.x
 
