@@ -151,13 +151,13 @@ want to use it on 1.8, it is still installable via Rubygems.
 After installing Minitest, setting it up works similar to `Test::Unit`:
 
     ENV['RACK_ENV'] = 'test'
-    require 'minitest/unit'
+    require 'minitest/autorun'
     require 'rack/test'
     require 'my-app'
 
     module TestMixin
       include Rack::Test::Methods
-      Minitest::Unit.send(:include, self)
+      MiniTest::Unit.send(:include, self)
       def app() Sinatra::Application end
     end
 
