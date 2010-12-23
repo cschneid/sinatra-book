@@ -145,8 +145,9 @@ available to them.
 
 ### Usage with Minitest
 
-Since Ruby 1.9, [Minitest][mt] is shipped with the standard library. If you
-want to use it on 1.8, it is still installable via Rubygems.
+Since Ruby 1.9, [Minitest](http://rubydoc.info/gems/minitest/2.0.1/frames) is
+shipped with the standard library. If you want to use it on 1.8, it is still
+installable via Rubygems.
 
 After installing Minitest, setting it up works similar to `Test::Unit`:
 
@@ -155,10 +156,17 @@ After installing Minitest, setting it up works similar to `Test::Unit`:
     require 'rack/test'
     require 'my-app'
 
-    module TestMixin
+    class MyTest < MiniTest::Unit::TestCase
+      
       include Rack::Test::Methods
-      MiniTest::Unit.send(:include, self)
+
       def app() Sinatra::Application end
+    
+      def test_hello_world
+        get '/'
+        assert last_response.ok?
+        assert_equal "Hello, World!", last_respones.body
+      end
     end
 
 ### Mocks and Benchmarks with Minitest
