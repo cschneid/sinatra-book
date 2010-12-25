@@ -250,9 +250,17 @@ all you have to do is install them and add a `require 'contest'` or `require
 
 ### Usage with RSpec 2.x
 
-TODO
-...
-TODO
+**spec_helper**
+
+    require 'rack/test'
+    require_relative '../my-app.rb'
+
+    module RSpecMixin
+      include Rack::Test::Methods
+      def app() Sinatra::Application end
+    end
+
+    RSpec.configure { |c| c.include RSpecMixin }
 
 ### Usage with RSpec 1.x
 
