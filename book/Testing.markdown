@@ -10,7 +10,7 @@ or other classes, please consult the documentation of frameworks used
 (including your test framework itself). Sinatra itself uses [Contest][ct] for
 testing, but feel free to use any framework you like.
 
-Bryan Helmkamp's [Rack::Test](http://rdoc.info/gems/rack-test/0.5.6/frames)
+Bryan Helmkamp's [Rack::Test](https://github.com/brynary/rack-test)
 offers tools for mocking Rack request, sending those to your application and
 inspecting the response all wrapped in a small DSL.
 
