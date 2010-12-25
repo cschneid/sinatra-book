@@ -183,7 +183,6 @@ In your test files you only have to require that helper:
 
 **Specs**
 
-    # spec.rb
     require_relative 'test_helper'
 
     include Rack::Test::Methods
@@ -198,6 +197,22 @@ In your test files you only have to require that helper:
     end
 
 **Benchmarks**
+
+    require_relative 'test_helper'
+    require 'minitest/benchmark'
+
+    include Rack::Test::Methods
+    def app() Sinatra::Application end
+
+    describe "my example app" do
+      bench_range { bench_exp 1, 10_000 } 
+      bench_performance_linear "welcome message", 0.9999 do |n|
+        n.times do
+          get '/'
+          assert_equal 'Welcome to my page!', last_response.body 
+        end 
+      end
+    end
 
 ### Usage with Test::Unit, Test::Spec or Contest
 
