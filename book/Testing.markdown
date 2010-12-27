@@ -264,6 +264,8 @@ all you have to do is install them and add a `require 'contest'` or `require
 
 **Shared Example Groups**
 
+[Shared Example Groups](http://relishapp.com/rspec/rspec-core/v/2-3/dir/example-groups/shared-example-group)
+
     require_relative 'spec_helper'
 
     shared_examples_for "my example app" do
@@ -387,6 +389,13 @@ Using Capybara
 ### Test::Unit
 
 ### Cucumber
+
+**Cucumber Resources**
+
+*   [Cucumber Homepage](http://cukes.info/)
+*   [Source on github](https://github.com/aslakhellesoy/cucumber)
+*   [Documentation](https://github.com/aslakhellesoy/cucumber/wiki/)
+
 
 Using Sinatra::TestHelper
 -------------------------
