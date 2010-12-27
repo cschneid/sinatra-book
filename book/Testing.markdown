@@ -262,6 +262,12 @@ all you have to do is install them and add a `require 'contest'` or `require
 
     RSpec.configure { |c| c.include RSpecMixin }
 
+**RSpec 2.x Resources**
+
+*   [RSpec 2.x Docs](http://relishapp.com/rspec)
+*   [Source on github](https://github.com/rspec/rspec)
+*   [Resources for RSpec 2.x developers/contributors](https://github.com/rspec/rspec-dev)
+
 ### Usage with RSpec 1.x
 
 [RSpec][rs] is the main competitor to Test::Unit. It is feature rich and
@@ -295,6 +301,13 @@ And use it in your specs:
         last_response.should be_ok
       end
     end
+
+**RSpec 1.x Resources**
+
+*   [RSpec 1.x Docs](http://rspec.info/)
+*   [Source on github](https://github.com/dchelimsky/rspec)
+*   [Resources for RSpec 1.x developers/contributors](https://github.com/dchelimsky/rspec-dev)
+
 
 ### Usage with Bacon
 
