@@ -242,11 +242,29 @@ Since [Contest][ct] and [Test::Spec][ts] are both extensions for Test::Unit,
 all you have to do is install them and add a `require 'contest'` or `require
 'test/spec'` to your test helper.
 
-### Test::Unit with Shoulda and Factory Girl
-
 **Shoulda**
 
-**Factory Girl**
+    require_relative 'test_helper'
+
+    class ExampleUnitTest < Test::Unit::TestCase
+
+      include Rack::Test::Methods
+
+      def app() Sinatra::Application end
+
+      context "view my page" do
+        setup do
+          get '/'
+        end
+      
+        should "greet the visitor" do 
+          assert last_response.ok? 
+          assert_equal 'Welcome to my page!', last_response.body
+        end
+      
+      end
+    end  
+
 
 ### Usage with RSpec 2.x
 
@@ -376,15 +394,52 @@ After installing [Protest][pt], setting it up works similar to `Test::Unit`:
       def app() Sinatra::Application end
     end
 
-Using Steak
------------
+Using Capybara
+--------------
 
-TODO
-...
-TODO
+
+### Steak
+
+**spec/acceptance/acceptance_helper.rb**
+
+    ENV['RACK_ENV'] = 'test'
+
+    require 'rubygems'
+
+    require 'steak'
+    require 'rack/test'
+    require 'capybara/dsl'
+
+    RSpec.configure do |config|
+      config.include Capybara
+    end
+
+    require_relative '../../app.rb' 
+
+    Capybara.app = Sinatra::Application
+
+**My Page Acceptance Spec**
+
+    require_relative 'acceptance_helper'
+
+    feature "My Page" do
+
+      scenario "greets the visitor" do
+        visit "/"
+        page.should have_content "Welcome to my page!" 
+      end
+
+    end
+
+**Steak Resources**
+
+*   [Source on github](https://github.com/cavalle/steak)
+*   [Documentation](http://rdoc.info/gems/steak/1.0.1/frames/)
+*   [Timeless: BDD with RSpec and Steak](http://timeless.judofyr.net/bdd-with-rspec-and-steak)
+*   [More Steak Resources](https://github.com/cavalle/steak/wiki/Resources)
 
 Using Webrat 
---------------
+------------
 
 ### Cucumber
 
