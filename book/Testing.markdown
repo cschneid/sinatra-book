@@ -36,7 +36,16 @@ Imagine you have an application like this:
 You have to define an `app` method pointing to your application class (which is
 `Sinatra::Application` per default):
 
-    require 'myapp.rb'
+    begin 
+      # try to use require_relative first
+      # this only works for 1.9
+      require_relative 'my-app.rb'
+    rescue LoadError
+      # oops, must be using 1.8
+      # no problem, this will load it then
+      require File.expand_path('my-app.rb', __FILE__)
+    end
+    
     require 'test/unit'
     require 'rack/test'
 
@@ -158,14 +167,22 @@ all the setup in there:
     ENV['RACK_ENV'] = 'test'
     require 'minitest/autorun'
     require 'rack/test'
-    require_relative 'my-app'
-
+    
+    begin
+      require_relative 'my-app'
+    rescue LoadError 
+      require File.expand_path('my-app', __FILE__)
+    end
+  
 In your test files you only have to require that helper:
 
     # test.rb
-    # if you only target Ruby <= 1.9, you could use require File.expand_path('test_helper', __FILE__)
-    require_relative 'test_helper'
-    
+    begin 
+      require_relative 'test_helper'
+    rescue LoadError
+      require File.expand_path('test_helper', __FILE__)
+    end
+
     class MyTest < MiniTest::Unit::TestCase
       
       include Rack::Test::Methods
@@ -183,7 +200,11 @@ In your test files you only have to require that helper:
 
 **Specs**
 
-    require_relative 'test_helper'
+    begin 
+      require_relative 'test_helper'
+    rescue LoadError
+      require File.expand_path('test_helper', __FILE__)
+    end
 
     include Rack::Test::Methods
 
@@ -198,7 +219,12 @@ In your test files you only have to require that helper:
 
 **Benchmarks**
 
-    require_relative 'test_helper'
+    begin 
+      require_relative 'test_helper'
+    rescue LoadError
+      require File.expand_path('test_helper', __FILE__)
+    end
+    
     require 'minitest/benchmark'
 
     include Rack::Test::Methods
@@ -234,7 +260,12 @@ defining `app`:
     ENV['RACK_ENV'] = 'test'
     require 'test/unit'
     require 'rack/test'
-    require 'myapp'
+    
+    begin 
+      require_relative 'my-app.rb'
+    rescue LoadError
+      require File.expand_path('my-app.rb', __FILE__)
+    end
     
     class HomepageTest < Test::Unit::TestCase
       include Rack::Test:Methods
@@ -252,7 +283,11 @@ all you have to do is install them and add a `require 'contest'` or `require
 
 **Shoulda**
 
-    require_relative 'test_helper'
+    begin 
+      require_relative 'test_helper'
+    rescue LoadError
+      require File.expand_path('test_helper', __FILE__)
+    end
 
     class ExampleUnitTest < Test::Unit::TestCase
 
@@ -279,7 +314,12 @@ all you have to do is install them and add a `require 'contest'` or `require
 **spec_helper**
 
     require 'rack/test'
-    require_relative '../my-app.rb'
+
+    begin 
+      require_relative '../my-app.rb'
+    rescue LoadError
+      require File.expand_path('../my-app.rb', __FILE__)
+    end
 
     module RSpecMixin
       include Rack::Test::Methods
@@ -292,7 +332,11 @@ all you have to do is install them and add a `require 'contest'` or `require
 
 [Shared Example Groups](http://relishapp.com/rspec/rspec-core/v/2-3/dir/example-groups/shared-example-group)
 
-    require_relative 'spec_helper'
+    begin 
+      require_relative 'spec_helper'
+    rescue LoadError
+      require File.expand_path('spec_helper', __FILE__)
+    end
 
     shared_examples_for "my example app" do
       before(:each) do
@@ -333,8 +377,13 @@ In your spec file or your spec helper, you can setup `Rack::Test` like this:
     ENV['RACK_ENV'] = 'test'
     require 'test/unit'
     require 'rack/test'
-    require 'my-app'
     
+    begin 
+      require_relative 'my-app'
+    rescue LoadError
+      require File.expand_path('my-app', __FILE__)
+    end
+
     module TestMixin
       include Rack::Test::Methods
       def app() Sinatra::Application end
@@ -344,7 +393,11 @@ In your spec file or your spec helper, you can setup `Rack::Test` like this:
 
 And use it in your specs:
 
-    require File.expand_path('../spec_helper', __FILE__)
+    begin 
+      require_relative '../spec_helper'
+    rescue LoadError
+      require File.expand_path('../spec_helper', __FILE__)
+    end
     
     describe "My Sinatra Application" do
       it "should allow accessing the home page" do
@@ -367,8 +420,13 @@ After installing [Bacon][bc], setting it up works similar to `Test::Unit`:
     ENV['RACK_ENV'] = 'test'
     require 'bacon'
     require 'rack/test'
-    require 'my-app'
-
+    
+    begin 
+      require_relative 'my-app.rb'
+    rescue LoadError
+      require File.expand_path('my-app.rb', __FILE__)
+    end
+ 
     module TestMixin
       include Rack::Test::Methods
       Bacon::Context.send(:include, self)
@@ -382,8 +440,13 @@ After installing [MSpec][ms], you set it up like this:
     ENV['RACK_ENV'] = 'test'
     require 'mspec'
     require 'rack/test'
-    require 'my-app'
     
+    begin 
+      require_relative 'my-app.rb'
+    rescue LoadError
+      require File.expand_path('my-app.rb', __FILE__)
+    end
+ 
     include Rack::Test::Methods
     def app() Sinatra::Application end
 
@@ -394,8 +457,13 @@ After installing [Protest][pt], setting it up works similar to `Test::Unit`:
     ENV['RACK_ENV'] = 'test'
     require 'protest'
     require 'rack/test'
-    require 'my-app'
-
+ 
+    begin 
+      require_relative 'my-app.rb'
+    rescue LoadError
+      require File.expand_path('my-app.rb', __FILE__)
+    end
+ 
     module TestMixin
       include Rack::Test::Methods
       Protest::TestCase.send(:include, self)
@@ -413,7 +481,6 @@ Using Capybara
     ENV['RACK_ENV'] = 'test'
 
     require 'rubygems'
-
     require 'steak'
     require 'rack/test'
     require 'capybara/dsl'
@@ -421,14 +488,22 @@ Using Capybara
     RSpec.configure do |config|
       config.include Capybara
     end
-
-    require_relative '../../app.rb' 
+ 
+    begin 
+      require_relative '../../my-app.rb'
+    rescue LoadError
+      require File.expand_path('../../my-app.rb', __FILE__)
+    end
 
     Capybara.app = Sinatra::Application
 
 **My Page Acceptance Spec**
 
-    require_relative 'acceptance_helper'
+    begin 
+      require_relative 'acceptance_helper'
+    rescue LoadError
+      require File.expand_path('acceptance_helper', __FILE__)
+    end
 
     feature "My Page" do
 
@@ -477,13 +552,15 @@ Using Webrat
     ENV['RACK_ENV'] = 'test'
 
     require 'rubygems'
-    require 'bundler'
-    Bundler.setup
-
     require 'rack/test'
     require 'rspec/expectations'
     require 'webrat'
-    require_relative '../../app.rb'
+
+    begin 
+      require_relative '../../my-app.rb'
+    rescue LoadError
+      require File.expand_path('../../my-app.rb', __FILE__)
+    end
 
     Webrat.configure do |config|
       config.mode = :rack
