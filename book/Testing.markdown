@@ -214,6 +214,14 @@ In your test files you only have to require that helper:
       end
     end
 
+**MiniTest Resources**
+
+*   [Source on github](https://github.com/seattlerb/minitest)
+*   [Documentation](http://rdoc.info/gems/minitest/2.0.2/frames)
+*   [Official Blog Archive](http://blog.zenspider.com/minitest/) 
+*   [1.9.2 Stdlib Documentation](http://rdoc.info/stdlib/minitest/1.9.2/frames)
+*   [Bootspring MiniTest Blog Post](http://www.bootspring.com/2010/09/22/minitest-rubys-test-framework/)
+
 ### Usage with Test::Unit, Test::Spec or Contest
 
 One of the advantages of using
