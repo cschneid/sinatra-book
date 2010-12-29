@@ -40,7 +40,7 @@ You have to define an `app` method pointing to your application class (which is
       # try to use require_relative first
       # this only works for 1.9
       require_relative 'my-app.rb'
-    rescue LoadError
+    rescue NameError
       # oops, must be using 1.8
       # no problem, this will load it then
       require File.expand_path('my-app.rb', __FILE__)
@@ -170,7 +170,7 @@ all the setup in there:
     
     begin
       require_relative 'my-app'
-    rescue LoadError 
+    rescue NameError 
       require File.expand_path('my-app', __FILE__)
     end
   
@@ -179,7 +179,7 @@ In your test files you only have to require that helper:
     # test.rb
     begin 
       require_relative 'test_helper'
-    rescue LoadError
+    rescue NameError
       require File.expand_path('test_helper', __FILE__)
     end
 
@@ -202,7 +202,7 @@ In your test files you only have to require that helper:
 
     begin 
       require_relative 'test_helper'
-    rescue LoadError
+    rescue NameError
       require File.expand_path('test_helper', __FILE__)
     end
 
@@ -221,7 +221,7 @@ In your test files you only have to require that helper:
 
     begin 
       require_relative 'test_helper'
-    rescue LoadError
+    rescue NameError
       require File.expand_path('test_helper', __FILE__)
     end
     
@@ -263,7 +263,7 @@ defining `app`:
     
     begin 
       require_relative 'my-app.rb'
-    rescue LoadError
+    rescue NameError
       require File.expand_path('my-app.rb', __FILE__)
     end
     
@@ -285,7 +285,7 @@ all you have to do is install them and add a `require 'contest'` or `require
 
     begin 
       require_relative 'test_helper'
-    rescue LoadError
+    rescue NameError
       require File.expand_path('test_helper', __FILE__)
     end
 
@@ -317,7 +317,7 @@ all you have to do is install them and add a `require 'contest'` or `require
 
     begin 
       require_relative '../my-app.rb'
-    rescue LoadError
+    rescue NameError
       require File.expand_path('../my-app.rb', __FILE__)
     end
 
@@ -334,7 +334,7 @@ all you have to do is install them and add a `require 'contest'` or `require
 
     begin 
       require_relative 'spec_helper'
-    rescue LoadError
+    rescue NameError
       require File.expand_path('spec_helper', __FILE__)
     end
 
@@ -380,7 +380,7 @@ In your spec file or your spec helper, you can setup `Rack::Test` like this:
     
     begin 
       require_relative 'my-app'
-    rescue LoadError
+    rescue NameError
       require File.expand_path('my-app', __FILE__)
     end
 
@@ -395,7 +395,7 @@ And use it in your specs:
 
     begin 
       require_relative '../spec_helper'
-    rescue LoadError
+    rescue NameError
       require File.expand_path('../spec_helper', __FILE__)
     end
     
@@ -423,7 +423,7 @@ After installing [Bacon][bc], setting it up works similar to `Test::Unit`:
     
     begin 
       require_relative 'my-app.rb'
-    rescue LoadError
+    rescue NameError
       require File.expand_path('my-app.rb', __FILE__)
     end
  
@@ -443,7 +443,7 @@ After installing [MSpec][ms], you set it up like this:
     
     begin 
       require_relative 'my-app.rb'
-    rescue LoadError
+    rescue NameError
       require File.expand_path('my-app.rb', __FILE__)
     end
  
@@ -460,7 +460,7 @@ After installing [Protest][pt], setting it up works similar to `Test::Unit`:
  
     begin 
       require_relative 'my-app.rb'
-    rescue LoadError
+    rescue NameError
       require File.expand_path('my-app.rb', __FILE__)
     end
  
@@ -491,7 +491,7 @@ Using Capybara
  
     begin 
       require_relative '../../my-app.rb'
-    rescue LoadError
+    rescue NameError
       require File.expand_path('../../my-app.rb', __FILE__)
     end
 
@@ -501,7 +501,7 @@ Using Capybara
 
     begin 
       require_relative 'acceptance_helper'
-    rescue LoadError
+    rescue NameError
       require File.expand_path('acceptance_helper', __FILE__)
     end
 
@@ -558,7 +558,7 @@ Using Webrat
 
     begin 
       require_relative '../../my-app.rb'
-    rescue LoadError
+    rescue NameError
       require File.expand_path('../../my-app.rb', __FILE__)
     end
 
