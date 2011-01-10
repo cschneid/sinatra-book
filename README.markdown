@@ -40,7 +40,7 @@ In the root directory, launch the following Thor task:
 
 This will install an HTML version of the book in the output folder
 
-To build a Latex or PDF version you have to use this task:
+To build a LaTeX or PDF version you have to use this task:
 
     thor book:build latex
     # or
