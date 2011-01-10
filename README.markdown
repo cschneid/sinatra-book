@@ -23,13 +23,26 @@ Learn more about Sinatra at
 How to build the Book
 ---------------------
 
-Make sure you have all the required dependencies to build the book:
+Before you can translate the book into various formats you need to 
+have the Thor and Maruku gem installed:
 
+    gem install maruku
+    gem install thor
+
+Or you install the Bundler gem and let it check all the required dependencies to build the book:
+
+    gem install bundler
     bundle check
 
 In the root directory, launch the following Thor task:
 
     thor book:build
+
+This will install an HTML version of the book in the output folder
+
+To build a Latex or PDF version you have to use this task:
+    
+    thor book:build latex|pdf
 
 How to contribute
 -----------------
