@@ -363,7 +363,7 @@ binary:
 Now, with this rake task you can compile your coffee-scripts to
 `public/javascripts` by using the `rake js:compile` command.
 
-## Resources
+**Resources**
 
 If you get stuck or want to look into other ways of implementing CoffeeScript
 in your application, these are a great place to start:
