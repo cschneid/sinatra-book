@@ -390,6 +390,7 @@ in your application, these are a great place to start:
 [coffee-script-url]: http://coffeescript.org/
 [rake]: http://rake.rubyforge.org/
 [nodejs]: http://nodejs.org/
+[ruby-coffee-script]: http://github.com/josh/ruby-coffee-script
 
 ### Inline Templates
 
