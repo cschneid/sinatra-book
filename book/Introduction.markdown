@@ -92,9 +92,8 @@ Sinatra is installed, how about making your first application?
 
     require 'rubygems'
 
-    # If you're using bundler, you will need to add these 2 lines
-    require 'bundler'
-    Bundler.setup
+    # If you're using bundler, you will need to add this
+    require 'bundler/setup'
     
     require 'sinatra'
     
@@ -156,11 +155,8 @@ and a working Ruby interpreter.
 
 For more information about the Ruby language visit the following links:
 
-* <http://www.ruby-lang.org>
-* <http://www.ruby-lang.org/en/documentation/ruby-from-other-languages/>
-* <http://www.ruby-doc.org>
-* <http://www.ruby-doc.org/core-1.8.7/index.html>
-* <http://www.ruby-doc.org/docs/ProgrammingRuby/>
+* [ruby-lang](http://www.ruby-lang.org)
+* [ruby-lang / documentation](http://www.ruby-lang.org/en/documentation/)
 
 Need Help? 
 ----------
