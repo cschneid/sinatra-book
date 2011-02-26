@@ -15,8 +15,7 @@ It doesn't assume much about your application, apart from that:
 * it will have URLs
 
 In Sinatra, you can write short _ad hoc_ applications or mature, larger
-application with the same easiness.  (See section "Real World Applications"
-later in this book.)
+application with the same easiness.
 
 You can use the power of various Rubygems and other libraries available for
 Ruby.
@@ -53,31 +52,16 @@ The _edge_ version of Sinatra lives in its Git repository, available at
 **<http://github.com/sinatra/sinatra/tree/master>**.
 
 You can use the _edge_ version to try new functionality or to contribute to the
-framework.  You need to have Git version control software installed
-(<http://www.git-scm.com>).  You could use either
-[rake](http://rake.rubyforge.org/) or [bundler](http://gembundler.com/). Follow
-these steps:
-
-**Rake**
-
-    gem install rake
-
-1. cd where/you/keep/your/projects
-2. git clone git://github.com/sinatra/sinatra.git
-3. cd sinatra
-4. rake install
-
-**Bundler**
-Alternatively you can use bundler (http://gembundler.com/).
+framework. You need to have [Git version control
+software](http://www.git-scm.com) and [bundler](http://gembundler.com/).
 
     gem install bundler
 
-To use edge sinatra with bundler, you'll have to create a gemfile listing
-sinatra's dependencies; and other dependencies for your application. In your
-application's root create your 'Gemfile':
+To use Sinatra _edge_ with bundler, you'll have to create a `Gemfile` listing
+Sinatra's and any other dependencies you're going to need.
 
+    source :rubygems.org
     gem 'sinatra', :git => 'git://github.com/sinatra/sinatra.git'
-    source 'http://rubygems.org/'
 
 Here we use the gemcutter source to specify where to get Sinatra's
 dependencies; alternatively you can use the git version, but that is up to you.
@@ -85,9 +69,9 @@ So now we can install our bundle:
 
     bundle install
 
-
 Hello World Application
 -----------------------
+
 Sinatra is installed, how about making your first application?
 
     require 'rubygems'
@@ -121,32 +105,9 @@ specified services/URLs, whenever someone pushes to their repository:
 * <http://github.com/guides/post-receive-hooks>
 * <http://github.com/pjhyett/github-services>
 
-### Git Wiki
+Check out a full list of Sinatra apps [in the wild][in-the-wild].
 
-Git Wiki is minimal Wiki engine powered by Sinatra and Git. See also various
-forks with additional functionality.
-
-* <http://github.com/sr/git-wiki>
-* <http://github.com/sr/git-wiki/network>
-
-### Integrity
-
-Integrity is small and clean _continuous integration_ service using Sinatra,
-watching for failing builds of your codebase and notifying you by various
-channels.
-
-* <http://www.integrityapp.com/>
-* <http://github.com/integrity/integrity>
-
-### Seinfeld Calendar
-
-Seinfeld Calendar is a fun application tracking your contributions to
-open-source projects, displaying your "streaks", ie. continuous commits to
-Github repositories.
-
-* <http://www.calendaraboutnothing.com>
-* <http://github.com/entp/seinfeld>
-
+[in-the-wild]: http://www.sinatrarb.com/wild.html
 
 About this book
 ---------------
