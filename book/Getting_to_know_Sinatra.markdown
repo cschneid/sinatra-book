@@ -57,6 +57,54 @@ Take a more indepth look at [Sinatra's routes][routes], and see for yourself.
 
 ## Filters
 
+Sinatra offers a way for you too hook into the request chain of your
+application via [Filters][filters].
+
+Filters define two methods available, `before` and `after` which both accept a
+block to yield corresponding the request and optionally take a URL pattern to
+match to the request.
+
+### before
+
+The `before` method will let you pass a block to be evaluated **before** _each_
+and_every_ route gets processed.
+
+    before do
+      MyStore.connect unless MyStore.connected?
+    end
+
+    get '/' do
+      @list = MyStore.find(:all)
+      erb :index
+    end
+
+In this example, we've set up a `before` filter to connect using a contrived
+`MyStore` module.
+
+### after
+
+The `after` method lets you pass a block to be evaluated **after** _each_ and
+_every_ route gets processed.
+
+    after do
+      MyStore.disconnect
+    end
+
+As you can see from this example, we're asking the `MyStore` module to
+disconnect after the request has been processed.
+
+### Pattern Matching
+
+Filters optionally take a pattern to be matched against the requested URI
+during processing. Here's a quick example you could use to run a contrived
+`authenticate!` method before accessing any "admin" type requests.
+
+    before '/admin/*' do
+      authenticate!
+    end
+
+[filters]: http://www.sinatrarb.com/intro#Filters
+
 ## Handlers
 
 ## Templates
