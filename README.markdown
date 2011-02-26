@@ -1,38 +1,15 @@
 Sinatra Book
 ============
 
-Documentation in "book" form for the Sinatra Web Framework.
-
-About
------
-
-It'll probably be cookbook style recipes, along with a more linear tutorial to get you started.
-
-Join us on IRC (#sinatra at irc.freenode.org) if you need help with anything.
-
-File Layout:
-
-* _book_   - Text of the book.  In maruku's markdown format.
-* _images_ - Images, Diagrams, Funny Pictures
-* _source_ - Any source examples to be included into the book
-
-Learn more about Sinatra at 
-[http://github.com/sinatra/sinatra](http://github.com/sinatra/sinatra).
-
+A cookbook full of excellent tutorials and recipes for developing Sinatra web applications.
 
 How to build the Book
 ---------------------
 
-Before you can translate the book into various formats you need to 
-have the Thor and Maruku gem installed:
-
-    gem install maruku
-    gem install thor
-
-Or you install the Bundler gem and let it check all the required dependencies to build the book:
+Before you can translate the book into various formats you need to install the dependencies.
 
     gem install bundler
-    bundle check
+    bundle install
 
 In the root directory, launch the following Thor task:
 
@@ -49,4 +26,26 @@ To build a LaTeX or PDF version you have to use this task:
 How to contribute
 -----------------
 
-Fork this repository, be sure to read the [styleguide](http://github.com/sinatra/sinatra-book/wiki/How-to-contribute) and post pull requests.
+Want to help contribute recipes or tutorials into the [Sinatra
+Book][sinatra-book]?
+
+Check out the [Sinatra Book Contrib][sinatra-book-contrib] project for all of
+the recent additions from the community.
+
+If you're looking for something to work on be sure to check the [issue
+tracker][issues] first, then read up on the [styling
+guidelines][styling-guidelines].
+
+Once you have [forked the project][forking], feel free to send us a [pull
+request][pull-requests].
+
+Join us on IRC (#sinatra at irc.freenode.org) if you need help with anything.
+
+
+[sinatra-book]: http://github.com/sinatra/sinatra-book
+[sinatra-book-contrib]: http://github.com/sinatra/sinatra-book-contrib
+[issues]: http://github.com/sinatra/sinatra-book/issues
+[styling-guidelines]: http://github.com/sinatra/sinatra-book-contrib/wiki/Style-Guidelines
+[forking]: http://help.github.com/forking/
+[pull-requests]: http://help.github.com/pull-requests/
+
