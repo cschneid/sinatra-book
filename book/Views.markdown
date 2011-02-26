@@ -35,7 +35,7 @@ Template Languages
 
 This will render ./views/index.erb
 
-#### RSS Feed
+### RSS Feed
 
 The builder gem/library is required to in this recipe
 
