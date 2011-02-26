@@ -10,7 +10,7 @@ Filters.markdown
 Views.markdown
 Models.markdown
 Helpers.markdown
-RackMiddleware.markdown
+Middleware.markdown
 ErrorHandling.markdown
 Configuration.markdown
 Testing.markdown
