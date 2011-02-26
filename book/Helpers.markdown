@@ -1,26 +1,6 @@
 Helpers
 =======
 
-The basics
-----------
-
-It is ill-advised to create helpers on the root level of your application.  They muddy the global namespace, and don't
-have easy access to the request, response, session or cookie variables.
-
-Instead, use the handy helpers method to install methods on `Sinatra::EventContext` for use inside events and templates.
-
-Example:
-
-    helpers do
-      def bar(name)
-        "#{name}bar"
-      end
-    end
-    
-    get '/:name' do
-      bar(params[:name])
-    end
-
 Implementation of rails style partials
 --------------------------------------
 
