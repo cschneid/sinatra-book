@@ -1,6 +1,8 @@
 Contributing
 ============
 
+There are plenty of ways to [contribute to Sinatra][contributing].
+
 Want to help contribute recipes or tutorials into the [Sinatra
 Book][sinatra-book]?
 
@@ -16,7 +18,7 @@ request][pull-requests].
 
 Join us on IRC (#sinatra at irc.freenode.org) if you need help with anything.
 
-
+[contributing]: http://www.sinatrarb.com/contributing
 [sinatra-book]: http://github.com/sinatra/sinatra-book
 [sinatra-book-contrib]: http://github.com/sinatra/sinatra-book-contrib
 [issues]: http://github.com/sinatra/sinatra-book/issues
