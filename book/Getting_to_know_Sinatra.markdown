@@ -107,6 +107,40 @@ during processing. Here's a quick example you could use to run a contrived
 
 ## Handlers
 
+Handlers are top-level methods available in Sinatra to take care of common HTTP
+routines. For instance there are handlers for [halting][halting] and
+[passing][passing].
+
+There are also handlers for redirection:
+
+    get '/'
+      redirect '/someplace/else'
+    end
+    
+This will return a 302 HTTP Response to `/someplace/else`.
+
+You can even use the Sinatra handler for sessions, just add this to your
+application or to a configure block:
+
+    enable :sessions
+
+Then you will be able to use the default cookie based session handler in your
+application:
+
+    get '/' do
+      session['counter'] ||= 0
+      session['counter'] += 1
+      "You've hit this page #{session['counter']} times!" 
+    end
+
+Handlers can be extremely useful when used properly, probably the most common
+use is the `params` convention, which gives you access to any parameters passed
+in via the request object, or generated in your route pattern.
+
+[halting]: http://www.sinatrarb.com/intro#Halting
+[passing]: http://www.sinatrarb.com/intro#Passing
+
+
 ## Templates
 
 Sinatra is built upon an incredibly powerful templating engine, [Tilt][tilt].
