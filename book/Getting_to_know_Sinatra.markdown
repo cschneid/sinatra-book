@@ -204,12 +204,7 @@ For more specific details on how Sinatra handles templates, check the [README][t
 
 ## Helpers
 
-It is ill-advised to create helpers on the root level of your application.  They muddy the global namespace, and don't
-have easy access to the request, response, session or cookie variables.
-
-Instead, use the handy helpers method to install methods on `Sinatra::EventContext` for use inside events and templates.
-
-Example:
+Helpers are a great way to provide reusable code snippets in your application.
 
     helpers do
       def bar(name)
