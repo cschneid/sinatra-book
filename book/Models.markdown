@@ -31,7 +31,7 @@ application!
 
     get '/' do
         # get the latest 20 posts
-        @posts = Post.get(:order => [ :id.desc ], :limit => 20)
+        @posts = Post.all(:order => [ :id.desc ], :limit => 20)
         erb :index
     end
 
