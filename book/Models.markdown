@@ -1,11 +1,11 @@
 Models
 ======
 
-Datamapper
+DataMapper
 ----------
 
 Start out by getting the DataMapper gem if you don't already have it, and then
-making sure it's in your applicaton. A call to `setup` as usual will get the
+making sure it's in your application. A call to `setup` as usual will get the
 show started, and this example will include a 'Post' model.
 
     require 'rubygems'
