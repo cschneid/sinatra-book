@@ -23,6 +23,9 @@ show started, and this example will include a 'Post' model.
         property :created_at, DateTime
     end
 
+    # Perform basic sanity checks and initialize all relationships
+    DataMapper.finalize
+
     # automatically create the post table
     Post.auto_upgrade!
 
