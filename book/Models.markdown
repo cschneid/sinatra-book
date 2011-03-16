@@ -24,7 +24,7 @@ show started, and this example will include a 'Post' model.
     end
 
     # automatically create the post table
-    Post.auto_migrate! unless Post.storage_exists?
+    Post.auto_upgrade!
 
 Once that is all well and good, you can actually start developing your
 application!
