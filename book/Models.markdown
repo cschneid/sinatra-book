@@ -46,5 +46,5 @@ Finally, the view at `./view/index.html`:
         <p><%= post.body %></p>
     <% end %>
 
-For more information on DataMapper, check out the (project
-documentation)[http://datamapper.org/docs/].
+For more information on DataMapper, check out the [project
+documentation](http://datamapper.org/docs/ "DataMapper").
