@@ -29,7 +29,7 @@ How to contribute
 Want to help contribute recipes or tutorials into the [Sinatra
 Book][sinatra-book]?
 
-Check out the [Sinatra Book Contrib][sinatra-book-contrib] project for all of
+Check out the [Sinatra Recipes][sinatra-recipes] project for all of
 the recent additions from the community.
 
 If you're looking for something to work on be sure to check the [issue
@@ -43,7 +43,7 @@ Join us on IRC (#sinatra at irc.freenode.org) if you need help with anything.
 
 
 [sinatra-book]: http://github.com/sinatra/sinatra-book
-[sinatra-book-contrib]: http://github.com/sinatra/sinatra-book-contrib
+[sinatra-recipes]: http://recipes.sinatrarb.com/
 [issues]: http://github.com/sinatra/sinatra-book/issues
 [styling-guidelines]: http://github.com/sinatra/sinatra-book-contrib/wiki/Style-Guidelines
 [forking]: http://help.github.com/forking/
