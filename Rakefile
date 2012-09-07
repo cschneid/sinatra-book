@@ -5,6 +5,5 @@ namespace :book do
   task :build do
     include Book
     build(true)
-    #File.open("#{OUTPUT_DIR}/sinatra-book.html", "w") { |f| f.write(doc) }
   end
 end

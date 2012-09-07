@@ -7,10 +7,10 @@ module Book
   OUTPUT_DIR = File.join(File.dirname(__FILE__), "output")
 
   def build(pdf=false)
-    renderer = Redcarpet::Markdown.new(Redcarpet::Render::HTML,
+    renderer = Redcarpet::Markdown.new(
+      Redcarpet::Render::HTML.new(:with_toc_data => true),
                              #:no_links => true,
                              :space_after_headers => true,
-                             :with_toc_data => true,
                              :fenced_code_blocks => true)
     toc_renderer = Redcarpet::Markdown.new(Redcarpet::Render::HTML_TOC)
     doc = toc_renderer.render(complete_markdown(true))
