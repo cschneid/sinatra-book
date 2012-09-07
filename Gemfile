@@ -1,4 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'thor', '~> 0.14'
-gem 'maruku', '~> 0.6'
+gem 'pdfkit'
+gem 'rake'
+gem 'redcarpet', '~> 2.0'
+gem 'sinatra'

@@ -2,7 +2,6 @@
 # Use this approach rather than than naming the files with 1_, 2_, and so on to force
 # a sort order.
 
-TOC.markdown
 Introduction.markdown
 Getting_to_know_Sinatra.markdown
 Organizing_your_application.markdown
