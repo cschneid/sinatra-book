@@ -46,4 +46,7 @@ hr
   { display: none; }
 
 #header img
-  { width: 296px; }
+  { width: 200px; }
+
+#download
+  { display: none; }
