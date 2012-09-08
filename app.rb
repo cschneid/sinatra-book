@@ -14,8 +14,11 @@ get('/download.png') { send_file "#{ASSETS_DIR}/images/download.png", :type => :
 
 __END__
 @@layout
+<!DOCTYPE html>
 <html>
   <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Sinatra Book</title>
     <link rel="stylesheet" type="text/css" href="/book.css" media="screen, projection" />
     <link rel="stylesheet" type="text/css" href="/print.css" media="print" />

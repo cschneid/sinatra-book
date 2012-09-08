@@ -11,17 +11,17 @@ Before you can translate the book into various formats you need to install the d
     gem install bundler
     bundle install
 
-In the root directory, launch the following Thor task:
+In the root directory, launch the following Rake task:
 
-    thor book:build
+    bundle exec rake book:build
 
-This will install an HTML version of the book in the output folder
+This will build a PDF version of the book in the output folder
 
-To build a LaTeX or PDF version you have to use this task:
+You can run the built-in book sinatra app to view it in your browser too:
 
-    thor book:build latex
-    # or
-    thor book:build pdf
+    rackup
+
+Then visit: http://localhost:9292/
 
 How to contribute
 -----------------
