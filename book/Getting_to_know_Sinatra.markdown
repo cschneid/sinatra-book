@@ -164,11 +164,13 @@ default look in the `views` directory in your application root.
 So in your route you would have:
 
     get '/' do
-      erb :index
-      # renders views/index.erb
-     
-      # OR look in a sub-directory
+      erb :index # renders views/index.erb
+    end
 
+or to specify a template located in a subdirectory
+
+
+    get '/' do
       erb :"dogs/index"
       # would instead render views/dogs/index.erb
     end
