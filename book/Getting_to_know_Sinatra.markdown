@@ -216,7 +216,7 @@ Helpers are a great way to provide reusable code snippets in your application.
         "#{name}bar"
       end
     end
-    
+
     get '/:name' do
       bar(params[:name])
     end
