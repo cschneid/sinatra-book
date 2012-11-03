@@ -155,8 +155,10 @@ Some of Tilt's other all-star features include:
 *   Backtraces with correct filenames and line numbers
 *   Template file caching and reloading
 
-And includes support for some of the best engines available, such as
-[HAML][haml], [Less CSS][less], and [coffee-script][cs].
+Best of all, Tilt includes support for some of the best templating engines
+available, including [HAML][haml], [Less CSS][less], and
+[CoffeeScript][coffeescript]. Also a ton of other lesser known, but equally
+awesome [templating languages][tilt] that would take too much space to list.
 
 All you need to get started is `erb`, which is included in Ruby. Views by
 default look in the `views` directory in your application root.
@@ -195,10 +197,10 @@ The possibilities are pretty much endless, here's a quick list of some of the mo
 
 For more specific details on how Sinatra handles templates, check the [README][templates].
 
-[tilt]: http://github.com/rtomayko/tilt 
+[tilt]: http://github.com/rtomayko/tilt
 [haml]: http://haml-lang.com/
 [less]: http://lesscss.org/
-[cs]: http://jashkenas.github.com/coffee-script/
+[coffeescript]: http://coffeescript.org/
 [inline]: http://www.sinatrarb.com/intro#Inline%20Templates
 [embedded]: http://www.sinatrarb.com/intro#Embedded%20Templates
 [named]: http://www.sinatrarb.com/intro#Named%20Templates
