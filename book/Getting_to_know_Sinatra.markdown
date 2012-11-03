@@ -189,7 +189,8 @@ this:
       </body>
     </html>
 
-The possibilities are pretty much endless, here's a quick list of some of the most common use-cases covered in the README:
+The possibilities are pretty much endless, here's a quick list of some of the
+most common use-cases covered in the README:
 
 *   [Inline Templates][inline]
 *   [Embedded Templates][embedded]
