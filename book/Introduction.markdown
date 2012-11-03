@@ -32,7 +32,9 @@ Installation
 ------------
 The simplest way to install Sinatra is through Rubygems:
 
-    $ gem install sinatra
+```
+$ gem install sinatra
+```
 
 ### Dependencies
 
@@ -44,7 +46,9 @@ For optimal experience, you should install the template engines you want to
 work with.  The Sinatra dev team suggests using either ERB, which is included
 with Ruby, or installing HAML as your first template language.
 
-    $ gem install haml
+```
+$ gem install haml
+```
 
 ### Living on the Edge
 
@@ -55,35 +59,43 @@ You can use the _edge_ version to try new functionality or to contribute to the
 framework. You need to have [Git version control
 software](http://www.git-scm.com) and [bundler](http://gembundler.com/).
 
-    gem install bundler
+```
+$ gem install bundler
+```
 
 To use Sinatra _edge_ with bundler, you'll have to create a `Gemfile` listing
 Sinatra's and any other dependencies you're going to need.
 
-    source :rubygems
-    gem 'sinatra', :git => 'git://github.com/sinatra/sinatra.git'
+```ruby
+source :rubygems
+gem 'sinatra', :git => 'git://github.com/sinatra/sinatra.git'
+```
 
 Here we use the gemcutter source to specify where to get Sinatra's
 dependencies; alternatively you can use the git version, but that is up to you.
 So now we can install our bundle:
 
-    bundle install
+```
+$ bundle install
+```
 
 Hello World Application
 -----------------------
 
 Sinatra is installed, how about making your first application?
 
-    require 'rubygems'
+```ruby
+require 'rubygems'
 
-    # If you're using bundler, you will need to add this
-    require 'bundler/setup'
-    
-    require 'sinatra'
-    
-    get '/' do
-      "Hello world, it's #{Time.now} at the server!"
-    end
+# If you're using bundler, you will need to add this
+require 'bundler/setup'
+
+require 'sinatra'
+
+get '/' do
+  "Hello world, it's #{Time.now} at the server!"
+end
+```
 
 Run this application by `$ ruby hello_world.rb` and load
 `http://localhost:4567` in your browser.

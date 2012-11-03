@@ -21,16 +21,20 @@ Steps to deploy to Heroku:
    `myapp.rb`.  Second, run your application.  If you're subclassing, use the
    subclass's name, otherwise use Sinatra::Application.
 
-        require "myapp"
+```ruby
+require "myapp"
 
-        run Sinatra::Application
+run Sinatra::Application
+```
 
 2. Create the app and push to it
 
        From the root-directory of the application
 
-       $ heroku create <app-name>  # This will add heroku as a remote
-       $ git push heroku master
+```
+$ heroku create <app-name>  # This will add heroku as a remote
+$ git push heroku master
+```
 
 For more details see [this](http://github.com/sinatra/heroku-sinatra-app)
 

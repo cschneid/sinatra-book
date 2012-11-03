@@ -9,15 +9,17 @@ request/response to provide various types of common functionality.
 
 Sinatra makes building Rack middleware pipelines a cinch via a top-level `use` method:
 
-    require 'sinatra'
-    require 'my_custom_middleware'
-    
-    use Rack::Lint
-    use MyCustomMiddleware
-    
-    get '/hello' do
-      'Hello World'
-    end
+```ruby
+require 'sinatra'
+require 'my_custom_middleware'
+
+use Rack::Lint
+use MyCustomMiddleware
+
+get '/hello' do
+  'Hello World'
+end
+```
 
 ## Rack HTTP Basic Authentication
 
@@ -25,9 +27,11 @@ The semantics of "use" are identical to those defined for the
 [Rack::Builder][rack_builder] DSL (most frequently used from rackup files). For
 example, the use  method accepts multiple/variable args as well as blocks:
 
-    use Rack::Auth::Basic do |username, password|
-      username == 'admin' && password == 'secret'
-    end
+```ruby
+use Rack::Auth::Basic do |username, password|
+  username == 'admin' && password == 'secret'
+end
+```
 
 Rack is distributed with a variety of standard middleware for logging,
 debugging, URL routing, authentication, and session handling. Sinatra uses many

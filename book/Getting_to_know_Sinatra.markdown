@@ -24,27 +24,29 @@ users will navigate the actions you define for your application.
 They also enable to you create [RESTful web services][restful-web-services], in
 a very obvious manner. Here's an example of how one-such service might look:
 
-    get '/dogs' do
-      # get a listing of all the dogs
-    end
+```ruby
+get '/dogs' do
+  # get a listing of all the dogs
+end
 
-    get '/dog/:id' do
-      # just get one dog, you might find him like this:
-      @dog = Dog.find(params[:id])
-      # using the params convention, you specified in your route
-    end
+get '/dog/:id' do
+  # just get one dog, you might find him like this:
+  @dog = Dog.find(params[:id])
+  # using the params convention, you specified in your route
+end
 
-    post '/dog' do
-      # create a new dog listing
-    end
+post '/dog' do
+  # create a new dog listing
+end
 
-    put '/dog/:id' do
-      # HTTP PUT request method to update an existing dog
-    end
+put '/dog/:id' do
+  # HTTP PUT request method to update an existing dog
+end
 
-    delete '/dog/:id' do
-      # HTTP DELETE request method to remove a dog who's been sold!
-    end
+delete '/dog/:id' do
+  # HTTP DELETE request method to remove a dog who's been sold!
+end
+```
 
 As you can see from this contrived example, Sinatra's routing is very easy to get
 along with. Don't be fooled, though, Sinatra can do some pretty amazing things
@@ -69,14 +71,16 @@ match to the request.
 The `before` method will let you pass a block to be evaluated **before** _each_
 and _every_ route gets processed.
 
-    before do
-      MyStore.connect unless MyStore.connected?
-    end
+```ruby
+before do
+  MyStore.connect unless MyStore.connected?
+end
 
-    get '/' do
-      @list = MyStore.find(:all)
-      erb :index
-    end
+get '/' do
+  @list = MyStore.find(:all)
+  erb :index
+end
+```
 
 In this example, we've set up a `before` filter to connect using a contrived
 `MyStore` module.
@@ -86,9 +90,11 @@ In this example, we've set up a `before` filter to connect using a contrived
 The `after` method lets you pass a block to be evaluated **after** _each_ and
 _every_ route gets processed.
 
-    after do
-      MyStore.disconnect
-    end
+```ruby
+after do
+  MyStore.disconnect
+end
+```
 
 As you can see from this example, we're asking the `MyStore` module to
 disconnect after the request has been processed.
@@ -99,9 +105,11 @@ Filters optionally take a pattern to be matched against the requested URI
 during processing. Here's a quick example you could use to run a contrived
 `authenticate!` method before accessing any "admin" type requests.
 
-    before '/admin/*' do
-      authenticate!
-    end
+```ruby
+before '/admin/*' do
+  authenticate!
+end
+```
 
 [filters]: http://www.sinatrarb.com/intro#Filters
 
@@ -113,25 +121,31 @@ routines. For instance there are handlers for [halting][halting] and
 
 There are also handlers for redirection:
 
-    get '/' do
-      redirect '/someplace/else'
-    end
-    
+```ruby
+  get '/' do
+  redirect '/someplace/else'
+end
+```
+
 This will return a 302 HTTP Response to `/someplace/else`.
 
 You can even use the Sinatra handler for sessions, just add this to your
 application or to a configure block:
 
-    enable :sessions
+```ruby
+enable :sessions
+```
 
 Then you will be able to use the default cookie based session handler in your
 application:
 
-    get '/' do
-      session['counter'] ||= 0
-      session['counter'] += 1
-      "You've hit this page #{session['counter']} times!" 
-    end
+```ruby
+get '/' do
+  session['counter'] ||= 0
+  session['counter'] += 1
+  "You've hit this page #{session['counter']} times!" 
+end
+```
 
 Handlers can be extremely useful when used properly, probably the most common
 use is the `params` convention, which gives you access to any parameters passed
@@ -165,29 +179,35 @@ default look in the `views` directory in your application root.
 
 So in your route you would have:
 
-    get '/' do
-      erb :index # renders views/index.erb
-    end
+```ruby
+get '/' do
+  erb :index # renders views/index.erb
+end
+```
 
 or to specify a template located in a subdirectory
 
 
-    get '/' do
-      erb :"dogs/index"
-      # would instead render views/dogs/index.erb
-    end
+```ruby
+get '/' do
+  erb :"dogs/index"
+  # would instead render views/dogs/index.erb
+end
+```
 
 Another default convention of Sinatra, is the layout, which automatically looks
 for a `views/layout` template file to render before loading any other views. In
 the case of using `erb`, your `views/layout.erb` would look something like
 this:
 
-    <html>
-      <head>..</head>
-      <body>
-        <%= yield %>
-      </body>
-    </html>
+```ruby
+<html>
+  <head>..</head>
+  <body>
+    <%= yield %>
+  </body>
+</html>
+```
 
 The possibilities are pretty much endless, here's a quick list of some of the
 most common use-cases covered in the README:
@@ -211,14 +231,16 @@ For more specific details on how Sinatra handles templates, check the [README][t
 
 Helpers are a great way to provide reusable code snippets in your application.
 
-    helpers do
-      def bar(name)
-        "#{name}bar"
-      end
-    end
+```ruby
+helpers do
+  def bar(name)
+    "#{name}bar"
+  end
+end
 
-    get '/:name' do
-      bar(params[:name])
-    end
+get '/:name' do
+  bar(params[:name])
+end
+```
 
 

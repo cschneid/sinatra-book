@@ -17,14 +17,18 @@ available on Windows and JRuby.
 
 Usage is rather simple:
 
-    gem install shotgun # run only once, to install shotgun
-    shotgun my_app.rb
+```ruby
+gem install shotgun # run only once, to install shotgun
+shotgun my_app.rb
+```
 
 If you want to run a modular application, create a file named `config.ru` with
 similar content:
 
-    require 'my_app'
-    run MyApp
+```ruby
+require 'my_app'
+run MyApp
+```
 
 And run it by calling `shotgun` without arguments.
 
