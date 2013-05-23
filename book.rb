@@ -12,10 +12,6 @@ module Book
     doc << toc
     doc << content
     if pdf
-      PDFKit.configure { |config|
-        config.wkhtmltopdf = File.join(File.dirname(__FILE__),
-                                       'vendor', 'wkhtmltopdf')
-      }
       kit = PDFKit.new(doc, :page_size=>'Letter')
       kit.stylesheets << "#{ASSETS_DIR}/print.css"
       pdf = kit.to_pdf
