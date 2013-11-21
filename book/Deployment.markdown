@@ -44,9 +44,11 @@ Steps to deploy to Heroku:
 3. Create the app and push to it
 
    From the root directory of the application, run these commands:
-
+   
+    ```bash
     $ heroku create <app-name>  # This will add heroku as a remote
     $ git push heroku master
+    ```
 
    For more details see [this](http://github.com/sinatra/heroku-sinatra-app).
 
