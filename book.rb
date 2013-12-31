@@ -26,7 +26,7 @@ module Book
     <<-header
       <div id="header">
         <p>
-          <img src="https://raw.github.com/sinatra/resources/master/logo/book-logo.png" />
+          <img src="#{ASSETS_DIR}/images/book-logo.png" />
         </p>
       </div>
     header
