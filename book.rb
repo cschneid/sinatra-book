@@ -3,12 +3,16 @@ require 'redcarpet'
 require 'fileutils'
 
 module Book
-  ASSETS_DIR = File.join(File.dirname(__FILE__), "assets") 
+  ASSETS_DIR = File.join(File.dirname(__FILE__), "assets")
   BOOK_DIR = File.join(File.dirname(__FILE__), "book")
   OUTPUT_DIR = File.join(File.dirname(__FILE__), "output")
 
   def build(pdf=false)
-    doc = header
+    if pdf
+      doc = header
+    else
+      doc = ""
+    end
     doc << toc
     doc << content
     if pdf

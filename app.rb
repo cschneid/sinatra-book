@@ -10,8 +10,8 @@ get('/download'){ build(true); send_file "#{OUTPUT_DIR}/sinatra-book.pdf", :type
 get('/book.css') { send_file "#{ASSETS_DIR}/book.css", :type => 'text/css' }
 get('/print.css') { send_file "#{ASSETS_DIR}/print.css", :type => 'text/css' }
 
-get('/download.png') { send_file "#{ASSETS_DIR}/images/download.png", :type => :png }
-
+get('/images/download.png') { send_file "#{ASSETS_DIR}/images/download.png", :type => :png }
+get('/images/book-logo.png') { send_file "#{ASSETS_DIR}/images/book-logo.png", :type => :png }
 __END__
 @@layout
 <!DOCTYPE html>
@@ -29,6 +29,11 @@ __END__
       <a href="/download">
         <img src="/images/download.png" alt="Download the Sinatra Book" />
       </a>
+    </div>
+    <div id="header">
+      <p>
+        <img src="/images/book-logo.png" />
+      </p>
     </div>
     <%= yield %>
   </body>
