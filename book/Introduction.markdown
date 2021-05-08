@@ -52,7 +52,7 @@ $ gem install haml
 
 ### Living on the Edge
 
-The _edge_ version of Sinatra lives in its Git repository, available at 
+The _edge_ version of Sinatra lives in its Git repository, available at
 **<http://github.com/sinatra/sinatra/tree/master>**.
 
 You can use the _edge_ version to try new functionality or to contribute to the
@@ -71,7 +71,7 @@ source :rubygems
 gem 'sinatra', :git => 'git://github.com/sinatra/sinatra.git'
 ```
 
-Here we use the gemcutter source to specify where to get Sinatra's
+Here we use the rubygems source to specify where to get Sinatra's
 dependencies; alternatively you can use the git version, but that is up to you.
 So now we can install our bundle:
 
@@ -131,10 +131,9 @@ For more information about the Ruby language visit the following links:
 * [ruby-lang](http://www.ruby-lang.org)
 * [ruby-lang / documentation](http://www.ruby-lang.org/en/documentation/)
 
-Need Help? 
+Need Help?
 ----------
 
 The Sinatra club is small, but super-friendly.  Join us on IRC at
 irc.freenode.org in #sinatra if you have any questions.  It's a bit
 slow at times, so give us a bit to get back to your questions.
-

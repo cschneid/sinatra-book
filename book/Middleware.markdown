@@ -39,5 +39,5 @@ of of these components automatically based on configuration so you typically
 don’t have to use them explicitly.
 
 [rack]: http://rack.rubyforge.org/
-[rack_builder]: http://rack.rubyforge.org/doc/classes/Rack/Builder.html
+[rack_builder]: https://rubydoc.info/github/rack/rack/Rack/Builder
 
