@@ -10,7 +10,7 @@ whirlwind tour of the framework and familiarize yourself with its features.
 ## Routing
 
 Sinatra is super flexible when it comes to routing, which is essentially an
-HTTP method and a regular expression to match the requested URL. The four basic
+HTTP method and a regular expression to match the requested URL. The five basic
 HTTP request methods will get you a long ways:
 
 *   GET
