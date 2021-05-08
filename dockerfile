@@ -1,4 +1,4 @@
-FROM ruby:2.2.4
+FROM ruby:2.7.2
 
 WORKDIR /app
 
@@ -6,6 +6,6 @@ COPY . .
 
 RUN bundle install
 
-CMD rackup
+CMD bundle exec rackup
 
 EXPOSE 9292
