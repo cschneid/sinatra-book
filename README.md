@@ -45,7 +45,7 @@ Join us on IRC (#sinatra at irc.freenode.org) if you need help with anything.
 [sinatra-book]: http://github.com/sinatra/sinatra-book
 [sinatra-recipes]: http://recipes.sinatrarb.com/
 [issues]: http://github.com/sinatra/sinatra-book/issues
-[styling-guidelines]: http://github.com/sinatra/sinatra-book-contrib/wiki/Style-Guidelines
+[styling-guidelines]: https://github.com/sinatra/sinatra-book/wiki/How-to-contribute
 [forking]: http://help.github.com/forking/
 [pull-requests]: http://help.github.com/pull-requests/
 
