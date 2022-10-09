@@ -110,6 +110,7 @@ services/URLs, whenever someone pushed to their repository:
 
 * <https://github.blog/2008-04-29-github-services-ipo/> explains how it was introduced
 * <https://github.com/github/github-services> is a deprecated repository
+* <https://developer.github.com/changes/2018-04-25-github-services-deprecation/> is the post deprecating github-services 
 * <https://docs.github.com/en/rest/webhooks> is the documentation for the current non-Sinatra solution
 
 Check out a full list of Sinatra apps [in the wild][in-the-wild].
