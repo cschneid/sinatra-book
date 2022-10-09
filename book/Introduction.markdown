@@ -38,7 +38,7 @@ $ gem install sinatra
 
 ### Dependencies
 
-Sinatra depends on the _Rack_ gem (<http://rack.rubyforge.org>).
+Sinatra depends on the _Rack_ gem (<https://rubygems.org/rack>).
 
 Sinatra supports many different template engines (it uses the Tilt library
 internally to support practically every template engine in Ruby)
@@ -53,27 +53,24 @@ $ gem install haml
 ### Living on the Edge
 
 The _edge_ version of Sinatra lives in its Git repository, available at
-**<http://github.com/sinatra/sinatra/tree/master>**.
+**<https://github.com/sinatra/sinatra/>**.
 
 You can use the _edge_ version to try new functionality or to contribute to the
 framework. You need to have [Git version control
-software](http://www.git-scm.com) and [bundler](http://gembundler.com/).
+software](https://www.git-scm.com/) and [Bundler](https://bundler.io/).
 
 ```
 $ gem install bundler
 ```
 
-To use Sinatra _edge_ with bundler, you'll have to create a `Gemfile` listing
+To use Sinatra _edge_ with Bundler, you'll have to create a `Gemfile` listing
 Sinatra's and any other dependencies you're going to need.
 
 ```ruby
-source :rubygems
 gem 'sinatra', :git => 'git://github.com/sinatra/sinatra.git'
 ```
 
-Here we use the rubygems source to specify where to get Sinatra's
-dependencies; alternatively you can use the git version, but that is up to you.
-So now we can install our bundle:
+Now we can install our dependencies:
 
 ```
 $ bundle install
@@ -85,8 +82,6 @@ Hello World Application
 Sinatra is installed, how about making your first application?
 
 ```ruby
-require 'rubygems'
-
 # If you're using bundler, you will need to add this
 require 'bundler/setup'
 
@@ -100,7 +95,7 @@ end
 Run this application by `$ ruby hello_world.rb` and load
 `http://localhost:4567` in your browser.
 
-As you can see, Sinatra doesn't force you to setup much infrastructure: a
+As you can see, Sinatra doesn't force you to set up much infrastructure: a
 request to a URL evaluates some Ruby code and returns some text in response.
 Whatever the block returns is sent back to the browser.
 
@@ -110,16 +105,16 @@ Real World Applications in Sinatra
 
 ### Github Services
 
-Git hosting provider Github uses Sinatra for post-receive hooks, calling user
-specified services/URLs, whenever someone pushes to their repository:
+Git hosting provider Github used Sinatra for Git post-receive hooks, calling user-specified
+services/URLs, whenever someone pushed to their repository:
 
-* <http://github.com/blog/53-github-services-ipo>
-* <http://github.com/guides/post-receive-hooks>
-* <http://github.com/pjhyett/github-services>
+* <https://github.blog/2008-04-29-github-services-ipo/> explains how it was introduced
+* <https://github.com/github/github-services> is a deprecated repository
+* <https://docs.github.com/en/rest/webhooks> is the documentation for the current non-Sinatra solution
 
 Check out a full list of Sinatra apps [in the wild][in-the-wild].
 
-[in-the-wild]: http://www.sinatrarb.com/wild.html
+[in-the-wild]: https://sinatrarb.com/wild.html
 
 About this book
 ---------------
@@ -128,8 +123,8 @@ and a working Ruby interpreter.
 
 For more information about the Ruby language visit the following links:
 
-* [ruby-lang](http://www.ruby-lang.org)
-* [ruby-lang / documentation](http://www.ruby-lang.org/en/documentation/)
+* [ruby-lang](https://www.ruby-lang.org)
+* [ruby-lang / documentation](https://www.ruby-lang.org/en/documentation/)
 
 Need Help?
 ----------
