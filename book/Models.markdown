@@ -43,7 +43,7 @@ get '/' do
 end
 ```
 
-Finally, the view at `./view/index.html`:
+Finally, the view at `./view/index.erb`:
 
 ```ruby
 <% @posts.each do |post| %>

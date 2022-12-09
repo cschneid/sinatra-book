@@ -3,19 +3,19 @@ require 'redcarpet'
 require 'fileutils'
 
 module Book
-  ASSETS_DIR = File.join(File.dirname(__FILE__), "assets") 
+  ASSETS_DIR = File.join(File.dirname(__FILE__), "assets")
   BOOK_DIR = File.join(File.dirname(__FILE__), "book")
   OUTPUT_DIR = File.join(File.dirname(__FILE__), "output")
 
   def build(pdf=false)
-    doc = header
+    if pdf
+      doc = header
+    else
+      doc = ""
+    end
     doc << toc
     doc << content
     if pdf
-      PDFKit.configure { |config|
-        config.wkhtmltopdf = File.join(File.dirname(__FILE__),
-                                       'vendor', 'wkhtmltopdf')
-      }
       kit = PDFKit.new(doc, :page_size=>'Letter')
       kit.stylesheets << "#{ASSETS_DIR}/print.css"
       pdf = kit.to_pdf
@@ -30,7 +30,7 @@ module Book
     <<-header
       <div id="header">
         <p>
-          <img src="https://raw.github.com/sinatra/resources/master/logo/book-logo.png" />
+          <img src="#{ASSETS_DIR}/images/book-logo.png" />
         </p>
       </div>
     header

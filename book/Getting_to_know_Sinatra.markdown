@@ -10,11 +10,12 @@ whirlwind tour of the framework and familiarize yourself with its features.
 ## Routing
 
 Sinatra is super flexible when it comes to routing, which is essentially an
-HTTP method and a regular expression to match the requested URL. The four basic
+HTTP method and a regular expression to match the requested URL. The five basic
 HTTP request methods will get you a long ways:
 
 *   GET
 *   POST
+*   PATCH
 *   PUT
 *   DELETE
 
@@ -43,6 +44,11 @@ put '/dog/:id' do
   # HTTP PUT request method to update an existing dog
 end
 
+patch '/dog/:id' do
+  # HTTP PATCH request method to update an existing dog
+  # See RFC 5789 for more information
+end
+
 delete '/dog/:id' do
   # HTTP DELETE request method to remove a dog who's been sold!
 end
@@ -52,14 +58,15 @@ As you can see from this contrived example, Sinatra's routing is very easy to ge
 along with. Don't be fooled, though, Sinatra can do some pretty amazing things
 with Routes.
 
-Take a more in-depth look at [Sinatra's routes][routes], and see for yourself. 
+Take a more in-depth look at [Sinatra's routes][routes], and see for yourself.
 
 [routes]: http://www.sinatrarb.com/intro#Routes
 [restful-web-services]: http://en.wikipedia.org/wiki/Representational_State_Transfer#RESTful_web_services
+[RFC 5789]: http://www.rfc-base.org/rfc-5789.html
 
 ## Filters
 
-Sinatra offers a way for you too hook into the request chain of your
+Sinatra offers a way for you to hook into the request chain of your
 application via [Filters][filters].
 
 Filters define two methods available, `before` and `after` which both accept a
@@ -143,7 +150,7 @@ application:
 get '/' do
   session['counter'] ||= 0
   session['counter'] += 1
-  "You've hit this page #{session['counter']} times!" 
+  "You've hit this page #{session['counter']} times!"
 end
 ```
 
